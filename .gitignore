@@ -27,3 +27,6 @@ soft/src/cubemx2/Debug/obj/stm32f4xx_hal_uart.o
 soft/src/cubemx2/Debug/obj/stm32f4xx_it.o
 soft/src/cubemx2/Debug/obj/system_stm32f4xx.o
 soft/src/cubemx2/Debug/obj/uart.o
+soft/src/cubemx2/Debug/bin/cubemx2.hex
+soft/src/cubemx2/Debug/bin/cubemx2.map
+soft/src/cubemx2/Debug/bin/history.xml

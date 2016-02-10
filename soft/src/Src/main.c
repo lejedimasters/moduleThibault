@@ -129,6 +129,8 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 void MX_SPI1_Init(void)
 {
+	GPIO_InitTypeDef GPIO_InitStruct;
+
 	__GPIOA_CLK_ENABLE();
 	__GPIOB_CLK_ENABLE();
 
@@ -145,6 +147,12 @@ void MX_SPI1_Init(void)
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
   hspi1.Init.CRCPolynomial = 10;
   HAL_SPI_Init(&hspi1);
+
+  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -179,7 +187,9 @@ void TIM4_IRQHandler(void)
 		#if SCHEDULER_ON
 			  SCHEDULER();
 		#else
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,  GPIO_PIN_SET);
 			  status = HAL_SPI_Transmit(&hspi1, tab, 3, 0xFFFF);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5,  GPIO_PIN_RESET);
 			  status = status;
 	  //SCHEDULER();
 		#endif
