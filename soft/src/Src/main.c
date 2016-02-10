@@ -57,10 +57,10 @@ int main(void)
 
 
 
-	seq_init();
+//	seq_init();
 	TIM4_init();
 
-	  //MX_SPI1_Init();
+	MX_SPI1_Init();
 
 	while (1)
 	{
@@ -138,7 +138,7 @@ void MX_SPI1_Init(void)
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLED;
@@ -181,7 +181,7 @@ void TIM4_IRQHandler(void)
 		#else
 			  status = HAL_SPI_Transmit(&hspi1, tab, 3, 0xFFFF);
 			  status = status;
-			  SCHEDULER();
+	  //SCHEDULER();
 		#endif
             //seq();
         }
