@@ -1,0 +1,29 @@
+soft/src/cubemx2/Debug/obj/driver_button.o
+soft/src/cubemx2/Debug/obj/driver_led.o
+soft/src/cubemx2/Debug/obj/error.o
+soft/src/cubemx2/Debug/obj/history.xml
+soft/src/cubemx2/Debug/obj/main.o
+soft/src/cubemx2/Debug/obj/sequencer.o
+soft/src/cubemx2/Debug/obj/sequencer_button .o
+soft/src/cubemx2/Debug/obj/sequencer_led .o
+soft/src/cubemx2/Debug/obj/startup_stm32f4xx.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_cortex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_dma.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_dma_ex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_flash.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_flash_ex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_flash_ramfunc.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_gpio.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_msp.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_pwr.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_pwr_ex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_rcc.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_rcc_ex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_spi.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_tim.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_tim_ex.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_hal_uart.o
+soft/src/cubemx2/Debug/obj/stm32f4xx_it.o
+soft/src/cubemx2/Debug/obj/system_stm32f4xx.o
+soft/src/cubemx2/Debug/obj/uart.o

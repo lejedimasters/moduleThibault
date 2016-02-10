@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="5.2.1 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=cubemx2.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\cubemx2 -TC:\CooCox\CoIDE\configuration\ProgramData\cubemx2/arm-gcc-link.ld -g">
-      <target file="cubemx2.elf" lastModified="152caa0d84d">
-         <source file="..\obj\driver_led.o" lastModified="152caa0bc28"/>
-         <source file="..\obj\stm32f4xx_hal_spi.o" lastModified="152caa0bd74"/>
-         <source file="..\obj\stm32f4xx_hal_flash_ramfunc.o" lastModified="152caa0be49"/>
-         <source file="..\obj\stm32f4xx_hal_msp.o" lastModified="152caa0bf2d"/>
-         <source file="..\obj\driver_button.o" lastModified="152caa0c009"/>
-         <source file="..\obj\stm32f4xx_hal_uart.o" lastModified="152caa0c13b"/>
-         <source file="..\obj\stm32f4xx_hal_tim.o" lastModified="152caa0c2e5"/>
-         <source file="..\obj\uart.o" lastModified="152caa0c419"/>
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="152caa0c4b9"/>
-         <source file="..\obj\sequencer_button .o" lastModified="152caa0c599"/>
-         <source file="..\obj\main.o" lastModified="152caa0c6eb"/>
-         <source file="..\obj\stm32f4xx_it.o" lastModified="152caa0c7cc"/>
-         <source file="..\obj\stm32f4xx_hal_flash.o" lastModified="152caa0c8b4"/>
-         <source file="..\obj\stm32f4xx_hal_pwr.o" lastModified="152caa0c995"/>
-         <source file="..\obj\stm32f4xx_hal.o" lastModified="152caa0ca74"/>
-         <source file="..\obj\stm32f4xx_hal_dma_ex.o" lastModified="152caa0cb48"/>
-         <source file="..\obj\stm32f4xx_hal_rcc_ex.o" lastModified="152caa0cc20"/>
-         <source file="..\obj\error.o" lastModified="152caa0ccb2"/>
-         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="152caa0cdb1"/>
-         <source file="..\obj\stm32f4xx_hal_flash_ex.o" lastModified="152caa0cea7"/>
-         <source file="..\obj\sequencer.o" lastModified="152caa0cf76"/>
-         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="152caa0d063"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="152caa0d132"/>
-         <source file="..\obj\sequencer_led .o" lastModified="152caa0d209"/>
-         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="152caa0d2ed"/>
-         <source file="..\obj\stm32f4xx_hal_pwr_ex.o" lastModified="152caa0d3cc"/>
-         <source file="..\obj\stm32f4xx_hal_tim_ex.o" lastModified="152caa0d4e6"/>
-         <source file="..\obj\stm32f4xx_hal_dma.o" lastModified="152caa0d5d3"/>
+      <target file="cubemx2.elf" lastModified="152caa38708">
+         <source file="..\obj\driver_led.o" lastModified="152caa36a21"/>
+         <source file="..\obj\stm32f4xx_hal_spi.o" lastModified="152caa36b61"/>
+         <source file="..\obj\stm32f4xx_hal_flash_ramfunc.o" lastModified="152caa36c33"/>
+         <source file="..\obj\stm32f4xx_hal_msp.o" lastModified="152caa36d0f"/>
+         <source file="..\obj\driver_button.o" lastModified="152caa36de1"/>
+         <source file="..\obj\stm32f4xx_hal_uart.o" lastModified="152caa36ef9"/>
+         <source file="..\obj\stm32f4xx_hal_tim.o" lastModified="152caa3709d"/>
+         <source file="..\obj\uart.o" lastModified="152caa371f1"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="152caa37291"/>
+         <source file="..\obj\sequencer_button .o" lastModified="152caa3736d"/>
+         <source file="..\obj\main.o" lastModified="152caa374c1"/>
+         <source file="..\obj\stm32f4xx_it.o" lastModified="152caa375c5"/>
+         <source file="..\obj\stm32f4xx_hal_flash.o" lastModified="152caa376d3"/>
+         <source file="..\obj\stm32f4xx_hal_pwr.o" lastModified="152caa377c3"/>
+         <source file="..\obj\stm32f4xx_hal.o" lastModified="152caa378a9"/>
+         <source file="..\obj\stm32f4xx_hal_dma_ex.o" lastModified="152caa37985"/>
+         <source file="..\obj\stm32f4xx_hal_rcc_ex.o" lastModified="152caa37a61"/>
+         <source file="..\obj\error.o" lastModified="152caa37af7"/>
+         <source file="..\obj\stm32f4xx_hal_rcc.o" lastModified="152caa37c0f"/>
+         <source file="..\obj\stm32f4xx_hal_flash_ex.o" lastModified="152caa37d09"/>
+         <source file="..\obj\sequencer.o" lastModified="152caa37ddb"/>
+         <source file="..\obj\stm32f4xx_hal_cortex.o" lastModified="152caa37ec1"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="152caa37f93"/>
+         <source file="..\obj\sequencer_led .o" lastModified="152caa38079"/>
+         <source file="..\obj\stm32f4xx_hal_gpio.o" lastModified="152caa3819b"/>
+         <source file="..\obj\stm32f4xx_hal_pwr_ex.o" lastModified="152caa38287"/>
+         <source file="..\obj\stm32f4xx_hal_tim_ex.o" lastModified="152caa383ac"/>
+         <source file="..\obj\stm32f4xx_hal_dma.o" lastModified="152caa3849c"/>
       </target>
    </processor>
 </history>
