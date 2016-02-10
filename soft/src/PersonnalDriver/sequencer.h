@@ -15,6 +15,6 @@
 
 void seq( void );
 void seq_init( void );
-SEQ_LED_blink_action_typedef translate_pushType_to_ledAction( SEQ_BUTTON_push_type_typedef button_push);
+
 
 #endif

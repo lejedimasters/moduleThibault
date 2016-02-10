@@ -23,7 +23,8 @@ typedef enum
 	SEQ_LED_blink_action_manip = 0,
 	SEQ_LED_blink_action_idle,
 	SEQ_LED_blink_action_reset,
-	SEQ_LED_blink_action_error
+	SEQ_LED_blink_action_error,
+	SEQ_LED_blink_action_no_switch
 }SEQ_LED_blink_action_typedef;
 
 

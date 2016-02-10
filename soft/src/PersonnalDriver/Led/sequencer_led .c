@@ -35,14 +35,24 @@ void sequencer_led_init( uint32_t timeBase_ms ){
 
 void sequencer_led_set_blink_action( SEQ_LED_blink_action_typedef blink_action, SEQ_BUTTON_push_type_typedef button_push_type ){
 
-	if( G_current_blink_action != blink_action){
-		/* nouvelle action, on relance complétement le sequencer*/
 
-		G_current_blink_action = blink_action;
-		G_button_push_type = button_push_type;
-		G_timeCounter_ms = 0;
-		driver_led_reset();
-		G_new_blink_action = 1;
+	if( button_push_type !=  SEQ_BUTTON_push_type_typedef_no_push ){ // Dans le cas d'un appui bouton, on fait l'affichage led dedié au bouton puis l'affichage de l'action
+		if( G_current_blink_action != blink_action){
+			/* nouvelle action, on relance complétement le sequencer*/
+			G_current_blink_action = blink_action;
+			G_button_push_type = button_push_type;
+			G_timeCounter_ms = 0;
+			driver_led_reset();
+			G_new_blink_action = 1;
+		}
+	}
+	else{
+		if( G_current_blink_action != SEQ_LED_blink_action_no_switch){	// dans le cas d'un switch d'etat sans action utilisateur, on fait juste l'affichage de l'action
+			/* nouvelle action, on relance complétement le sequencer*/
+			G_current_blink_action = blink_action;
+			G_timeCounter_ms = 0;
+			driver_led_reset();
+		}
 	}
 }
 

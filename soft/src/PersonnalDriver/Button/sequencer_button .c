@@ -123,9 +123,13 @@ SEQ_BUTTON_push_type_typedef sequencer_button_get_push_type(){
 		}
 	}
 
-;
 
 
+	if( currentPushType != SEQ_BUTTON_push_type_typedef_no_push ){
+
+		G_timebase++;
+		G_timebase--;
+	}
 
 
 	return currentPushType;
@@ -172,6 +176,9 @@ static SEQ_BUTTON_push_type_typedef sequencer_button_detect_push_type(  BUTTON_s
 		if( currentPushType2 == SEQ_BUTTON_push_type_typedef_unknown ){
 			G_acquisition_time_counter = 0;
 		}
+	}
+	else{
+		currentPushType2 = SEQ_BUTTON_push_type_typedef_no_push;
 	}
 
 	return currentPushType2;
