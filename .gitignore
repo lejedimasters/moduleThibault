@@ -30,3 +30,5 @@ soft/src/cubemx2/Debug/obj/uart.o
 soft/src/cubemx2/Debug/bin/cubemx2.hex
 soft/src/cubemx2/Debug/bin/cubemx2.map
 soft/src/cubemx2/Debug/bin/history.xml
+soft/src/cubemx2/Debug/bin/cubemx2.bin
+soft/src/cubemx2/Debug/obj/dependencies.xml
