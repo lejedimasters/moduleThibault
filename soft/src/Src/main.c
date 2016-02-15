@@ -102,7 +102,7 @@ int main(void)
 
 		// CTRL_REG1_XM    100Hz, enable all axis   output registers not updated until MSB and LSB have been		read
 	  writeTab[0] = SPI_WRITE | NO_INC | 0x20;
-	  writeTab[1] = 0b01101111;
+	  writeTab[1] = 0b00011111;
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 	  HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
@@ -114,20 +114,19 @@ int main(void)
 	  HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
 
-	  //TIM4_init();
+	  TIM4_init();
 
 	while (1)
 
 	{
-
+/*
 		while( uart_receive(RX_tab, 1) != HAL_OK);
 		if( RX_tab[0] == 0x03 ){
 
 			driver_led_toggle();
 			printf("USART1 Stream\n");
-			//uart_send(__FUNCTION__ ,sizeof(__FUNCTION__ ));
 		}
-
+*/
 	}
 }
 
@@ -216,7 +215,7 @@ void MX_SPI1_Init(void)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 50;
+	  TIM_Handle.Init.Prescaler = 500;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -232,7 +231,9 @@ void TIM4_IRQHandler(void)
 {
 	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	int16_t acc_X, acc_Y, acc_Z, temp;
+	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp;
+	int16_t acc_X_low, acc_Y_low, acc_Z_low;
+	int16_t acc_X, acc_Y, acc_Z;
 
 	HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
@@ -269,35 +270,35 @@ void TIM4_IRQHandler(void)
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_X = readTab[1];
+			  acc_X_hight = readTab[1];
 			  writeTab[0] = SPI_READ | NO_INC | 0x29;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_X = acc_X*256 + readTab[1];
+			  acc_X_low = readTab[1];
 
 			  writeTab[0] = SPI_READ | NO_INC | 0x2A;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Y = readTab[1];
+			  acc_Y_hight = readTab[1];
 			  writeTab[0] = SPI_READ | NO_INC | 0x2B;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Y = acc_Y*256 + readTab[1];
+			  acc_Y_low =  readTab[1];
 
 
 			  writeTab[0] = SPI_READ | NO_INC | 0x2C;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Z = readTab[1];
+			  acc_Z_hight = readTab[1];
 			  writeTab[0] = SPI_READ | NO_INC | 0x2D;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Z = acc_Z*256 + readTab[1];
+			  acc_Z_low =  readTab[1];
 
 			  writeTab[0] = SPI_READ | INC | 0x05;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
@@ -307,7 +308,15 @@ void TIM4_IRQHandler(void)
 			  temp = temp*256  + readTab[1];
 			 // uart_send(writeTab, 3);
 
-//			  printf("USART1 Stream\n");
+
+			  printf("X = %x %x, Y = %x %x, Z = %x %x, temp = %d\r\n",acc_X_hight,acc_X_low,acc_Y_hight,acc_Y_low, acc_Z_hight, acc_Z_low, temp);
+			  acc_X = (((int16_t)(acc_X_hight)) & 0xff)<<8 + acc_X_low;
+			  acc_Y = (((int16_t)(acc_Y_hight)) & 0xff)<<8 + acc_Y_low;
+			  acc_Z = (((int16_t)(acc_Z_hight)) & 0xff)<<8 + acc_Z_low;
+			  printf("X = %d, Y = %d, Z = %d, temp = %d\r\n",acc_X,acc_Y,acc_Z, temp);
+
+
+
 			  status = status;
 	  //SCHEDULER();
 		#endif
