@@ -35,6 +35,7 @@
 #include "sequencer.h"
 #include "driver_led.h"
 #include "stdio.h"
+#include "lsm9_driver.h"
 /*
  *
  * */
@@ -75,6 +76,9 @@ int main(void)
 	uart_init();
 	//MX_SPI1_Init();
 	//driver_led_init();
+
+
+	lsm9_driver_init();
 /*
 		// CTRL_REG0_XM     rboot memory content
 		writeTab[0] = SPI_WRITE | NO_INC | 0x1F;
@@ -214,6 +218,7 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+	acc_data_typedef data;
 	/*
 	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -280,6 +285,8 @@ void TIM4_IRQHandler(void)
 	  //SCHEDULER();
 	    */
 
+			  lsm9_driver_get_accelerometry(&data);
+			 printf("X = %d, Y = %d, Z = %d\r\n",data.X,data.Y,data.Z);
 		#endif
             //seq();
         }
