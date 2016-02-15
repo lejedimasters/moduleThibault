@@ -39,27 +39,12 @@
  *
  * */
 
-#define REG_WHOAMI_ADDR		(0x0F)	/** Who am i address register */
-#define REG_CNTRL0_ADDR		(0x1F)	/** CNTRL0 address register */
-#define REG_CNTRL1_ADDR		(0x20)	/** CNTRL1 address register */
-#define REG_CNTRL2_ADDR		(0x21)	/** CNTRL2 address register */
-#define REG_CNTRL3_ADDR		(0x22)	/** CNTRL3 address register */
-#define REG_CNTRL4_ADDR		(0x23)	/** CNTRL4 address register */
-#define REG_CNTRL5_ADDR		(0x24)	/** CNTRL5 address register */
-#define REG_CNTRL6_ADDR		(0x25)	/** CNTRL6 address register */
-#define REG_CNTRL7_ADDR		(0x26)	/** CNTRL7 address register */
 
-
-#define SPI_READ	0x80
-#define SPI_WRITE	0x00
-
-#define NO_INC		0b00000000
-#define INC			0b01000000
 /*
  *
  * */
 
-void MX_SPI1_Init(void);
+//void MX_SPI1_Init(void);
 void SystemClock_Config(void);
 void TIM4_IRQHandler(void);
 void TIM4_init(void);
@@ -67,16 +52,16 @@ void TIM4_init(void);
 
 
 TIM_HandleTypeDef TIM_Handle;
-SPI_HandleTypeDef hspi1;
+
 
 
 
 
 int main(void)
 {
-	uint8_t RX_tab[9]={'\0'};
-	uint8_t writeTab[9] ={0,0,0,0,0,0,0,0,0};
-	uint8_t readTab[9] ={0,0,0,0,0,0,0,0,0};
+//	uint8_t RX_tab[9]={'\0'};
+//	uint8_t writeTab[9] ={0,0,0,0,0,0,0,0,0};
+//	uint8_t readTab[9] ={0,0,0,0,0,0,0,0,0};
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	HAL_Init();
@@ -88,9 +73,9 @@ int main(void)
 
 
 	uart_init();
-	MX_SPI1_Init();
+	//MX_SPI1_Init();
 	//driver_led_init();
-
+/*
 		// CTRL_REG0_XM     rboot memory content
 		writeTab[0] = SPI_WRITE | NO_INC | 0x1F;
 		writeTab[1] = 0b10000000;
@@ -113,7 +98,7 @@ int main(void)
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 	  HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-
+*/
 	  TIM4_init();
 
 	while (1)
@@ -182,35 +167,35 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
-
-void MX_SPI1_Init(void)
-{
-	GPIO_InitTypeDef GPIO_InitStruct;
-
-	__GPIOA_CLK_ENABLE();
-	__GPIOB_CLK_ENABLE();
-
-  hspi1.Instance = SPI1;
-  hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi1.Init.TIMode = SPI_TIMODE_DISABLED;
-  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
-  hspi1.Init.CRCPolynomial = 10;
-  HAL_SPI_Init(&hspi1);
-
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-}
+//
+//void MX_SPI1_Init(void)
+//{
+//	GPIO_InitTypeDef GPIO_InitStruct;
+//
+//	__GPIOA_CLK_ENABLE();
+//	__GPIOB_CLK_ENABLE();
+//
+//  hspi1.Instance = SPI1;
+//  hspi1.Init.Mode = SPI_MODE_MASTER;
+//  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+//  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+//  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+//  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+//  hspi1.Init.NSS = SPI_NSS_SOFT;
+//  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+//  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+//  hspi1.Init.TIMode = SPI_TIMODE_DISABLED;
+//  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+//  hspi1.Init.CRCPolynomial = 10;
+//  HAL_SPI_Init(&hspi1);
+//
+//  GPIO_InitStruct.Pin = GPIO_PIN_6;
+//  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+//  GPIO_InitStruct.Pull = GPIO_NOPULL;
+//  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+//  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+//
+//}
 
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
@@ -229,11 +214,12 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+	/*
 	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp;
-	int16_t acc_X_low, acc_Y_low, acc_Z_low;
-	int16_t acc_X, acc_Y, acc_Z;
+	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp_hight;
+	int16_t acc_X_low, acc_Y_low, acc_Z_low, temp_low;
+	int16_t acc_X, acc_Y, acc_Z, temp;*/
 
 	HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
@@ -248,7 +234,7 @@ void TIM4_IRQHandler(void)
 		#if SCHEDULER_ON
 			  SCHEDULER();
 		#else
-
+/*
 			  writeTab[0] = SPI_READ | NO_INC | REG_WHOAMI_ADDR;
 //driver_led_toggle();
 
@@ -259,66 +245,41 @@ void TIM4_IRQHandler(void)
 
 
 			  status = status;
-/*			  writeTab[0] = SPI_READ | INC | 0x28;
+			  writeTab[0] = SPI_READ | INC | 0x28;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 7, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-*/
 
-
-			  writeTab[0] = SPI_READ | NO_INC | 0x28;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_X_hight = readTab[1];
-			  writeTab[0] = SPI_READ | NO_INC | 0x29;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_X_low = readTab[1];
-
-			  writeTab[0] = SPI_READ | NO_INC | 0x2A;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Y_hight = readTab[1];
-			  writeTab[0] = SPI_READ | NO_INC | 0x2B;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Y_low =  readTab[1];
-
-
-			  writeTab[0] = SPI_READ | NO_INC | 0x2C;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Z_hight = readTab[1];
-			  writeTab[0] = SPI_READ | NO_INC | 0x2D;
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
-			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  acc_Z_low =  readTab[1];
+				acc_X_low  = readTab[1];
+				acc_X_hight = readTab[2];
+				acc_Y_low = readTab[3];
+				acc_Y_hight  = readTab[4];
+				acc_Z_low = readTab[5];
+				acc_Z_hight  = readTab[6];
 
 			  writeTab[0] = SPI_READ | INC | 0x05;
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 3, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  temp = readTab[2];
-			  temp = temp*256  + readTab[1];
+			  temp_low = readTab[2];
+			  temp_hight = readTab[1];
 			 // uart_send(writeTab, 3);
 
 
+
 			  printf("X = %x %x, Y = %x %x, Z = %x %x, temp = %d\r\n",acc_X_hight,acc_X_low,acc_Y_hight,acc_Y_low, acc_Z_hight, acc_Z_low, temp);
-			  acc_X = (((int16_t)(acc_X_hight)) & 0xff)<<8 + acc_X_low;
-			  acc_Y = (((int16_t)(acc_Y_hight)) & 0xff)<<8 + acc_Y_low;
-			  acc_Z = (((int16_t)(acc_Z_hight)) & 0xff)<<8 + acc_Z_low;
+			  acc_X = (acc_X_hight)*256 + acc_X_low;
+			  acc_Y = (acc_Y_hight)*256 + acc_Y_low;
+			  acc_Z = (acc_Z_hight)*256 + acc_Z_low;
+			  temp = (temp_hight)*256 + temp_low;
 			  printf("X = %d, Y = %d, Z = %d, temp = %d\r\n",acc_X,acc_Y,acc_Z, temp);
 
 
 
 			  status = status;
 	  //SCHEDULER();
+	    */
+
 		#endif
             //seq();
         }
