@@ -34,6 +34,7 @@
 #include "stm32f4xx_hal.h"
 #include "sequencer.h"
 #include "driver_led.h"
+#include "stdio.h"
 /*
  *
  * */
@@ -58,10 +59,11 @@
  *
  * */
 
-
+void MX_SPI1_Init(void);
 void SystemClock_Config(void);
 void TIM4_IRQHandler(void);
 void TIM4_init(void);
+
 
 
 TIM_HandleTypeDef TIM_Handle;
@@ -85,7 +87,7 @@ int main(void)
 //	seq_init();
 
 
-	//uart_init();
+	uart_init();
 	MX_SPI1_Init();
 	//driver_led_init();
 
@@ -112,19 +114,20 @@ int main(void)
 	  HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 2, 0xFFFF);
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
 
-	  TIM4_init();
+	  //TIM4_init();
 
 	while (1)
 
 	{
-/*
+
 		while( uart_receive(RX_tab, 1) != HAL_OK);
 		if( RX_tab[0] == 0x03 ){
 
 			driver_led_toggle();
-			uart_send(__FUNCTION__ ,sizeof(__FUNCTION__ ));
+			printf("USART1 Stream\n");
+			//uart_send(__FUNCTION__ ,sizeof(__FUNCTION__ ));
 		}
-*/
+
 	}
 }
 
@@ -230,7 +233,6 @@ void TIM4_IRQHandler(void)
 	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	int16_t acc_X, acc_Y, acc_Z, temp;
-	int16_t var_temp;
 
 	HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
@@ -256,6 +258,11 @@ void TIM4_IRQHandler(void)
 
 
 			  status = status;
+/*			  writeTab[0] = SPI_READ | INC | 0x28;
+			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
+			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 7, 0xFFFF);
+			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
+*/
 
 
 			  writeTab[0] = SPI_READ | NO_INC | 0x28;
@@ -296,10 +303,11 @@ void TIM4_IRQHandler(void)
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
 			  status = HAL_SPI_TransmitReceive(&hspi1, writeTab, readTab, 3, 0xFFFF);
 			  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
-			  temp = readTab[2]*256  + readTab[1];
+			  temp = readTab[2];
+			  temp = temp*256  + readTab[1];
 			 // uart_send(writeTab, 3);
 
-
+//			  printf("USART1 Stream\n");
 			  status = status;
 	  //SCHEDULER();
 		#endif
@@ -307,6 +315,12 @@ void TIM4_IRQHandler(void)
         }
     }
 }
+
+
+
+
+
+
 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

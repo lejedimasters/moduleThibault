@@ -33,3 +33,7 @@ soft/src/cubemx2/Debug/bin/history.xml
 soft/src/cubemx2/Debug/bin/cubemx2.bin
 soft/src/cubemx2/Debug/obj/dependencies.xml
 soft/src/cubemx2/Debug/bin/cubemx2.elf
+soft/src/cubemx2/Debug/obj/printf.o
+soft/src/logs/codb-stat-client.2016-02-15.log
+soft/src/logs/codb-time-client-2016-02-15.log
+soft/src/logs/codb.2016-02-15.log
