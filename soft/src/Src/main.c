@@ -285,7 +285,7 @@ void TIM4_IRQHandler(void)
 	  //SCHEDULER();
 	    */
 
-			  lsm9_driver_get_accelerometry(&data);
+			  lsm9_driver_get_magnotemeter(&data);
 			 printf("X = %d, Y = %d, Z = %d\r\n",data.X,data.Y,data.Z);
 		#endif
             //seq();

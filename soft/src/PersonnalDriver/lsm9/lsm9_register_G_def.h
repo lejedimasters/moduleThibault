@@ -38,7 +38,7 @@
 #define	REFERENCE	(0x25)    /* REFERENCE REG */
 #define	FIFO_CTRL_REG	(0x2E)    /* FIFO CONTROL REGISTER */
 #define FIFO_SRC_REG	(0x2F)    /* FIFO SOURCE REGISTER */
-#define	OUT_X_L		(0x28)    /* 1st AXIS OUT REG of 6 */
+#define	REG_GYR_DATA_ADDR		(0x28)    /* 1st AXIS OUT REG of 6 */
 
 #define AXISDATA_REG	OUT_X_L
 

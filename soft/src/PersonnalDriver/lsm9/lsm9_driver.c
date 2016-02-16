@@ -26,8 +26,13 @@ ERROR_status lsm9_driver_init( void ){
 
 	lsm9_spi_init();
 
-
+	// Initialisation accéléromètre
 	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_XM);
+	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_XM);
+	lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b10011000, lsm9_sensor_typedef_XM);
+
+	// Initialisation magnétomètre
+	lsm9_driver_write_register(REG_GEN_MAG_ADDR, 0b10000000, lsm9_sensor_typedef_XM);
 	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_XM);
 	lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b10011000, lsm9_sensor_typedef_XM);
 
@@ -81,11 +86,13 @@ ERROR_status lsm9_driver_get_accelerometry( acc_data_typedef *data ){
  *            SLD_
  */
 ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
+	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
+	lsm9_driver_read_registers(REG_GYR_DATA_ADDR,readTab,7,lsm9_sensor_typedef_G);
+	data->X = readTab[1]*256 + readTab[0];
+	data->Y = readTab[3]*256 + readTab[2];
+	data->Z = readTab[5]*256 + readTab[4];
 
-	data->X = 0;
-	data->Y = 0;
-	data->Z = 0;
 	return ERROR_status_NOERROR;
 }
 /** \fn ERROR_status lsm9_driver_get_magnotemeter( mag_data_typedef *data)
@@ -98,11 +105,13 @@ ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
  *            SLD_
  */
 ERROR_status lsm9_driver_get_magnotemeter( mag_data_typedef *data){
+	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-
-	data->X = 0;
-	data->Y = 0;
-	data->Z = 0;
+	lsm9_driver_read_registers(REG_MAG_DATA_ADDR,readTab,7,lsm9_sensor_typedef_XM);
+	data->X = readTab[1]*256 + readTab[0];
+	data->Y = readTab[3]*256 + readTab[2];
+	data->Z = readTab[5]*256 + readTab[4];
+	printf("X = %x %x, Y = %x %x, Z = %x %x\r\n",readTab[1],readTab[0],readTab[3],readTab[2], readTab[5], readTab[4]);
 	return ERROR_status_NOERROR;
 }
 /** \fn ERROR_status lsm9_driver_write_register(uint8_t reg, uint8_t value, lsm9_sensor_typedef sensor)
@@ -203,7 +212,7 @@ ERROR_status lsm9_driver_read_register(uint8_t reg, uint8_t *value, lsm9_sensor_
  */
 ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t size, lsm9_sensor_typedef sensor){
 	uint8_t readTab[NB_MAX_DATA] ={0,0,0,0,0,0,0,0,0,0};
-
+	uint8_t i;
 
 	/* ERROR CHECK*/
 	if( reg & (SPI_READ | NO_INC) ){
@@ -216,7 +225,7 @@ ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t si
 	/* END OF ERROR CHECK*/
 
 	readTab[0] = SPI_WRITE | INC | reg;
-	for(int i = 1 ; i < size ; i++ ){
+	for(i = 1 ; i < size ; i++ ){
 		readTab[i] = value[i-1];
 	}
 
@@ -246,7 +255,7 @@ ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t si
 */
 ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t size, lsm9_sensor_typedef sensor){
 	uint8_t readTab[NB_MAX_DATA] ={0,0,0,0,0,0,0,0,0,0};
-
+	uint8_t i;
 
 	/* ERROR CHECK*/
 	if( reg & (SPI_READ | NO_INC) ){
@@ -273,7 +282,7 @@ ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t siz
 	}
 
 
-	for(int i = 1 ; i < size ; i++ ){
+	for( i = 1 ; i < size ; i++ ){
 		value[i-1] = readTab[i];
 	}
 
