@@ -34,8 +34,8 @@ ERROR_status lsm9_driver_init( void ){
 	// Initialisation magnétomètre
 	lsm9_driver_write_register(REG_GEN_MAG_ADDR, 0b10000000, lsm9_sensor_typedef_XM);
 	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_XM);
-	lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b10011000, lsm9_sensor_typedef_XM);
-
+	lsm9_driver_write_register(REG_CNTRL5_ADDR, TEMP_ON|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_XM);//   0b11110100, lsm9_sensor_typedef_XM);
+	lsm9_driver_write_register(REG_CNTRL7_ADDR, 0b00000000, lsm9_sensor_typedef_XM);
 
 	return ERROR_status_NOERROR;
 }
