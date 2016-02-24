@@ -218,7 +218,7 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
-	acc_data_typedef data;
+	lsm9_data_typedef data;
 	/*
 	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -285,8 +285,9 @@ void TIM4_IRQHandler(void)
 	  //SCHEDULER();
 	    */
 
-			  lsm9_driver_get_magnotemeter(&data);
-			 printf("X = %d, Y = %d, Z = %d\r\n",data.X,data.Y,data.Z);
+			  lsm9_driver_get_data(&data);
+			 printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
+			 printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
 		#endif
             //seq();
         }

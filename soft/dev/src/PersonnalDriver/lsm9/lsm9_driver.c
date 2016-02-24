@@ -111,7 +111,6 @@ ERROR_status lsm9_driver_get_magnotemeter( mag_data_typedef *data){
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
-	printf("X = %x %x, Y = %x %x, Z = %x %x\r\n",readTab[1],readTab[0],readTab[3],readTab[2], readTab[5], readTab[4]);
 	return ERROR_status_NOERROR;
 }
 /** \fn ERROR_status lsm9_driver_write_register(uint8_t reg, uint8_t value, lsm9_sensor_typedef sensor)
