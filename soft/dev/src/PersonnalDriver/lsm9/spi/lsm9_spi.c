@@ -17,6 +17,7 @@ void lsm9_spi_init(){
 	GPIO_InitTypeDef GPIO_InitStruct;
 
 	__GPIOB_CLK_ENABLE();
+	__GPIOA_CLK_ENABLE();
 	/* Initialisation du spi*/
 	hspi1.Instance = SPI1;
 	hspi1.Init.Mode = SPI_MODE_MASTER;
