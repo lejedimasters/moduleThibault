@@ -36,6 +36,7 @@ void sd_spi_init(){
  */
 ERROR_status sd_spi_transmit_receive_G(uint8_t *pTxData, uint8_t *pRxData, uint16_t Size){
 
+	return ERROR_status_NOERROR;
 }
 
 /** \fn void

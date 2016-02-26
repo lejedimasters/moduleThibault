@@ -36,6 +36,7 @@
 #include "driver_led.h"
 #include "stdio.h"
 #include "lsm9_driver.h"
+#include "sd_driver.h"
 /*
  *
  * */
@@ -57,14 +58,31 @@ TIM_HandleTypeDef TIM_Handle;
 
 #define 	IHM_MODE		0
 #define 	SENSOR_MODE		1
+#define		SD_MODE			0
 
-#if (IHM_MODE & SENSOR_MODE)
+#if (IHM_MODE & SENSOR_MODE )
 	#error soit IHM_MODE soit SENSOR_MODE
 #endif
 
+
+
+#if SD_MODE
+#define INIT_PIN_TEST() {		GPIO_InitTypeDef GPIO_InitStruct;			\
+								__GPIOB_CLK_ENABLE(); 						\
+								GPIO_InitStruct.Pin = GPIO_PIN_12;			\
+								GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;	\
+								GPIO_InitStruct.Pull = GPIO_NOPULL;			\
+								GPIO_InitStruct.Speed = GPIO_SPEED_LOW;		\
+								HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);}
+
+#define PIN_TEST_ON() 	{HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12,  GPIO_PIN_SET);}
+#define PIN_TEST_OFF() 	{HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12,  GPIO_PIN_RESET);}
+#endif
+
+
 int main(void)
 {
-
+	lsm9_data_typedef data;
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	HAL_Init();
@@ -76,16 +94,21 @@ int main(void)
 
 
 
-#if IHM_MODE
+	#if IHM_MODE
 
-	seq_init();
-#elif SENSOR_MODE
+		seq_init();
+	#elif SENSOR_MODE
 
-	lsm9_driver_init();
-	uart_init();
-#else
-	#error definir mode de fonctionnement du module
-#endif
+		lsm9_driver_init();
+		uart_init();
+	#elif SD_MODE
+
+		lsm9_driver_init();
+	INIT_PIN_TEST();
+
+
+	#endif
+
 
 	TIM4_init();
 
@@ -93,10 +116,12 @@ int main(void)
 
 
 
-	while (1)
+	while (1){
 
-	{
+		#if SD_MODE
 
+			lsm9_driver_get_data(&data);
+		#endif
 	}
 }
 
@@ -157,7 +182,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 500;
+	  TIM_Handle.Init.Prescaler = 5;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -171,15 +196,12 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+#if SENSOR_MODE
 	lsm9_data_typedef data;
-	/*
-	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp_hight;
-	int16_t acc_X_low, acc_Y_low, acc_Z_low, temp_low;
-	int16_t acc_X, acc_Y, acc_Z, temp;*/
+#endif
 
-	HAL_StatusTypeDef status;
+
+	//HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
     {
         if (__HAL_TIM_GET_ITSTATUS(&TIM_Handle, TIM_IT_UPDATE) != RESET)
@@ -188,15 +210,20 @@ void TIM4_IRQHandler(void)
             /*put your code here */
 
 
-#if SENSOR_MODE
+			#if SENSOR_MODE
 
-	lsm9_driver_get_data(&data);
-	printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
-	printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
-#else if IHM_MODE
+				lsm9_driver_get_data(&data);
 
-	seq();
-#endif
+				printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
+				printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
+				sd_driver_fill_buffer(&data,35000);
+			#elif IHM_MODE
+
+				seq();
+			#elif SD_MODE
+				PIN_TEST_ON();
+				PIN_TEST_OFF();
+			#endif
 
         }
     }

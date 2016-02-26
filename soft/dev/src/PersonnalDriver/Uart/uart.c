@@ -40,7 +40,7 @@ void uart_init(void)
 
 
 void uart_send( int8_t *tab, uint8_t size ){
-	HAL_UART_Transmit(&huart2,tab,size,0xFFFF);
+	HAL_UART_Transmit(&huart2,(uint8_t *)tab,size,0xFFFF);
 }
 
 uint32_t uart_receive( uint8_t *tab, uint8_t size ){
