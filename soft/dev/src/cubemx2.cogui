@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window>
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar/>
+<page focus="true" label="Workspace - CooCox CoBuilder">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.internal.EditorStack@106404a" ratio="0.79037803" ratioLeft="690" ratioRight="183" relationship="2" relative="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_conf.h" partName="stm32f4xx_hal_conf.h" path="C:/CooCox/CoIDE/workspace/cubemx2/Inc/stm32f4xx_hal_conf.h" title="stm32f4xx_hal_conf.h" tooltip="C:/CooCox/CoIDE/workspace/cubemx2/Inc/stm32f4xx_hal_conf.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Inc/stm32f4xx_hal_conf.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2925" selectionTopPixel="960"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Projet/moduleThibault/soft/dev/src/Src/main.c" title="main.c" tooltip="C:/Projet/moduleThibault/soft/dev/src/Src/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Src/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9322" selectionTopPixel="3859"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_register_XM_def.h" partName="lsm9_register_XM_def.h" path="C:/Projet/moduleThibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_register_XM_def.h" title="lsm9_register_XM_def.h" tooltip="C:/Projet/moduleThibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_register_XM_def.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_XM_def.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2345" selectionTopPixel="461"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.h" partName="lsm9_spi.h" path="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" title="lsm9_spi.h" tooltip="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="151" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.h" partName="lsm9_driver.h" path="C:/Projet/moduleThibault/soft/src/PersonnalDriver/lsm9/lsm9_driver.h" title="lsm9_driver.h" tooltip="C:/Projet/moduleThibault/soft/src/PersonnalDriver/lsm9/lsm9_driver.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1224" selectionTopPixel="306"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_register_G_def.h" partName="lsm9_register_G_def.h" path="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/lsm9_register_G_def.h" title="lsm9_register_G_def.h" tooltip="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/lsm9_register_G_def.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_G_def.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="1817" selectionTopPixel="262"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.c" partName="lsm9_spi.c" path="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/spi/lsm9_spi.c" title="lsm9_spi.c" tooltip="C:/PROJET/Module_Thibault/soft/src/PersonnalDriver/lsm9/spi/lsm9_spi.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="780" selectionTopPixel="4"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" partName="uart.h" path="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Uart/uart.h" title="uart.h" tooltip="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Uart/uart.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/Uart/uart.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="58" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.h" partName="sequencer.h" path="C:/Projet/moduleThibault/soft/src/PersonnalDriver/sequencer.h" title="sequencer.h" tooltip="C:/Projet/moduleThibault/soft/src/PersonnalDriver/sequencer.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/sequencer.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="124" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="driver_led.c" partName="driver_led.c" path="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Led/driver_led.c" title="driver_led.c" tooltip="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Led/driver_led.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/Led/driver_led.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="251" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="driver_led.h" partName="driver_led.h" path="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Led/driver_led.h" title="driver_led.h" tooltip="C:/Projet/moduleThibault/soft/src/PersonnalDriver/Led/driver_led.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/Led/driver_led.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="79" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.c" partName="lsm9_driver.c" path="C:/Projet/moduleThibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" title="lsm9_driver.c" tooltip="C:/Projet/moduleThibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="115" selectionTopPixel="0"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
+<viewState>
+<ExpressionKeySet ExpKeys="currentPushType,G_push_time_counter,"/>
+</viewState>
+</view>
+<view id="org.coocox.component.ui.ComponentView" partName="Components">
+<viewState/>
+</view>
+<view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="6">
+<expanded>
+<element path="/cubemx2"/>
+<element path="/cubemx2/cmsis"/>
+<element path="/cubemx2/cmsis_boot"/>
+<element path="/cubemx2/cmsis_boot/startup"/>
+<element path="/cubemx2/Drivers"/>
+<element path="/cubemx2/Drivers/STM32F4xx_HAL_Driver"/>
+<element path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src"/>
+<element path="/cubemx2/Inc"/>
+<element path="/cubemx2/PersonnalDriver"/>
+<element path="/cubemx2/PersonnalDriver/Button"/>
+<element path="/cubemx2/PersonnalDriver/Error"/>
+<element path="/cubemx2/PersonnalDriver/Led"/>
+<element path="/cubemx2/PersonnalDriver/lsm9"/>
+<element path="/cubemx2/PersonnalDriver/lsm9/spi"/>
+<element path="/cubemx2/Src"/>
+</expanded>
+</viewState>
+</view>
+<view id="org.coocox.codebugger.trace.ui.traceview" partName="Semihosting">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.coocox.component.ui.Help" partName="Help">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
+<alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
+<alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.coocox.userspace.actionSet"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryAction"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.ShowDisassemblyAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showExpressionsAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showDebugAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showConsoleAction"/>
+<hide_menu_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
+<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
+<hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
+<view id="org.coocox.component.ui.Help"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="16384" id="org.eclipse.ui.internal.ViewStack@1b5800" orientation="512" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
+<fastViews>
+<view id="org.coocox.component.ui.ComponentView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b5800">
+<folder appearance="2" expanded="2">
+<page content="org.coocox.component.ui.ComponentView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.74980575" ratioLeft="965" ratioRight="322" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1b5800">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.coocox.builder.ui.exampleView" ratio="0.25672215" ratioLeft="401" ratioRight="1161" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1b5800"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1cb6b21" ratio="0.7191235" ratioLeft="722" ratioRight="282" relationship="2" relative="org.coocox.builder.ui.exampleView">
+<folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
+<page content="org.coocox.component.ui.Help" label="Help"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.coocox.coassistant.view.CoAssistantView" label="LabelNotFound"/>
+<page content="org.coocox.builder.ui.MoreExampleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.44925374" ratioLeft="301" ratioRight="369" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@12e973e" ratio="0.5600462" ratioLeft="485" ratioRight="381" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1b5800">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@584294" ratio="0.5" ratioLeft="476" ratioRight="476" relationship="4" relative="org.eclipse.ui.internal.ViewStack@12e973e">
+<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.coocox.codebugger.configuration.ui.Perspective" id="org.coocox.codebugger.configuration.perspective" label="CoDebugger"/>
+<alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
+<alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFolder"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_menu_item_id id="org.eclipse.ui.file.save"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
+<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_menu_item_id id="org.coocox.builder.ui.openFile"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
+<hide_menu_item_id id="org.coocox.builder.rcp.projectMenu"/>
+<hide_menu_item_id id="org.coocox.builder.rcp.flashMenu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.debug"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.build"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_menu_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.TargetManageAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newProject"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.coocox.codebugger.trace.ui.traceview"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.eclipse.debug.ui.ExpressionView"/>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.ui.internal.ViewStack@d738a4">&#x0A;<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.74984556" ratioLeft="2428" ratioRight="810" relationship="2" relative="org.eclipse.ui.internal.ViewStack@d738a4">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@dc11d8" ratio="0.63013697" ratioLeft="598" ratioRight="351" relationship="4" relative="org.eclipse.ui.internal.ViewStack@d738a4">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@10dfccc" ratio="0.46674657" ratioLeft="779" ratioRight="890" relationship="2" relative="org.eclipse.ui.internal.ViewStack@dc11d8">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="Expressions"/>
+<page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
+<page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.VariableView:PIN_CLONE_VIEW_1" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@601070" ratio="0.83762735" ratioLeft="1398" ratioRight="271" relationship="2" relative="org.eclipse.ui.internal.ViewStack@d738a4">&#x0A;<folder appearance="2" expanded="0">&#x0A;<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
+<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.17136009" ratioLeft="286" ratioRight="1383" relationship="2" relative="org.eclipse.ui.internal.ViewStack@d738a4"/>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/Uart/uart.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
+<org.coocox.welcome.ui.WelcomePage/>
+</editor>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor/>
+</editor>
+<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
+<subPage/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_G_def.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_XM_def.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_XM_def.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_register_XM_def.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/main.c"/>
+<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
+<subPage/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/cmsis_lib/source/stm32f4xx_dma.c"/>
+</editors>
+<item historyLabel="lsm9_driver.c" index="1">
+<position info="not_deleted" x="1712" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="7302" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="2420" y="0"/>
+</item>
+<item historyLabel="lsm9_spi.h" index="3">
+<position info="not_deleted" x="151" y="0"/>
+</item>
+<item historyLabel="lsm9_spi.c" index="4">
+<position info="not_deleted" x="780" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="392" y="0"/>
+</item>
+<item historyLabel="uart.c" index="5">
+<position info="not_deleted" x="665" y="46"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="5240" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="7502" y="2"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="5038" y="0"/>
+</item>
+<item historyLabel="welcome" index="6"/>
+<item historyLabel="Configuration" index="7"/>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="5036" y="0"/>
+</item>
+<item historyLabel="Repository" index="8"/>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="5144" y="0"/>
+</item>
+<item historyLabel="Configuration" index="7"/>
+<item historyLabel="welcome" index="6"/>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="5144" y="0"/>
+</item>
+<item historyLabel="lsm9_register_G_def.h" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="lsm9_register_XM_def.h" index="10">
+<position info="not_deleted" x="2151" y="17"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="2818" y="0"/>
+</item>
+<item historyLabel="lsm9_register_G_def.h" index="9">
+<position info="not_deleted" x="1834" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="2581" y="0"/>
+</item>
+<item historyLabel="lsm9_register_G_def.h" index="9">
+<position info="not_deleted" x="2130" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="2697" y="0"/>
+</item>
+<item historyLabel="lsm9_register_XM_def.h" index="10">
+<position info="not_deleted" x="2151" y="17"/>
+</item>
+<item historyLabel="lsm9_register_G_def.h" index="9">
+<position info="not_deleted" x="1817" y="17"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="3387" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="7491" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="3069" y="28"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="9069" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="2697" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8588" y="131"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="3488" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="3485" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="6344" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8087" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="6291" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="740" y="16"/>
+</item>
+<item historyLabel="lsm9_register_G_def.h" index="9">
+<position info="not_deleted" x="1817" y="17"/>
+</item>
+<item historyLabel="lsm9_register_XM_def.h" index="10">
+<position info="not_deleted" x="2299" y="16"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position/>
+</item>
+<item historyLabel="lsm9_register_XM_def.h" index="11">
+<position info="not_deleted" x="2299" y="16"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="2">
+<position info="not_deleted" x="253" y="0"/>
+</item>
+<item historyLabel="lsm9_register_XM_def.h" index="12">
+<position info="not_deleted" x="2345" y="0"/>
+</item>
+<item historyLabel="main.c" index="13">
+<position info="not_deleted" x="8087" y="0"/>
+</item>
+<item historyLabel="Repository" index="14"/>
+<item historyLabel="stm32f4xx_dma.c" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Repository" index="14"/>
+<item active="true" historyLabel="main.c" index="13">
+<position info="not_deleted" x="9322" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_dma.c" tooltip="cubemx2/cmsis_lib/source/stm32f4xx_dma.c">
+<persistable path="/cubemx2/cmsis_lib/source/stm32f4xx_dma.c"/>
+</file>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>
+<subPage/>
+</persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="cubemx2/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="cubemx2/PersonnalDriver/Uart/uart.c">
+<persistable path="/cubemx2/PersonnalDriver/Uart/uart.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_uart.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_uart.h" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_spi.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_tim.h" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_tim.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="driver_led.c" tooltip="cubemx2/PersonnalDriver/Led/driver_led.c">
+<persistable path="/cubemx2/PersonnalDriver/Led/driver_led.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_msp.c" tooltip="cubemx2/Src/stm32f4xx_hal_msp.c">
+<persistable path="/cubemx2/Src/stm32f4xx_hal_msp.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.h" tooltip="cubemx2/PersonnalDriver/sequencer.h">
+<persistable path="/cubemx2/PersonnalDriver/sequencer.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer_led.h" tooltip="cubemx2/PersonnalDriver/Led/sequencer_led.h">
+<persistable path="/cubemx2/PersonnalDriver/Led/sequencer_led.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer_led .c" tooltip="cubemx2/PersonnalDriver/Led/sequencer_led .c">
+<persistable path="/cubemx2/PersonnalDriver/Led/sequencer_led .c"/>
+</file>
+</mruList>
+</workbench>

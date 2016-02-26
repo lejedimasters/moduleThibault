@@ -33,22 +33,37 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "sequencer.h"
+#include "driver_led.h"
+#include "stdio.h"
+#include "lsm9_driver.h"
+/*
+ *
+ * */
 
 
+/*
+ *
+ * */
 
-
-
+//void MX_SPI1_Init(void);
 void SystemClock_Config(void);
 void TIM4_IRQHandler(void);
 void TIM4_init(void);
 
 
+
 TIM_HandleTypeDef TIM_Handle;
-SPI_HandleTypeDef hspi1;
+
+
+#define 	IHM_MODE		0
+#define 	SENSOR_MODE		1
+
+#if (IHM_MODE & SENSOR_MODE)
+	#error soit IHM_MODE soit SENSOR_MODE
+#endif
 
 int main(void)
 {
-	uint8_t RX_tab[9]={'\0'};
 
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -57,20 +72,31 @@ int main(void)
 
 
 
+
+
+
+
+#if IHM_MODE
+
 	seq_init();
+#elif SENSOR_MODE
+
+	lsm9_driver_init();
+	uart_init();
+#else
+	#error definir mode de fonctionnement du module
+#endif
+
 	TIM4_init();
 
-	  //MX_SPI1_Init();
+
+
+
 
 	while (1)
-	{
-	/*
-		while( uart_receive(RX_tab, 1) != HAL_OK);
-		if( RX_tab[0] == 0x03 ){
 
-			uart_send(__FUNCTION__ ,sizeof(__FUNCTION__ ));
-		}
-		*/
+	{
+
 	}
 }
 
@@ -127,31 +153,11 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 #endif
 
-void MX_SPI1_Init(void)
-{
-	__GPIOA_CLK_ENABLE();
-	__GPIOB_CLK_ENABLE();
-
-  hspi1.Instance = SPI1;
-  hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi1.Init.TIMode = SPI_TIMODE_DISABLED;
-  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
-  hspi1.Init.CRCPolynomial = 10;
-  HAL_SPI_Init(&hspi1);
-
-}
 
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = 500;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -165,7 +171,14 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
-	uint8_t tab[6]={0x55};
+	lsm9_data_typedef data;
+	/*
+	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp_hight;
+	int16_t acc_X_low, acc_Y_low, acc_Z_low, temp_low;
+	int16_t acc_X, acc_Y, acc_Z, temp;*/
+
 	HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
     {
@@ -175,18 +188,25 @@ void TIM4_IRQHandler(void)
             /*put your code here */
 
 
+#if SENSOR_MODE
 
-		#if SCHEDULER_ON
-			  SCHEDULER();
-		#else
-			  status = HAL_SPI_Transmit(&hspi1, tab, 3, 0xFFFF);
-			  status = status;
-			  SCHEDULER();
-		#endif
-            //seq();
+	lsm9_driver_get_data(&data);
+	printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
+	printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
+#else if IHM_MODE
+
+	seq();
+#endif
+
         }
     }
 }
+
+
+
+
+
+
 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

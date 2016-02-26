@@ -10,7 +10,7 @@
 
 
 #define SCHEDULER_INT_MS	10
-#define SCHEDULER_ON	1
+#define SCHEDULER_ON	0
 #define SCHEDULER() 	seq()
 
 void seq( void );
