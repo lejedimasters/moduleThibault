@@ -74,3 +74,7 @@ soft/dev/src/cubemx2/Debug/obj/stm32f4xx_it.o
 soft/dev/src/cubemx2/Debug/obj/system_stm32f4xx.o
 soft/dev/src/cubemx2/Debug/obj/uart.o
 soft/dev/src/cubemx2/cubemx2.elf.xcodeproj/project.pbxproj
+soft/dev/src/cubemx2/Debug/obj/diskio.o
+soft/dev/src/cubemx2/Debug/obj/ff.o
+soft/dev/src/cubemx2/Debug/obj/sd_spi.o
+soft/dev/src/cubemx2/Debug/obj/syscall.o
