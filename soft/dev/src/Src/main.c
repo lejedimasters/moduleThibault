@@ -57,8 +57,8 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #define 	IHM_MODE		0
-#define 	SENSOR_MODE		1
-#define		SD_MODE			0
+#define 	SENSOR_MODE		0
+#define		SD_MODE			1
 
 #if (IHM_MODE & SENSOR_MODE )
 	#error soit IHM_MODE soit SENSOR_MODE
@@ -67,21 +67,16 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #if SD_MODE
-#define INIT_PIN_TEST() {		GPIO_InitTypeDef GPIO_InitStruct;			\
-								__GPIOB_CLK_ENABLE(); 						\
-								GPIO_InitStruct.Pin = GPIO_PIN_12;			\
-								GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;	\
-								GPIO_InitStruct.Pull = GPIO_NOPULL;			\
-								GPIO_InitStruct.Speed = GPIO_SPEED_LOW;		\
-								HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);}
 
-#define PIN_TEST_ON() 	{HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12,  GPIO_PIN_SET);}
-#define PIN_TEST_OFF() 	{HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12,  GPIO_PIN_RESET);}
+FATFS fs;
+uint8 BufferSDCard[512] = {'a'};
 #endif
 
 
 int main(void)
 {
+	   FRESULT res;
+	   uint32_t adress;
 	lsm9_data_typedef data;
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -97,20 +92,29 @@ int main(void)
 	#if IHM_MODE
 
 		seq_init();
+		TIM4_init();
 	#elif SENSOR_MODE
 
 		lsm9_driver_init();
 		uart_init();
+		TIM4_init();
 	#elif SD_MODE
 
-		lsm9_driver_init();
-	INIT_PIN_TEST();
+		sd_spi_init_low_speed();
 
+		res = FR_DISK_ERR;
+		   while( res != FR_OK){
+		        res = pf_mount(&fs);
+		   }
+
+		   // find the file TEST.txt
+		   res = FR_DISK_ERR;
+		   while( res != FR_OK){
+		        res = pf_open("TEST.txt");
+		    }
 
 	#endif
 
-
-	TIM4_init();
 
 
 
@@ -120,7 +124,12 @@ int main(void)
 
 		#if SD_MODE
 
-			lsm9_driver_get_data(&data);
+
+		WAIT_N_MS(200);
+        adress = fs.database++;
+        adress *=512;
+        sd_driver_cc2541_write(adress , 512 , BufferSDCard);
+
 		#endif
 	}
 }
@@ -182,7 +191,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = 250;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -216,13 +225,12 @@ void TIM4_IRQHandler(void)
 
 				printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
 				printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
-				sd_driver_fill_buffer(&data,35000);
+				//sd_driver_fill_buffer(&data,35000);
 			#elif IHM_MODE
 
 				seq();
 			#elif SD_MODE
-				PIN_TEST_ON();
-				PIN_TEST_OFF();
+
 			#endif
 
         }

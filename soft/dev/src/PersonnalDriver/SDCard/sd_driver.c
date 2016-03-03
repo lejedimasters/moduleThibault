@@ -23,7 +23,7 @@
 void sd_driver_init(){
 
 }
-
+/*
 ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 	uint8_t temp_buff[100]={'a'};
 	uint16_t i,y=0,cptFor;
@@ -88,7 +88,7 @@ ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 
 
 
-
+*/
 
 
 

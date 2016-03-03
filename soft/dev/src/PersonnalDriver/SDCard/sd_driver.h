@@ -14,7 +14,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "sd_spi.h"
-#include "ff.h"
+//#include "ff.h"
 #include "error.h"
 #include "lsm9_driver.h"
 
@@ -22,6 +22,7 @@
 #define NB_SD_BUFFER 	3
 #define DATA_CMD_SIZE	512
 
+/*
 typedef enum
 {
 	buffer_status_typedef_empty,
@@ -43,9 +44,9 @@ typedef struct
 	uint8_t 			currentBuffer;
 }sd_buffer_switcher_typedef;
 
-
+*/
 void sd_driver_init();
-ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms);
+//ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms);
 
 
 #endif
