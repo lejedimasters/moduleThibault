@@ -45,7 +45,7 @@ void sd_driver_init(){
 }
 
 ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
-	uint8_t temp_buff[100]={'a'},currentBuffer;
+	uint8_t temp_buff[100]={0},currentBuffer;
 	uint16_t remainingData=0;
 
 
@@ -108,11 +108,25 @@ ErrorStatus sd_driver_write_to_bufferswitcher( uint8_t *temp_buff, uint16_t *rem
 		cptFor = DATA_CMD_SIZE;
 	}else{
 
-		cptFor = dataToWrite + buffer_switcher.buffer_switch[currentBuffer].index;
+		if( remainingData[0] == 0 ){
+			cptFor = dataToWrite + buffer_switcher.buffer_switch[currentBuffer].index;
+		}
+		else{
+			cptFor = remainingData[0];
+		}
+
+
 	}
 
 	// Remplissage du buffer courant juqu'a l'index definit precedemmment
-	writenData = 0;
+	if( remainingData[0] != 0 ){
+		writenData = dataToWrite - remainingData[0];
+	}
+	else{
+		writenData = 0;
+	}
+
+
 	for( i = buffer_switcher.buffer_switch[currentBuffer].index ; i < cptFor ; i++){
 
 		buffer_switcher.buffer_switch[currentBuffer].buffer[i] = temp_buff[writenData];
@@ -122,7 +136,7 @@ ErrorStatus sd_driver_write_to_bufferswitcher( uint8_t *temp_buff, uint16_t *rem
 	remainingData[0] = dataToWrite - writenData;
 
 	// Mise a jour de l'index dans la structure du buffer
-	buffer_switcher.buffer_switch[currentBuffer].index = i;
+	buffer_switcher.buffer_switch[currentBuffer].index = i-1;
 
 	return ERROR_status_NOERROR;
 }

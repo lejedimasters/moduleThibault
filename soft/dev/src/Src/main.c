@@ -125,7 +125,7 @@ int main(void)
 
 
 
-		time = 0;
+		time = 0000;
 
 	while (1){
 
@@ -139,16 +139,16 @@ int main(void)
 */
 
 		WAIT_N_MS(100);
-		data.gyroscope.X = 1111;
-		data.accelerometry.X = 2222;
-		data.magnotemeter.X = 3333;
+		data.gyroscope.X = 4444;
+		data.accelerometry.X = 1111;
+		data.magnotemeter.X = 7777;
 
-		data.gyroscope.Y = 4444;
-		data.accelerometry.Y = 5555;
-		data.magnotemeter.Y = 6666;
+		data.gyroscope.Y = 5555;
+		data.accelerometry.Y = 2222;
+		data.magnotemeter.Y = 8888;
 
-		data.gyroscope.Z = 7777;
-		data.accelerometry.Z = 8888;
+		data.gyroscope.Z = 6666;
+		data.accelerometry.Z = 3333;
 		data.magnotemeter.Z = 9999;
 
 		sd_driver_fill_buffer(&data,time);
