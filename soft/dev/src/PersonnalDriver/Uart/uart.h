@@ -16,8 +16,8 @@
 #include "error.h"
 
 void uart_init( void );
-void uart_send( int8_t *tab, uint8_t size );
-uint32_t uart_receive( uint8_t *tab, uint8_t size );
+void uart_send( int8_t *tab, uint16_t size );
+uint32_t uart_receive( uint8_t *tab, uint16_t size );
 
 
 

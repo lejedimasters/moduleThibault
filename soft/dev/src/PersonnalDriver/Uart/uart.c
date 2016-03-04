@@ -39,11 +39,11 @@ void uart_init(void)
 
 
 
-void uart_send( int8_t *tab, uint8_t size ){
+void uart_send( int8_t *tab, uint16_t size ){
 	HAL_UART_Transmit(&huart2,(uint8_t *)tab,size,0xFFFF);
 }
 
-uint32_t uart_receive( uint8_t *tab, uint8_t size ){
+uint32_t uart_receive( uint8_t *tab, uint16_t size ){
 	uint32_t ret;
 
 	ret = HAL_UART_Receive(&huart2, tab, size, 0xFFFF);

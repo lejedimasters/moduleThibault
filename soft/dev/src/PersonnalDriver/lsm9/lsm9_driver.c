@@ -268,7 +268,7 @@ ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t siz
 
 
 	readTab[0] = SPI_READ | INC | reg;
-	readTab[1] = value;
+	//readTab[1] = value;
 
 	if( sensor == lsm9_sensor_typedef_XM ){
 		lsm9_spi_transmit_receive_XM( readTab, readTab, size);

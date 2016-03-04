@@ -67,16 +67,20 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #if SD_MODE
-
+/*
 FATFS fs;
 uint8 BufferSDCard[512] = {'a'};
+*/
 #endif
 
 
 int main(void)
 {
+	/*
 	   FRESULT res;
 	   uint32_t adress;
+	   */
+	uint32_t time;
 	lsm9_data_typedef data;
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -99,7 +103,7 @@ int main(void)
 		uart_init();
 		TIM4_init();
 	#elif SD_MODE
-
+/*
 		sd_spi_init_low_speed();
 
 		res = FR_DISK_ERR;
@@ -112,24 +116,50 @@ int main(void)
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
 		    }
+*/
+		uart_init();
+		sd_driver_init();
 
 	#endif
 
 
 
 
-
+		time = 0;
 
 	while (1){
 
 		#if SD_MODE
-
+/*
 
 		WAIT_N_MS(200);
         adress = fs.database++;
         adress *=512;
         sd_driver_cc2541_write(adress , 512 , BufferSDCard);
+*/
 
+		WAIT_N_MS(100);
+		data.gyroscope.X = 1111;
+		data.accelerometry.X = 2222;
+		data.magnotemeter.X = 3333;
+
+		data.gyroscope.Y = 4444;
+		data.accelerometry.Y = 5555;
+		data.magnotemeter.Y = 6666;
+
+		data.gyroscope.Z = 7777;
+		data.accelerometry.Z = 8888;
+		data.magnotemeter.Z = 9999;
+
+		sd_driver_fill_buffer(&data,time);
+		//time += 166;
+		sd_driver_bufferswitcher_emptying();
+		data.gyroscope.X--;
+
+
+		if( data.gyroscope.X > -30100){
+			data.gyroscope.X = -30634;
+		}
 		#endif
 	}
 }

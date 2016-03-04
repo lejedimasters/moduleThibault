@@ -22,7 +22,10 @@
 #define NB_SD_BUFFER 	3
 #define DATA_CMD_SIZE	512
 
-/*
+
+
+#define DEBUG_bufferswitcher
+
 typedef enum
 {
 	buffer_status_typedef_empty,
@@ -32,9 +35,9 @@ typedef enum
 
 typedef struct
 {
-	uint8_t			buffer[DATA_CMD_SIZE];
-	buffer_status 	status;
-	uint16_t 		index;
+	uint8_t					buffer[DATA_CMD_SIZE];
+	buffer_status_typedef 	status;
+	uint16_t 				index;
 
 }sd_buffer_typedef;
 
@@ -44,9 +47,10 @@ typedef struct
 	uint8_t 			currentBuffer;
 }sd_buffer_switcher_typedef;
 
-*/
+
 void sd_driver_init();
 //ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms);
-
-
+ErrorStatus sd_driver_write_to_bufferswitcher( uint8_t *temp_buff, uint16_t *remainingData);
+ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms);
+ErrorStatus sd_driver_bufferswitcher_emptying();
 #endif
