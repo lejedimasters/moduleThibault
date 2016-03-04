@@ -28,9 +28,8 @@ void sd_driver_init(){
 	uint16_t i,y;
 
 
+	// Initialisation du triple buffer
 	buffer_switcher.currentBuffer = 0;
-
-
 	for( i = 0 ; i < NB_SD_BUFFER ; i++ ){
 
 		buffer_switcher.buffer_switch[i].index = 0;
@@ -40,6 +39,9 @@ void sd_driver_init(){
 			buffer_switcher.buffer_switch[i].buffer[y] = 0;
 		}
 	}
+
+
+	//
 
 
 }
@@ -165,8 +167,10 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 
 	//buffer_switcher.buffer_switch[currentBufferFilled].buffer
 
-#ifdef DEBUG_bufferswitcher
+#if 1
 	uart_send((int8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer,DATA_CMD_SIZE);
+#else
+
 #endif
 
 	buffer_switcher.buffer_switch[currentBufferFilled].status = buffer_status_typedef_empty;

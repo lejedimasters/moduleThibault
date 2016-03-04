@@ -34,27 +34,39 @@ void lsm9_spi_init(){
 	HAL_SPI_Init(&hspi1);
 
 
+	ENABLE_CS_XM_GPIO_CLOCK();
 	/* PIN CS XM */
-	GPIO_InitStruct.Pin = GPIO_PIN_6;
+	GPIO_InitStruct.Pin = CS_XM_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(CS_XM_GPIOBLOCK, &GPIO_InitStruct);
+
+	ENABLE_CS_G_GPIO_CLOCK();
+	/* PIN CS G */
+	GPIO_InitStruct.Pin = CS_G_PIN;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+
+
 }
 
 ERROR_status lsm9_spi_transmit_receive_G(uint8_t *pTxData, uint8_t *pRxData, uint16_t Size){
-//
-//	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
-//	HAL_SPI_TransmitReceive(&hspi1, pTxData, pRxData, Size, 0xFFFF);
-//	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
+
+	HAL_GPIO_WritePin(CS_G_GPIOBLOCK, CS_G_PIN, GPIO_PIN_RESET );
+	HAL_SPI_TransmitReceive(&hspi1, pTxData, pRxData, Size, 0xFFFF);
+	HAL_GPIO_WritePin(CS_G_GPIOBLOCK, CS_G_PIN, GPIO_PIN_SET );
 	return ERROR_status_NOERROR;
 }
 
 ERROR_status lsm9_spi_transmit_receive_XM(uint8_t *pTxData, uint8_t *pRxData, uint16_t Size){
 
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
+	HAL_GPIO_WritePin(CS_XM_GPIOBLOCK, CS_XM_PIN, GPIO_PIN_RESET );
 	HAL_SPI_TransmitReceive(&hspi1, pTxData, pRxData, Size, 0xFFFF);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
+	HAL_GPIO_WritePin(CS_XM_GPIOBLOCK, CS_XM_PIN, GPIO_PIN_SET );
 
 	return ERROR_status_NOERROR;
 }

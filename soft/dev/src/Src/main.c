@@ -57,12 +57,14 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #define 	IHM_MODE		0
-#define 	SENSOR_MODE		0
-#define		SD_MODE			1
+#define 	SENSOR_MODE		1
+#define		SD_MODE			0
 
 #if (IHM_MODE & SENSOR_MODE )
 	#error soit IHM_MODE soit SENSOR_MODE
 #endif
+
+
 
 
 
@@ -80,8 +82,10 @@ int main(void)
 	   FRESULT res;
 	   uint32_t adress;
 	   */
+#if SD_MODE
 	uint32_t time;
 	lsm9_data_typedef data;
+#endif
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	HAL_Init();
@@ -119,26 +123,20 @@ int main(void)
 */
 		uart_init();
 		sd_driver_init();
+		time = 0;
 
 	#endif
 
 
 
 
-		time = 0000;
+
 
 	while (1){
 
 		#if SD_MODE
-/*
 
-		WAIT_N_MS(200);
-        adress = fs.database++;
-        adress *=512;
-        sd_driver_cc2541_write(adress , 512 , BufferSDCard);
-*/
-
-		WAIT_N_MS(100);
+		WAIT_N_MS(491);
 		data.gyroscope.X = 4444;
 		data.accelerometry.X = 1111;
 		data.magnotemeter.X = 7777;
@@ -152,7 +150,7 @@ int main(void)
 		data.magnotemeter.Z = 9999;
 
 		sd_driver_fill_buffer(&data,time);
-		//time += 166;
+		time += 491;
 		sd_driver_bufferswitcher_emptying();
 		data.gyroscope.X--;
 
@@ -221,7 +219,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 250;
+	  TIM_Handle.Init.Prescaler = 5;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -235,8 +233,11 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+	//uint8_t tab[3]={0};
 #if SENSOR_MODE
 	lsm9_data_typedef data;
+	static uint32_t time = 0x0;
+	ERROR_status error;
 #endif
 
 
@@ -251,10 +252,17 @@ void TIM4_IRQHandler(void)
 
 			#if SENSOR_MODE
 
-				lsm9_driver_get_data(&data);
+            	error = lsm9_driver_get_data(&data);
+				data.time_ms = time;
 
-				printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
-				printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
+
+				if( error != ERROR_status_NOERROR){
+					while(1);
+				}
+				//lsm9_driver_read_register(0x0F,tab,lsm9_sensor_typedef_G);
+
+				uart_send_data_bytes(&data);
+				time += 10;
 				//sd_driver_fill_buffer(&data,35000);
 			#elif IHM_MODE
 

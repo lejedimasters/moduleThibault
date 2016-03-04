@@ -16,7 +16,7 @@
 #include "error.h"
 
 #define WAIT_N_MS(n) {											\
-						uint8_t i;								\
+						uint16_t i;								\
 						for(i = 0 ; i < n ; i++ ) WAIT_1MS();	\
 						}
 
