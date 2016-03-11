@@ -57,8 +57,8 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #define 	IHM_MODE		0
-#define 	SENSOR_MODE		1
-#define		SD_MODE			0
+#define 	SENSOR_MODE		0
+#define		SD_MODE			1
 
 #if (IHM_MODE & SENSOR_MODE )
 	#error soit IHM_MODE soit SENSOR_MODE
@@ -69,10 +69,9 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #if SD_MODE
-/*
+
 FATFS fs;
-uint8 BufferSDCard[512] = {'a'};
-*/
+
 #endif
 
 
@@ -83,13 +82,13 @@ int main(void)
 	   uint32_t adress;
 	   */
 #if SD_MODE
-	uint32_t time;
-	lsm9_data_typedef data;
+	FRESULT res;
 #endif
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
 	SystemClock_Config();
+	HAL_Init();
+
 
 
 
@@ -107,9 +106,9 @@ int main(void)
 		uart_init();
 		TIM4_init();
 	#elif SD_MODE
-/*
-		sd_spi_init_low_speed();
 
+
+		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_mount(&fs);
@@ -120,10 +119,10 @@ int main(void)
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
 		    }
-*/
+
 		uart_init();
-		sd_driver_init();
-		time = 0;
+
+		TIM4_init();
 
 	#endif
 
@@ -136,7 +135,7 @@ int main(void)
 
 		#if SD_MODE
 
-		WAIT_N_MS(491);
+/*
 		data.gyroscope.X = 4444;
 		data.accelerometry.X = 1111;
 		data.magnotemeter.X = 7777;
@@ -152,12 +151,7 @@ int main(void)
 		sd_driver_fill_buffer(&data,time);
 		time += 491;
 		sd_driver_bufferswitcher_emptying();
-		data.gyroscope.X--;
-
-
-		if( data.gyroscope.X > -30100){
-			data.gyroscope.X = -30634;
-		}
+*/
 		#endif
 	}
 }
@@ -219,7 +213,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = 1000;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -238,6 +232,9 @@ void TIM4_IRQHandler(void)
 	lsm9_data_typedef data;
 	static uint32_t time = 0x0;
 	ERROR_status error;
+#elif SD_MODE
+	lsm9_data_typedef data;
+	static uint32_t time = 0x0;
 #endif
 
 
@@ -262,13 +259,28 @@ void TIM4_IRQHandler(void)
 				//lsm9_driver_read_register(0x0F,tab,lsm9_sensor_typedef_G);
 
 				uart_send_data_bytes(&data);
+				//uart_send_data_ASCII(&data);
 				time += 10;
 				//sd_driver_fill_buffer(&data,35000);
 			#elif IHM_MODE
 
 				seq();
 			#elif SD_MODE
+				data.gyroscope.X = 4444;
+				data.accelerometry.X = 1111;
+				data.magnotemeter.X = 7777;
 
+				data.gyroscope.Y = 5555;
+				data.accelerometry.Y = 2222;
+				data.magnotemeter.Y = 8888;
+
+				data.gyroscope.Z = 6666;
+				data.accelerometry.Z = 3333;
+				data.magnotemeter.Z = 9999;
+
+				sd_driver_fill_buffer(&data,time);
+				time += 491;
+				sd_driver_bufferswitcher_emptying();
 			#endif
 
         }

@@ -55,17 +55,9 @@ uint32_t uart_receive( uint8_t *tab, uint16_t size ){
 
 ERROR_status uart_send_data_bytes( lsm9_data_typedef *data){
 	int8_t data_tab[9*2+4];
-	int8_t *p;
-	uint8_t i;
 
 
-	p = (int8_t *)data;
 
-/*
-	for( i = 0 ; i < (9*2+4) ; i++ ){
-		data_tab[i] = p[i];
-	}
-*/
 	data_tab[0]=(int8_t)((data->magnotemeter.X)>>8);
 	data_tab[1]=(int8_t)((data->magnotemeter.X)>>0);
 	data_tab[2]=(int8_t)((data->magnotemeter.Y)>>8);
@@ -112,7 +104,7 @@ ERROR_status uart_send_data_bytes( lsm9_data_typedef *data){
 ERROR_status uart_send_data_ASCII( lsm9_data_typedef *data){
 
 	printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data->magnotemeter.X,data->magnotemeter.Y,data->magnotemeter.Z);
-	printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data->accelerometry.X,data->accelerometry.Y,data->accelerometry.Z);
+	printf("ACC X = ;%d; Y = ;%d; Z = ;%d",data->accelerometry.X,data->accelerometry.Y,data->accelerometry.Z);
 	printf("GYR X = ;%d; Y = ;%d; Z = ;%d\r\n",data->gyroscope.X,data->gyroscope.Y,data->gyroscope.Z);
 
 	return ERROR_status_NOERROR;

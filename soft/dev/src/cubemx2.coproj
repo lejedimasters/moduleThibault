@@ -111,8 +111,8 @@
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c" path="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c" type="1"/>
-    <File name="PersonnalDriver/Error" path="" type="2"/>
     <File name="PersonnalDriver/SDCard/spi" path="" type="2"/>
+    <File name="PersonnalDriver/Error" path="" type="2"/>
     <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="Drivers/CMSIS/Include/cmsis_gcc.h" path="Drivers/CMSIS/Include/cmsis_gcc.h" type="1"/>
     <File name="PersonnalDriver/SDCard/sd_driver.h" path="PersonnalDriver/SDCard/sd_driver.h" type="1"/>
@@ -130,8 +130,8 @@
     <File name="PersonnalDriver/SDCard/FatFs_light/pff.c" path="PersonnalDriver/SDCard/FatFs_light/pff.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cmFunc.h" path="Drivers/CMSIS/Include/core_cmFunc.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h" type="1"/>
-    <File name="PersonnalDriver/SDCard/spi/sd_spi.h" path="PersonnalDriver/SDCard/spi/sd_spi.h" type="1"/>
     <File name="Drivers/CMSIS/Include" path="" type="2"/>
+    <File name="PersonnalDriver/SDCard/spi/sd_spi.h" path="PersonnalDriver/SDCard/spi/sd_spi.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc" path="" type="2"/>
     <File name="Src/main.c" path="Src/main.c" type="1"/>
@@ -167,8 +167,8 @@
     <File name="PersonnalDriver/SDCard/FatFs_light/pff.h" path="PersonnalDriver/SDCard/FatFs_light/pff.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cm7.h" path="Drivers/CMSIS/Include/core_cm7.h" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates" path="" type="2"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" type="1"/>

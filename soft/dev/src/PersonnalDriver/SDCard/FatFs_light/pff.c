@@ -755,7 +755,7 @@ BYTE check_fs (	/* 0:The FAT boot record, 1:Valid boot record but not an FAT, 2:
 FRESULT pf_mount (
 	FATFS *fs		/* Pointer to new file system object */
 )
-{
+ {
 	BYTE fmt, buf[36];
 	DWORD bsect, fsize, tsect, mclst;
 

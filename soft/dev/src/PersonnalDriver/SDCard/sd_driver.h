@@ -17,7 +17,7 @@
 //#include "ff.h"
 #include "error.h"
 #include "lsm9_driver.h"
-
+#include "sd_driver_cc2541.h"
 
 #define NB_SD_BUFFER 	3
 #define DATA_CMD_SIZE	512

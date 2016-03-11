@@ -33,17 +33,21 @@ unsigned char sd_driver_cc2541_init( void )
     uint8_t i;
     uint8_t responseR1 = 0;
     uint8_t responseR7_or_R3[4];
+    uint8_t test[100]={0};
     
     CardType = 0;
     //initialization of spi
     sd_spi_init_low_speed();
     //spi_driver_cc2541_init();
-    
+    /*
+    sd_spi_cs_down();
+    sd_spi_cs_up();
+    */
     //Wait 1ms to be sure the card is correctly supply
-    WAIT_N_MS(10);
+    WAIT_N_MS(500);
     
     //dummy clock : to send at least dummy 74 clock cycles before sending any commands
-    for (i = 0; i < 25; i++)
+    for (i = 0; i < 1; i++)
     {
     	/*
         // Write byte to USART0 buffer (transmit data).
@@ -53,20 +57,25 @@ unsigned char sd_driver_cc2541_init( void )
         // Clear transmit byte status.
         U1CSR &= ~U0CSR_TX_BYTE;
         */
-    	sd_spi_transmit_receive(&responseR1,&responseR1,1);
-
+    	//sd_spi_transmit_receive(test,test,100);
+    	dummyclock();
 
     }
     
+
+
+/*
+    responseR7_or_R3[0] = 58;
+    sd_spi_transmit_receive(responseR7_or_R3, responseR7_or_R3, 4);
+*/
     //send CMD0
     sd_driver_cc2541_send_cmd(0, 0x00000000);
-        
     // check R1 responce
     responseR1 = sd_driver_cc2541_read_R1();
     if(responseR1 != 1){
          return 0;
     }
-     
+
     //send CMD8
     sd_driver_cc2541_send_cmd(8, 0x000001AA);
         
@@ -136,7 +145,7 @@ unsigned char sd_driver_cc2541_init( void )
 void sd_driver_cc2541_send_cmd( uint8_t command, uint32_t argument )
 {
 	uint8_t buffer_to_write[6];
-	
+	uint8_t buffer_to_read[6];
 	//calcul the command to write
 	buffer_to_write[0] = 0x40 | command; 
 	buffer_to_write[1] = (uint8_t)(argument >> 24);
@@ -147,7 +156,7 @@ void sd_driver_cc2541_send_cmd( uint8_t command, uint32_t argument )
 	
 	// write the commande on SPI
 	//spi_driver_cc2541_write(6 , buffer_to_write);
-	sd_spi_transmit_receive(buffer_to_write, buffer_to_write, 6);
+	sd_spi_transmit_receive(buffer_to_write, buffer_to_read, 6);
 }
 
 /**
@@ -239,7 +248,7 @@ uint16_t sd_driver_cc2541_makeCRC16(uint8_t *address, uint16_t length)
 void sd_driver_cc2541_write(uint32_t data_address , uint16_t length , uint8_t *data)
 {
   uint8_t i;
-  uint8_t responseR1, dummy = 0x00;
+  uint8_t responseR1, dummy = 0xFF;
   
   // send cmd24
   
@@ -250,6 +259,10 @@ void sd_driver_cc2541_write(uint32_t data_address , uint16_t length , uint8_t *d
         i++;
   }while(responseR1 != 0 && i< 128);
     
+  if( i > 127 ){
+	  dummy = 0x00;
+  }
+  dummy = 0xFF;
   //send data
   sd_driver_cc2541_send_data_packet(data_token1, length , data);
   
@@ -272,6 +285,7 @@ void sd_driver_cc2541_send_data_packet(uint32_t data_token , uint16_t length , c
 {
     	
 	uint16_t i;
+	uint8_t tab[512] = {0xFF};
     //uint16_t crc;
     
 	//data_token 
@@ -292,7 +306,7 @@ void sd_driver_cc2541_send_data_packet(uint32_t data_token , uint16_t length , c
 	
 	// write the commande on SPI
 	//spi_driver_cc2541_write(length+3,buffer);
-	sd_spi_transmit_receive( buffer, buffer, length+3);
+	sd_spi_transmit_receive( buffer, tab, length+3);
 }
 
 
@@ -304,7 +318,13 @@ void sd_driver_cc2541_send_data_packet(uint32_t data_token , uint16_t length , c
  */
 void sd_driver_cc2541_read_data_packet( uint8_t *data)
 {
-	uint8_t tab[512] = {0};
+	uint8_t tab[512] = {0xFF},i;
+
+	for(i = 0 ; i < 512 ; i++){
+		tab[i] = 0xFF;
+	}
+
+
     //spi_driver_cc2541_read(512, data);
     sd_spi_transmit_receive(tab, data, 512);
 }
@@ -321,6 +341,7 @@ void sd_driver_cc2541_read_data_packet( uint8_t *data)
 uint8_t sd_driver_cc2541_read_R1( void )
 {
     uint8_t buffer_to_read;
+    uint8_t dummy = 0xFF;
     uint8_t i;
     
     i = 0;
@@ -328,7 +349,7 @@ uint8_t sd_driver_cc2541_read_R1( void )
         
     // read the R response
     //spi_driver_cc2541_read( 1 , &buffer_to_read );
-    sd_spi_transmit_receive(&buffer_to_read, &buffer_to_read, 1);
+    sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
     }while(i++ < 127 && (buffer_to_read == 0xFF));
            
     // return the response
@@ -379,12 +400,19 @@ uint8_t sd_driver_cc2541_read_R1( void )
 uint8_t sd_driver_cc2541_read_R7_or_R3( uint8_t *responseR7 )
 {
     uint8_t responseR1;
+    uint8_t responseDummy[4], i;
+
+    for( i = 0 ; i < 4 ; i++ ){
+
+    	responseDummy[i] = 0xFF;
+    }
+
     
     responseR1 = sd_driver_cc2541_read_R1();
     
     // read the R7 response
     //spi_driver_cc2541_read( 4 , responseR7 );
-    sd_spi_transmit_receive(responseR7, responseR7, 4);
+    sd_spi_transmit_receive(responseDummy, responseR7, 4);
     // return the R1 response
     return responseR1;
     
