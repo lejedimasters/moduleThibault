@@ -53,7 +53,7 @@ DRESULT disk_readp (
     
     if(responseR1 ==0){
         i = 0;
-        buffer_to_read = 0;
+        buffer_to_read = 0xFF;
         
         do{
         	sd_spi_transmit_receive( &buffer_to_write, &buffer_to_read, 1);
@@ -90,7 +90,7 @@ DRESULT disk_writep (
 	DRESULT res;
 	UINT bc;
 	static WORD wc;
-    BYTE tosend[2], buffer_to_write = 0x00;
+    BYTE tosend[2], buffer_to_write = 0xFF;
     BYTE responseR1;
 	res = RES_ERROR;
     UINT i;
