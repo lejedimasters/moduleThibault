@@ -17,6 +17,10 @@
 #include "lsm9_register_G_def.h"
 #include "error.h"
 
+
+
+
+
 #define SPI_READ	0x80
 #define SPI_WRITE	0x00
 
@@ -51,7 +55,7 @@ typedef struct
 	acc_data_typedef	accelerometry;
 	gyr_data_typedef	gyroscope;
 	mag_data_typedef	magnotemeter;
-
+	uint32_t			time_ms;
 }lsm9_data_typedef;
 
 typedef enum

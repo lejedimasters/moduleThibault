@@ -36,6 +36,7 @@
 #include "driver_led.h"
 #include "stdio.h"
 #include "lsm9_driver.h"
+#include "sd_driver.h"
 /*
  *
  * */
@@ -56,47 +57,102 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #define 	IHM_MODE		0
-#define 	SENSOR_MODE		1
+#define 	SENSOR_MODE		0
+#define		SD_MODE			1
 
-#if (IHM_MODE & SENSOR_MODE)
+#if (IHM_MODE & SENSOR_MODE )
 	#error soit IHM_MODE soit SENSOR_MODE
 #endif
 
-int main(void)
-{
-
-	/* MCU Configuration----------------------------------------------------------*/
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
-	SystemClock_Config();
 
 
 
 
+#if SD_MODE
 
+FATFS fs;
 
-
-#if IHM_MODE
-
-	seq_init();
-#elif SENSOR_MODE
-
-	lsm9_driver_init();
-	uart_init();
-#else
-	#error definir mode de fonctionnement du module
 #endif
 
-	TIM4_init();
+
+int main(void)
+{
+	/*
+	   FRESULT res;
+	   uint32_t adress;
+	   */
+#if SD_MODE
+	FRESULT res;
+#endif
+	/* MCU Configuration----------------------------------------------------------*/
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	SystemClock_Config();
+	HAL_Init();
 
 
 
 
 
-	while (1)
 
-	{
 
+
+	#if IHM_MODE
+
+		seq_init();
+		TIM4_init();
+	#elif SENSOR_MODE
+
+		lsm9_driver_init();
+		uart_init();
+		TIM4_init();
+	#elif SD_MODE
+
+
+		sd_driver_init();
+		res = FR_DISK_ERR;
+		   while( res != FR_OK){
+		        res = pf_mount(&fs);
+		   }
+
+		   // find the file TEST.txt
+		   res = FR_DISK_ERR;
+		   while( res != FR_OK){
+		        res = pf_open("TEST.txt");
+		    }
+
+		uart_init();
+
+		TIM4_init();
+
+	#endif
+
+
+
+
+
+
+	while (1){
+
+		#if SD_MODE
+
+/*
+		data.gyroscope.X = 4444;
+		data.accelerometry.X = 1111;
+		data.magnotemeter.X = 7777;
+
+		data.gyroscope.Y = 5555;
+		data.accelerometry.Y = 2222;
+		data.magnotemeter.Y = 8888;
+
+		data.gyroscope.Z = 6666;
+		data.accelerometry.Z = 3333;
+		data.magnotemeter.Z = 9999;
+
+		sd_driver_fill_buffer(&data,time);
+		time += 491;
+		sd_driver_bufferswitcher_emptying();
+*/
+		#endif
 	}
 }
 
@@ -157,7 +213,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 500;
+	  TIM_Handle.Init.Prescaler = 1000;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -171,15 +227,18 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+	//uint8_t tab[3]={0};
+#if SENSOR_MODE
 	lsm9_data_typedef data;
-	/*
-	uint8_t readTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	uint8_t writeTab[10]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-	int16_t acc_X_hight, acc_Y_hight, acc_Z_hight, temp_hight;
-	int16_t acc_X_low, acc_Y_low, acc_Z_low, temp_low;
-	int16_t acc_X, acc_Y, acc_Z, temp;*/
+	static uint32_t time = 0x0;
+	ERROR_status error;
+#elif SD_MODE
+	lsm9_data_typedef data;
+	static uint32_t time = 0x0;
+#endif
 
-	HAL_StatusTypeDef status;
+
+	//HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
     {
         if (__HAL_TIM_GET_ITSTATUS(&TIM_Handle, TIM_IT_UPDATE) != RESET)
@@ -188,15 +247,41 @@ void TIM4_IRQHandler(void)
             /*put your code here */
 
 
-#if SENSOR_MODE
+			#if SENSOR_MODE
 
-	lsm9_driver_get_data(&data);
-	printf("MAG X = ;%d; Y = ;%d; Z = ;%d;",data.magnotemeter.X,data.magnotemeter.Y,data.magnotemeter.Z);
-	printf("ACC X = ;%d; Y = ;%d; Z = ;%d\r\n",data.accelerometry.X,data.accelerometry.Y,data.accelerometry.Z);
-#else if IHM_MODE
+            	error = lsm9_driver_get_data(&data);
+				data.time_ms = time;
 
-	seq();
-#endif
+
+				if( error != ERROR_status_NOERROR){
+					while(1);
+				}
+				//lsm9_driver_read_register(0x0F,tab,lsm9_sensor_typedef_G);
+
+				uart_send_data_bytes(&data);
+				//uart_send_data_ASCII(&data);
+				time += 10;
+				//sd_driver_fill_buffer(&data,35000);
+			#elif IHM_MODE
+
+				seq();
+			#elif SD_MODE
+				data.gyroscope.X = 4444;
+				data.accelerometry.X = 1111;
+				data.magnotemeter.X = 7777;
+
+				data.gyroscope.Y = 5555;
+				data.accelerometry.Y = 2222;
+				data.magnotemeter.Y = 8888;
+
+				data.gyroscope.Z = 6666;
+				data.accelerometry.Z = 3333;
+				data.magnotemeter.Z = 9999;
+
+				sd_driver_fill_buffer(&data,time);
+				time += 491;
+				sd_driver_bufferswitcher_emptying();
+			#endif
 
         }
     }

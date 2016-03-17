@@ -78,3 +78,5 @@ soft/dev/src/cubemx2/Debug/obj/diskio.o
 soft/dev/src/cubemx2/Debug/obj/ff.o
 soft/dev/src/cubemx2/Debug/obj/sd_spi.o
 soft/dev/src/cubemx2/Debug/obj/syscall.o
+soft/dev/src/cubemx2/Debug/obj/sd_driver.o
+soft/dev/src/cubemx2/Debug/obj/sd_driver_cc2541.o

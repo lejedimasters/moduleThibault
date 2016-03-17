@@ -24,14 +24,17 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
+	if (SD_Detect() != SD_PRESENT) {
+		return STA_NOINIT;
+	}
 
+	if (!TM_FATFS_SDIO_WriteEnabled()) {
+		TM_FATFS_SD_SDIO_Stat |= STA_PROTECT;
+	} else {
+		TM_FATFS_SD_SDIO_Stat &= ~STA_PROTECT;
+	}
 
-
-
-
-
-
-	return STA_NOINIT;
+	return TM_FATFS_SD_SDIO_Stat;
 }
 
 
@@ -45,8 +48,24 @@ DSTATUS disk_initialize (
 )
 {
 
+	sd_spi_deinit();
+	sd_spi_init_low_speed();
 
+	//Check disk initialized
+	if (SD_Init() == SD_OK) {
+		TM_FATFS_SD_SDIO_Stat &= ~STA_NOINIT;	/* Clear STA_NOINIT flag */
+	} else {
+		TM_FATFS_SD_SDIO_Stat |= STA_NOINIT;
+	}
 
+	//Check write protected
+	if (!TM_FATFS_SDIO_WriteEnabled()) {
+		TM_FATFS_SD_SDIO_Stat |= STA_PROTECT;
+	} else {
+		TM_FATFS_SD_SDIO_Stat &= ~STA_PROTECT;
+	}
+
+	return TM_FATFS_SD_SDIO_Stat;
 	return STA_NOINIT;
 }
 
@@ -63,9 +82,48 @@ DRESULT disk_read (
 	UINT count		/* Number of sectors to read */
 )
 {
+	SD_Error Status = SD_OK;
 
+	if ((TM_FATFS_SD_SDIO_Stat & STA_NOINIT)) {
+		return RES_NOTRDY;
+	}
 
-	return RES_PARERR;
+	if ((DWORD)buff & 3) {
+		DRESULT res = RES_OK;
+		DWORD scratch[BLOCK_SIZE / 4];
+
+		while (count--) {
+			res = TM_FATFS_SD_SDIO_disk_read((void *)scratch, sector++, 1);
+
+			if (res != RES_OK) {
+				break;
+			}
+
+			memcpy(buff, scratch, BLOCK_SIZE);
+
+			buff += BLOCK_SIZE;
+		}
+
+		return res;
+	}
+
+	Status = SD_ReadMultiBlocks(buff, sector << 9, BLOCK_SIZE, count);
+
+	if (Status == SD_OK) {
+		SDTransferState State;
+
+		Status = SD_WaitReadOperation();
+
+		while ((State = SD_GetStatus()) == SD_TRANSFER_BUSY);
+
+		if ((State == SD_TRANSFER_ERROR) || (Status != SD_OK)) {
+			return RES_ERROR;
+		} else {
+			return RES_OK;
+		}
+	} else {
+		return RES_ERROR;
+	}
 }
 
 
@@ -82,8 +140,51 @@ DRESULT disk_write (
 	UINT count			/* Number of sectors to write */
 )
 {
+	SD_Error Status = SD_OK;
 
-	return RES_PARERR;
+	if (!TM_FATFS_SDIO_WriteEnabled()) {
+		return RES_WRPRT;
+	}
+
+	if (SD_Detect() != SD_PRESENT) {
+		return RES_NOTRDY;
+	}
+
+	if ((DWORD)buff & 3) {
+		DRESULT res = RES_OK;
+		DWORD scratch[BLOCK_SIZE / 4];
+
+		while (count--) {
+			memcpy(scratch, buff, BLOCK_SIZE);
+			res = TM_FATFS_SD_SDIO_disk_write((void *)scratch, sector++, 1);
+
+			if (res != RES_OK) {
+				break;
+			}
+
+			buff += BLOCK_SIZE;
+		}
+
+		return(res);
+	}
+
+	Status = SD_WriteMultiBlocks((uint8_t *)buff, sector << 9, BLOCK_SIZE, count); // 4GB Compliant
+
+	if (Status == SD_OK) {
+		SDTransferState State;
+
+		Status = SD_WaitWriteOperation(); // Check if the Transfer is finished
+
+		while ((State = SD_GetStatus()) == SD_TRANSFER_BUSY); // BUSY, OK (DONE), ERROR (FAIL)
+
+		if ((State == SD_TRANSFER_ERROR) || (Status != SD_OK)) {
+			return RES_ERROR;
+		} else {
+			return RES_OK;
+		}
+	} else {
+		return RES_ERROR;
+	}
 }
 #endif
 
@@ -99,8 +200,18 @@ DRESULT disk_ioctl (
 	void *buff		/* Buffer to send/receive control data */
 )
 {
-
-
-	return RES_PARERR;
+	switch (cmd) {
+		case GET_SECTOR_SIZE :     // Get R/W sector size (WORD)
+			*(WORD *) buff = 512;
+		break;
+		case GET_BLOCK_SIZE :      // Get erase block size in unit of sector (DWORD)
+			*(DWORD *) buff = 32;
+		break;
+		case CTRL_SYNC :
+		case CTRL_ERASE_SECTOR :
+		break;
+	}
+	return RES_OK;
+	//return RES_PARERR;
 }
 #endif
