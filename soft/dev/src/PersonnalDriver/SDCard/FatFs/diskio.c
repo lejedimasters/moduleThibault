@@ -24,6 +24,7 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber to identify the drive */
 )
 {
+	/*
 	if (SD_Detect() != SD_PRESENT) {
 		return STA_NOINIT;
 	}
@@ -35,6 +36,8 @@ DSTATUS disk_status (
 	}
 
 	return TM_FATFS_SD_SDIO_Stat;
+	*/
+	return RES_OK;
 }
 
 
@@ -47,26 +50,82 @@ DSTATUS disk_initialize (
 	BYTE pdrv				/* Physical drive nmuber to identify the drive */
 )
 {
-
-	sd_spi_deinit();
+	uint8_t responseR1, i = 0;
+    uint8_t responseR7_or_R3[4], CardType;
+    CardType = 0;
+	//sd_spi_deinit();
 	sd_spi_init_low_speed();
 
 	//Check disk initialized
-	if (SD_Init() == SD_OK) {
-		TM_FATFS_SD_SDIO_Stat &= ~STA_NOINIT;	/* Clear STA_NOINIT flag */
-	} else {
-		TM_FATFS_SD_SDIO_Stat |= STA_NOINIT;
-	}
+	//Wait 1ms to be sure the card is correctly supply
+	WAIT_N_MS(500);
+    //dummy clock : to send at least dummy 74 clock cycles before sending any commands
+    dummyclock();
 
-	//Check write protected
-	if (!TM_FATFS_SDIO_WriteEnabled()) {
-		TM_FATFS_SD_SDIO_Stat |= STA_PROTECT;
-	} else {
-		TM_FATFS_SD_SDIO_Stat &= ~STA_PROTECT;
-	}
+    sd_spi_send_cmd(0, 0x00000000);
+    // check R1 responce
+    responseR1 = sd_spi_read_R1();
 
-	return TM_FATFS_SD_SDIO_Stat;
-	return STA_NOINIT;
+    if(responseR1 != 1){
+         return RES_ERROR;
+    }
+    //send CMD8
+    sd_spi_send_cmd(8, 0x000001AA);
+
+    //check the version of the sd card
+    responseR1 = sd_spi_read_R7_or_R3(responseR7_or_R3);
+        if(responseR1 == 1){
+            CardType = 2;
+            if ( responseR7_or_R3[2] != 0x01 || responseR7_or_R3[3] != 0xAA ) {
+                return RES_ERROR;
+            }
+        }
+        else{
+            CardType = 1;
+        }
+
+    responseR1 = 1;
+    i = 0;
+    while( responseR1 != 0 ){
+
+        //send ACMD41
+        sd_spi_send_acmd(41, 0x40000000);
+
+        //check R1 responce
+         responseR1 = sd_spi_read_R1();
+
+         i++;
+
+         if(i == 100){
+             return RES_ERROR;
+         }
+    }
+
+    if( CardType == 2)
+    {
+        //send CMD58
+        sd_spi_send_cmd(58, 0x00000000);
+
+        //check CCS bit in OCR
+         responseR1 = sd_spi_read_R7_or_R3(responseR7_or_R3);
+
+         if((responseR7_or_R3[3] & 0xC0) != 0)
+             return RES_ERROR;
+    }
+
+
+    //send CMD16
+    sd_spi_send_cmd(16, 0x00000200);
+
+    // the Sd card is initialized
+
+    // no crc
+    sd_spi_send_cmd(59, 0x00000200);
+
+    // change the speed of SPI
+    sd_spi_init_high_speed();
+
+    return RES_OK;
 }
 
 
@@ -82,48 +141,45 @@ DRESULT disk_read (
 	UINT count		/* Number of sectors to read */
 )
 {
-	SD_Error Status = SD_OK;
 
-	if ((TM_FATFS_SD_SDIO_Stat & STA_NOINIT)) {
-		return RES_NOTRDY;
-	}
+	uint32_t address = 0;
+	uint8_t responseR1, i = 0;
 
-	if ((DWORD)buff & 3) {
-		DRESULT res = RES_OK;
-		DWORD scratch[BLOCK_SIZE / 4];
+	address = sector*SECTOR_SIZE;
 
-		while (count--) {
-			res = TM_FATFS_SD_SDIO_disk_read((void *)scratch, sector++, 1);
+	do{
+		sd_spi_send_cmd(18, address);
+		responseR1 = sd_spi_read_R1();
+		i++;
+	}while(responseR1 != 0 && i< 128);
 
-			if (res != RES_OK) {
-				break;
-			}
+	if( i > 128 ){
 
-			memcpy(buff, scratch, BLOCK_SIZE);
-
-			buff += BLOCK_SIZE;
-		}
-
-		return res;
-	}
-
-	Status = SD_ReadMultiBlocks(buff, sector << 9, BLOCK_SIZE, count);
-
-	if (Status == SD_OK) {
-		SDTransferState State;
-
-		Status = SD_WaitReadOperation();
-
-		while ((State = SD_GetStatus()) == SD_TRANSFER_BUSY);
-
-		if ((State == SD_TRANSFER_ERROR) || (Status != SD_OK)) {
-			return RES_ERROR;
-		} else {
-			return RES_OK;
-		}
-	} else {
 		return RES_ERROR;
 	}
+	/*
+	responseR1 = sd_spi_read_R1();
+	responseR1 = sd_spi_read_R1();
+	responseR1 = sd_spi_read_R1();
+	responseR1 = sd_spi_read_R1();
+	responseR1 = sd_spi_read_R1();
+*/
+	for( i = 0 ; i < count ; i++ ){
+		sd_spi_read_data_packet(DATA_TOKEN_CMD18, SECTOR_SIZE, (buff+i*SECTOR_SIZE) );
+	}
+
+	sd_spi_send_cmd(12, 0);
+
+	// wait one byte
+	sd_spi_read_R1();
+	//command response
+	responseR1 = sd_spi_read_R1();
+//	responseR1 = 0x00;
+//    do{
+//    	responseR1 = sd_spi_read_R1();
+//    }while(responseR1 != 0xFF);
+
+    return RES_OK;
 }
 
 
@@ -140,51 +196,57 @@ DRESULT disk_write (
 	UINT count			/* Number of sectors to write */
 )
 {
-	SD_Error Status = SD_OK;
 
-	if (!TM_FATFS_SDIO_WriteEnabled()) {
-		return RES_WRPRT;
-	}
+	uint32_t address = 0;
+	uint8_t responseR1, i = 0;
 
-	if (SD_Detect() != SD_PRESENT) {
-		return RES_NOTRDY;
-	}
+	address = sector*SECTOR_SIZE;
 
-	if ((DWORD)buff & 3) {
-		DRESULT res = RES_OK;
-		DWORD scratch[BLOCK_SIZE / 4];
+	// send cmd25 and wait for cmd accepted
+	do{
+		sd_spi_send_cmd(25, address);
+		responseR1 = sd_spi_read_R1();
+		i++;
+	}while(responseR1 != 0 && i< 128);
 
-		while (count--) {
-			memcpy(scratch, buff, BLOCK_SIZE);
-			res = TM_FATFS_SD_SDIO_disk_write((void *)scratch, sector++, 1);
+	if( i > 128 ){
 
-			if (res != RES_OK) {
-				break;
-			}
-
-			buff += BLOCK_SIZE;
-		}
-
-		return(res);
-	}
-
-	Status = SD_WriteMultiBlocks((uint8_t *)buff, sector << 9, BLOCK_SIZE, count); // 4GB Compliant
-
-	if (Status == SD_OK) {
-		SDTransferState State;
-
-		Status = SD_WaitWriteOperation(); // Check if the Transfer is finished
-
-		while ((State = SD_GetStatus()) == SD_TRANSFER_BUSY); // BUSY, OK (DONE), ERROR (FAIL)
-
-		if ((State == SD_TRANSFER_ERROR) || (Status != SD_OK)) {
-			return RES_ERROR;
-		} else {
-			return RES_OK;
-		}
-	} else {
 		return RES_ERROR;
 	}
+
+	// wait one byte
+	sd_spi_read_R1();
+
+	for( i = 0 ; i < count ; i++ ){
+
+		// Send cmd until no error / Risque de GROS blocage
+		do{
+			// Data packet
+			sd_spi_send_data_packet(DATA_TOKEN_CMD18, SECTOR_SIZE, (buff+i*SECTOR_SIZE) );
+			// Data resp
+			responseR1 = sd_spi_read_R1();
+		}while( (responseR1 & 0b00001110) != 0b00000100);
+
+		//Busy test
+	    do{
+	    	responseR1 = sd_spi_read_R1();
+	    }while(responseR1 != 0xFF);
+
+
+	}
+
+	// stop transaction
+	sd_spi_send_stop();
+
+	// Wait one byte
+	sd_spi_read_R1();
+
+	//Busy test
+    do{
+    	responseR1 = sd_spi_read_R1();
+    }while(responseR1 != 0xFF);
+
+    return RES_OK;
 }
 #endif
 
@@ -200,6 +262,7 @@ DRESULT disk_ioctl (
 	void *buff		/* Buffer to send/receive control data */
 )
 {
+
 	switch (cmd) {
 		case GET_SECTOR_SIZE :     // Get R/W sector size (WORD)
 			*(WORD *) buff = 512;
@@ -208,10 +271,17 @@ DRESULT disk_ioctl (
 			*(DWORD *) buff = 32;
 		break;
 		case CTRL_SYNC :
-		case CTRL_ERASE_SECTOR :
+		//case CTRL_ERASE_SECTOR :
+		break;
+		default:
+			return RES_ERROR;
 		break;
 	}
 	return RES_OK;
-	//return RES_PARERR;
 }
 #endif
+
+DWORD get_fattime (void){
+
+	return 0;
+}

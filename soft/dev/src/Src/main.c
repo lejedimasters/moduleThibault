@@ -69,8 +69,9 @@ TIM_HandleTypeDef TIM_Handle;
 
 
 #if SD_MODE
-
+#include "ff.h"
 FATFS fs;
+FIL fil;
 
 #endif
 
@@ -83,6 +84,7 @@ int main(void)
 	   */
 #if SD_MODE
 	FRESULT res;
+	uint8_t line[82];
 #endif
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -107,20 +109,30 @@ int main(void)
 		TIM4_init();
 	#elif SD_MODE
 
-
+		uart_init();
 		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
-		        res = pf_mount(&fs);
+		        res = f_mount(&fs, "", 1);
 		   }
 
+		   res = f_open(&fil, "TEST.txt", FA_READ);
+		    if (res){
+		    	while(1);
+		    }
+
+
+
+		    /* Read all lines and display it */
+		    while (f_gets(line, sizeof line, &fil))
+		        printf(line);
+/*
 		   // find the file TEST.txt
 		   res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
 		    }
-
-		uart_init();
+*/
 
 		TIM4_init();
 

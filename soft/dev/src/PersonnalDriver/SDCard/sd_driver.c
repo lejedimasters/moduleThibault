@@ -11,6 +11,7 @@
 #include "sd_driver.h"
 #include "string.h"
 #include "uart.h"
+#include "ff.h"
 
 sd_buffer_switcher_typedef buffer_switcher;
 
@@ -149,7 +150,7 @@ ErrorStatus sd_driver_write_to_bufferswitcher( uint8_t *temp_buff, uint16_t *rem
 
 ErrorStatus sd_driver_bufferswitcher_emptying(){
 	uint8_t i, currentBufferFilled = 255;
-	uint32_t adress;
+	//uint32_t adress;
 
 
 
@@ -176,11 +177,11 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 	uart_send((int8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer,DATA_CMD_SIZE);
 #else
 
-
+/*
     adress = fs.database++;
     adress *=512;
     sd_driver_cc2541_write(adress , 512 , (uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer);
-
+*/
 
 #endif
 
