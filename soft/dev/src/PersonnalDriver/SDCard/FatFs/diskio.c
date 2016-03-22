@@ -148,11 +148,11 @@ DRESULT disk_read (
 	address = sector*SECTOR_SIZE;
 
 	do{
-		sd_spi_send_cmd(18, address);
+		sd_spi_send_cmd(17, address);
 		responseR1 = sd_spi_read_R1();
 		i++;
 	}while(responseR1 != 0 && i< 128);
-
+	//while (((tmp & 0x80) != 0) && i < SD_CMD_TIMEOUT);
 	if( i > 128 ){
 
 		return RES_ERROR;
@@ -165,19 +165,18 @@ DRESULT disk_read (
 	responseR1 = sd_spi_read_R1();
 */
 	for( i = 0 ; i < count ; i++ ){
-		sd_spi_read_data_packet(DATA_TOKEN_CMD18, SECTOR_SIZE, (buff+i*SECTOR_SIZE) );
+		sd_spi_read_data_packet(DATA_TOKEN_CMD17, SECTOR_SIZE, (buff+i*SECTOR_SIZE) );
 	}
 
+
+	/*
 	sd_spi_send_cmd(12, 0);
 
 	// wait one byte
 	sd_spi_read_R1();
 	//command response
 	responseR1 = sd_spi_read_R1();
-//	responseR1 = 0x00;
-//    do{
-//    	responseR1 = sd_spi_read_R1();
-//    }while(responseR1 != 0xFF);
+*/
 
     return RES_OK;
 }

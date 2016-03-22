@@ -2456,6 +2456,9 @@ FRESULT f_open (
 	DIR dj;
 	BYTE *dir;
 	DEFINE_NAMEBUF;
+
+#warning à enlever
+	uint16_t test;
 #if !_FS_READONLY
 	DWORD dw, cl;
 #endif
@@ -2486,6 +2489,8 @@ FRESULT f_open (
 #endif
 		}
 		/* Create or Open a file */
+#warning à enlever
+	test = mode & (FA_CREATE_ALWAYS | FA_OPEN_ALWAYS | FA_CREATE_NEW);
 		if (mode & (FA_CREATE_ALWAYS | FA_OPEN_ALWAYS | FA_CREATE_NEW)) {
 			if (res != FR_OK) {					/* No file, create new */
 				if (res == FR_NO_FILE)			/* There is no file to open, create a new entry */

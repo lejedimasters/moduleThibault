@@ -16,7 +16,7 @@
 sd_buffer_switcher_typedef buffer_switcher;
 
 extern FATFS fs;
-
+extern FIL fil;
 
 
 
@@ -150,6 +150,7 @@ ErrorStatus sd_driver_write_to_bufferswitcher( uint8_t *temp_buff, uint16_t *rem
 
 ErrorStatus sd_driver_bufferswitcher_emptying(){
 	uint8_t i, currentBufferFilled = 255;
+	uint16_t nbbyte;
 	//uint32_t adress;
 
 
@@ -182,7 +183,12 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
     adress *=512;
     sd_driver_cc2541_write(adress , 512 , (uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer);
 */
-
+	f_open(&fil, "TEST.txt", FA_READ);
+	f_write(&fil,
+			(uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer,
+			512,
+			nbbyte);
+	f_close(&fil);
 #endif
 
 	buffer_switcher.buffer_switch[currentBufferFilled].status = buffer_status_typedef_empty;

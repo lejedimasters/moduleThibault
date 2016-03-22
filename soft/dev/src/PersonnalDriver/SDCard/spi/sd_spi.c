@@ -257,16 +257,12 @@ uint8_t sd_spi_read_R1( void )
     uint8_t dummy = 0xFF,i=0;
 
 
-    //do{
+    do{
 
 		// read the R response
     sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
-    sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
-    //sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
 
-    //sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
-	//	sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
-    //}while(i++ < 127 && (buffer_to_read == 0xFF));
+    }while(i++ < 127 && ((buffer_to_read & 0x80) == 0x80));
 
     // return the response
     return buffer_to_read;
@@ -371,7 +367,8 @@ void sd_spi_send_data_packet(uint32_t data_token , uint16_t length , const uint8
 void sd_spi_read_data_packet(uint32_t data_token , uint16_t length , uint8_t *data)
 {
 	uint16_t i;
-
+    uint8_t buffer_to_read;
+    uint8_t dummy = 0xFF;
 
 
     for(i=0; i<(length+2) ; i++){
@@ -381,10 +378,22 @@ void sd_spi_read_data_packet(uint32_t data_token , uint16_t length , uint8_t *da
     buffer[length+1] = 0;// CRC
     buffer[length+2] = 0;// CRC
     //spi_driver_cc2541_read(512, data);
+
+
+
+
+    do{
+
+		// read the R response
+    	sd_spi_transmit_receive(&dummy, &buffer_to_read, 1);
+
+    }while( (i++ < 127) && ((buffer_to_read == 0xFF) | (buffer_to_read  != data_token))  );
+
+
     sd_spi_transmit_receive(buffer, buffer, 515);
 
     for(i=0; i<length ; i++){
-    	data[i] = buffer[i+1];
+    	data[i] = buffer[i+3];
     }
 }
 

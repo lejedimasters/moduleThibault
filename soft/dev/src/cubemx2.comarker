@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <breakpoints>
 <breakpoint enabled="true" persistant="true" registered="true">
-<resource path="/cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c" type="1"/>
-<marker lineNumber="384" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
-<attrib name="message" value="Line breakpoint: sd_spi.c [line: 384]"/>
+<resource path="/cubemx2/Src/main.c" type="1"/>
+<marker lineNumber="139" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint: main.c [line: 139]"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
-<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="C:\Projet\moduleThibault\soft\dev\src\PersonnalDriver\SDCard\spi\sd_spi.c"/>
+<attrib name="org.eclipse.cdt.debug.core.installCount" value="1"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="C:\PROJET\Module_Thibault\soft\dev\src\Src\main.c"/>
 <attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
 <attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 <attrib name="org.eclipse.debug.core.enabled" value="true"/>
@@ -16,13 +16,13 @@
 </marker>
 </breakpoint>
 <breakpoint enabled="true" persistant="true" registered="true">
-<resource path="/cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c" type="1"/>
-<marker lineNumber="386" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
-<attrib name="message" value="Line breakpoint: sd_spi.c [line: 386]"/>
+<resource path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c" type="1"/>
+<marker lineNumber="186" type="org.eclipse.cdt.debug.core.cLineBreakpointMarker">
+<attrib name="message" value="Line breakpoint: sd_driver.c [line: 186]"/>
 <attrib name="org.eclipse.cdt.debug.core.condition" value=""/>
 <attrib name="org.eclipse.debug.core.id" value="org.eclipse.cdt.debug.core"/>
-<attrib name="org.eclipse.cdt.debug.core.installCount" value="0"/>
-<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="C:\Projet\moduleThibault\soft\dev\src\PersonnalDriver\SDCard\spi\sd_spi.c"/>
+<attrib name="org.eclipse.cdt.debug.core.installCount" value="1"/>
+<attrib name="org.eclipse.cdt.debug.core.sourceHandle" value="C:\PROJET\Module_Thibault\soft\dev\src\PersonnalDriver\SDCard\sd_driver.c"/>
 <attrib name="org.eclipse.cdt.debug.core.breakpointType" value="0"/>
 <attrib name="org.eclipse.cdt.debug.core.ignoreCount" value="0"/>
 <attrib name="org.eclipse.debug.core.enabled" value="true"/>

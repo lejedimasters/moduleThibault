@@ -116,7 +116,7 @@ int main(void)
 		        res = f_mount(&fs, "", 1);
 		   }
 
-		   res = f_open(&fil, "TEST.txt", FA_READ);
+		   res = f_open(&fil, "TEST.txt", FA_CREATE_ALWAYS);
 		    if (res){
 		    	while(1);
 		    }
@@ -124,8 +124,10 @@ int main(void)
 
 
 		    /* Read all lines and display it */
+		    /*
 		    while (f_gets(line, sizeof line, &fil))
 		        printf(line);
+		        */
 /*
 		   // find the file TEST.txt
 		   res = FR_DISK_ERR;
@@ -247,6 +249,7 @@ void TIM4_IRQHandler(void)
 #elif SD_MODE
 	lsm9_data_typedef data;
 	static uint32_t time = 0x0;
+
 #endif
 
 
@@ -289,6 +292,8 @@ void TIM4_IRQHandler(void)
 				data.gyroscope.Z = 6666;
 				data.accelerometry.Z = 3333;
 				data.magnotemeter.Z = 9999;
+
+
 
 				sd_driver_fill_buffer(&data,time);
 				time += 491;
