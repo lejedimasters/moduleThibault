@@ -15,9 +15,10 @@ SPI_HandleTypeDef hspi1;
 
 void lsm9_spi_init(){
 	GPIO_InitTypeDef GPIO_InitStruct;
-
+/*
 	__GPIOB_CLK_ENABLE();
 	__GPIOA_CLK_ENABLE();
+	*/
 	/* Initialisation du spi*/
 	hspi1.Instance = SPI1;
 	hspi1.Init.Mode = SPI_MODE_MASTER;
@@ -36,19 +37,19 @@ void lsm9_spi_init(){
 
 	ENABLE_CS_XM_GPIO_CLOCK();
 	/* PIN CS XM */
-	GPIO_InitStruct.Pin = CS_XM_PIN;
+	GPIO_InitStruct.Pin = GPIO_PIN_CS_LSM_M;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(CS_XM_GPIOBLOCK, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIO_BLOCK_CS_LSM_M, &GPIO_InitStruct);
 
 	ENABLE_CS_G_GPIO_CLOCK();
 	/* PIN CS G */
-	GPIO_InitStruct.Pin = CS_G_PIN;
+	GPIO_InitStruct.Pin = GPIO_PIN_CS_LSM_AG;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIO_BLOCK_CS_LSM_AG, &GPIO_InitStruct);
 
 
 

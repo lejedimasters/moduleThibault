@@ -14,7 +14,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "error.h"
-
+#include "board.h"
 
 #define CS_XM_PIN					GPIO_PIN_6
 #define CS_XM_GPIOBLOCK				GPIOB

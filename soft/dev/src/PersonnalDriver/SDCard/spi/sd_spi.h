@@ -14,6 +14,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "error.h"
+#include "board.h"
 
 #define WAIT_N_MS(n) {											\
 						uint16_t i;								\

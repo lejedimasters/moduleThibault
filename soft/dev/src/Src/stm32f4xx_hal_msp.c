@@ -33,6 +33,8 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "board.h"
+
 
 /* USER CODE BEGIN 0 */
 
@@ -77,7 +79,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     PB3     ------> SPI1_SCK
     */
     __GPIOA_CLK_ENABLE();
-    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+    GPIO_InitStruct.Pin = GPIO_PIN_SPI_MOSI|GPIO_PIN_SPI_CLK|GPIO_PIN_SPI_CS;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
@@ -85,7 +87,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     __GPIOB_CLK_ENABLE();
-    GPIO_InitStruct.Pin = GPIO_PIN_3;
+    GPIO_InitStruct.Pin = GPIO_PIN_SPI_MISO ;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
@@ -116,9 +118,9 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     PA7     ------> SPI1_MOSI
     PB3     ------> SPI1_SCK
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_4|GPIO_PIN_6|GPIO_PIN_7);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_SPI_MOSI|GPIO_PIN_SPI_CLK|GPIO_PIN_SPI_CS);
 
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_3);
+    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_SPI_MISO);
 
   }
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
@@ -178,7 +180,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     PA3     ------> USART2_RX 
     */
     __GPIOA_CLK_ENABLE();
-    GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_3;
+    GPIO_InitStruct.Pin = GPIO_PIN_UART_RX|GPIO_PIN_UART_TX;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
@@ -207,7 +209,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
     PA2     ------> USART2_TX
     PA3     ------> USART2_RX 
     */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_UART_RX|GPIO_PIN_UART_TX);
 
   }
   /* USER CODE BEGIN USART2_MspDeInit 1 */

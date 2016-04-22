@@ -69,12 +69,12 @@ void sd_spi_init_low_speed(){
 	HAL_SPI_Init(&hspi1);
 
 
-	/* PIN CS XM */
-	GPIO_InitStruct.Pin = GPIO_PIN_6;
+	/* PIN CS SD */
+	GPIO_InitStruct.Pin = GPIO_PIN_CS_SDCARD;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIO_BLOCK_CS_SDCARD, &GPIO_InitStruct);
 }
 
 
@@ -90,10 +90,9 @@ void sd_spi_init_low_speed(){
 void sd_spi_init_high_speed(){
 	GPIO_InitTypeDef GPIO_InitStruct;
 
-	__GPIOB_CLK_ENABLE();
-	__GPIOA_CLK_ENABLE();
+	__GPIOC_CLK_ENABLE();
 	/* Initialisation du spi*/
-	hspi1.Instance = SPI1;
+	hspi1.Instance = SPI3;
 	hspi1.Init.Mode = SPI_MODE_MASTER;
 	hspi1.Init.Direction = SPI_DIRECTION_2LINES;
 	hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
@@ -109,11 +108,11 @@ void sd_spi_init_high_speed(){
 
 
 	/* PIN CS XM */
-	GPIO_InitStruct.Pin = GPIO_PIN_6;
+	GPIO_InitStruct.Pin = GPIO_PIN_CS_SDCARD;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIO_BLOCK_CS_SDCARD, &GPIO_InitStruct);
 }
 /** \fn void
  * \param[in] 
@@ -156,7 +155,7 @@ ERROR_status dummyclock(){
  */
 void sd_spi_cs_down(){
 
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET );
+	HAL_GPIO_WritePin(GPIO_BLOCK_CS_SDCARD, GPIO_PIN_CS_SDCARD, GPIO_PIN_RESET );
 }
 
 /** \fn void
@@ -170,5 +169,5 @@ void sd_spi_cs_down(){
  */
 void sd_spi_cs_up(){
 
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET );
+	HAL_GPIO_WritePin(GPIO_BLOCK_CS_SDCARD, GPIO_PIN_CS_SDCARD, GPIO_PIN_SET );
 }
