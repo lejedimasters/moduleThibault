@@ -16,14 +16,6 @@
 #include "error.h"
 #include "board.h"
 
-#define CS_XM_PIN					GPIO_PIN_6
-#define CS_XM_GPIOBLOCK				GPIOB
-#define ENABLE_CS_XM_GPIO_CLOCK()	__GPIOB_CLK_ENABLE()
-
-
-#define CS_G_PIN		GPIO_PIN_2
-#define CS_G_GPIOBLOCK	GPIOB
-#define ENABLE_CS_G_GPIO_CLOCK()	__GPIOB_CLK_ENABLE()
 
 
 void lsm9_spi_init();

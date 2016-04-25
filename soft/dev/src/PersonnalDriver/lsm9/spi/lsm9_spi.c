@@ -35,7 +35,7 @@ void lsm9_spi_init(){
 	HAL_SPI_Init(&hspi1);
 
 
-	ENABLE_CS_XM_GPIO_CLOCK();
+
 	/* PIN CS XM */
 	GPIO_InitStruct.Pin = GPIO_PIN_CS_LSM_M;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -43,7 +43,7 @@ void lsm9_spi_init(){
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
 	HAL_GPIO_Init(GPIO_BLOCK_CS_LSM_M, &GPIO_InitStruct);
 
-	ENABLE_CS_G_GPIO_CLOCK();
+
 	/* PIN CS G */
 	GPIO_InitStruct.Pin = GPIO_PIN_CS_LSM_AG;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
