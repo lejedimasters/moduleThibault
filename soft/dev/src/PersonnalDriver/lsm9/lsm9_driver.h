@@ -60,8 +60,9 @@ typedef struct
 
 typedef enum
 {
-	lsm9_sensor_typedef_XM,
-	lsm9_sensor_typedef_G
+	lsm9_sensor_typedef_X,
+	lsm9_sensor_typedef_G,
+	lsm9_sensor_typedef_M
 }lsm9_sensor_typedef;
 
 

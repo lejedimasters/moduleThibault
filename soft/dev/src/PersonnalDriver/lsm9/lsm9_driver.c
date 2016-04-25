@@ -35,7 +35,7 @@ ERROR_status lsm9_driver_init( void ){
 
 	DELAY_N_MS(100);
 
-
+/*
 	      // Initialisation accéléromètre/magnétomètre
 	      lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_XM); // Reset
 	      lsm9_driver_write_register(REG_CNTRL1_ADDR, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_XM);
@@ -48,6 +48,24 @@ ERROR_status lsm9_driver_init( void ){
 	      lsm9_driver_write_register(CTRL_REG5, 0x80, lsm9_sensor_typedef_G);				 // Reset
 	      lsm9_driver_write_register(CTRL_REG1, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
 	      lsm9_driver_write_register(CTRL_REG4, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
+*/
+
+			lsm9_driver_write_register(0x22, 0b10000000, lsm9_sensor_typedef_G); // Reset ACC/GYR
+			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
+
+		// Accéléro Gyroscope
+			lsm9_driver_write_register(0x10, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG1_G, ODR 119Hz, 2000dps, defaut bandwitch
+			lsm9_driver_write_register(0x1E, 0b00111000, lsm9_sensor_typedef_G); // CTRL_REG4, x,y,z Gyr enable
+			lsm9_driver_write_register(0x1F, 0b00111000, lsm9_sensor_typedef_G); //CTRL_REG5_XL, x,y,z Acc enable
+			lsm9_driver_write_register(0x20, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG6_XL, ODR 119 Hz
+
+		// Magnétomètre
+			lsm9_driver_write_register(0x20, 0b00011100|0b00000010, lsm9_sensor_typedef_M); // CTRL_REG1_M, ODR 80Hz, FAST ODR
+
+
+
+
+
 
 
 	      return ERROR_status_NOERROR;
@@ -82,7 +100,7 @@ ERROR_status lsm9_driver_get_data( lsm9_data_typedef *data){
 ERROR_status lsm9_driver_get_accelerometry( acc_data_typedef *data ){
 	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-	lsm9_driver_read_registers(REG_ACC_DATA_ADDR,readTab,7,lsm9_sensor_typedef_XM);
+	lsm9_driver_read_registers(0x28,readTab,7,lsm9_sensor_typedef_X);
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
@@ -101,7 +119,7 @@ ERROR_status lsm9_driver_get_accelerometry( acc_data_typedef *data ){
 ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
 	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-	lsm9_driver_read_registers(REG_GYR_DATA_ADDR,readTab,7,lsm9_sensor_typedef_G);
+	lsm9_driver_read_registers(0x18,readTab,7,lsm9_sensor_typedef_G);
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
@@ -120,7 +138,7 @@ ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
 ERROR_status lsm9_driver_get_magnotemeter( mag_data_typedef *data){
 	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-	lsm9_driver_read_registers(REG_MAG_DATA_ADDR,readTab,7,lsm9_sensor_typedef_XM);
+	lsm9_driver_read_registers(0x28,readTab,7,lsm9_sensor_typedef_M);
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
@@ -154,12 +172,15 @@ ERROR_status lsm9_driver_write_register(uint8_t reg, uint8_t value, lsm9_sensor_
 
 
 
-	if( sensor == lsm9_sensor_typedef_XM ){
-		lsm9_spi_transmit_receive_XM(readTab,readTab,2);
+	if( sensor == lsm9_sensor_typedef_X ){
+		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
 
 	}
+	else if( sensor == lsm9_sensor_typedef_M ) {
+		lsm9_spi_transmit_receive_M( readTab, readTab, 2);
+	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_G( readTab, readTab, 2);
+		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
 	}
 	else{
 
@@ -194,12 +215,14 @@ ERROR_status lsm9_driver_read_register(uint8_t reg, uint8_t *value, lsm9_sensor_
 
 
 
-	if( sensor == lsm9_sensor_typedef_XM ){
-		lsm9_spi_transmit_receive_XM(readTab,readTab,2);
-
+	if( sensor == lsm9_sensor_typedef_X ){
+		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
+	}
+	else if( sensor == lsm9_sensor_typedef_M ) {
+		lsm9_spi_transmit_receive_M( readTab, readTab, 2);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_G( readTab, readTab, 2);
+		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
 	}
 	else{
 
@@ -241,11 +264,14 @@ ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t si
 		readTab[i] = value[i-1];
 	}
 
-	if( sensor == lsm9_sensor_typedef_XM ){
-		lsm9_spi_transmit_receive_XM( readTab, readTab, size);
+	if( sensor == lsm9_sensor_typedef_X ){
+		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+	}
+	else if( sensor == lsm9_sensor_typedef_M ) {
+		lsm9_spi_transmit_receive_M( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_G( readTab, readTab, size);
+		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
 	}
 	else{
 
@@ -262,7 +288,7 @@ ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t si
  * \author T.Folin
  * \test
  * \brief	Function for read values in some lsm9 register
- * \deprecated
+ * \deprecatedk
  *            SLD_
 */
 ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t size, lsm9_sensor_typedef sensor){
@@ -283,11 +309,14 @@ ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t siz
 	readTab[0] = SPI_READ | INC | reg;
 	//readTab[1] = value;
 
-	if( sensor == lsm9_sensor_typedef_XM ){
-		lsm9_spi_transmit_receive_XM( readTab, readTab, size);
+	if( sensor == lsm9_sensor_typedef_X ){
+		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+	}
+	else if( sensor == lsm9_sensor_typedef_M ) {
+		lsm9_spi_transmit_receive_M( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_G( readTab, readTab, size);
+		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
 	}
 	else{
 		return -1;
