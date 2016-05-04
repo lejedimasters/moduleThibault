@@ -43,7 +43,7 @@ void sd_spi_init_low_speed(){
 	__GPIOB_CLK_ENABLE();
 	__GPIOA_CLK_ENABLE();
 	/* Initialisation du spi*/
-	hspi3.Instance = SPI1;
+	hspi3.Instance = SPI3;
 	hspi3.Init.Mode = SPI_MODE_MASTER;
 	hspi3.Init.Direction = SPI_DIRECTION_2LINES;
 	hspi3.Init.DataSize = SPI_DATASIZE_8BIT;

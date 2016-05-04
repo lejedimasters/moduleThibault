@@ -31,6 +31,7 @@
  */
 ERROR_status lsm9_driver_init( void ){
 
+	uint8_t val[5];
 	lsm9_spi_init();
 
 	DELAY_N_MS(100);
@@ -49,6 +50,10 @@ ERROR_status lsm9_driver_init( void ){
 	      lsm9_driver_write_register(CTRL_REG1, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
 	      lsm9_driver_write_register(CTRL_REG4, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
 */
+	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_G);
+
+	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_M);
+
 
 			lsm9_driver_write_register(0x22, 0b10000000, lsm9_sensor_typedef_G); // Reset ACC/GYR
 			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG

@@ -89,10 +89,10 @@ int main(void)
 	SystemClock_Config();
 	HAL_Init();
 
-
-
-
-
+	__GPIOA_CLK_ENABLE();
+	__GPIOB_CLK_ENABLE();
+	__GPIOC_CLK_ENABLE();
+	__GPIOD_CLK_ENABLE();
 
 
 
@@ -107,7 +107,7 @@ int main(void)
 		TIM4_init();
 	#elif SD_MODE
 
-
+/*
 		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
@@ -118,8 +118,8 @@ int main(void)
 		   res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
-		    }
-
+		    }*/
+		   lsm9_driver_init();
 		uart_init();
 
 		TIM4_init();
@@ -266,6 +266,7 @@ void TIM4_IRQHandler(void)
 
 				seq();
 			#elif SD_MODE
+				/*
 				data.gyroscope.X = 4444;
 				data.accelerometry.X = 1111;
 				data.magnotemeter.X = 7777;
@@ -276,8 +277,9 @@ void TIM4_IRQHandler(void)
 
 				data.gyroscope.Z = 6666;
 				data.accelerometry.Z = 3333;
-				data.magnotemeter.Z = 9999;
+				data.magnotemeter.Z = 9999;*/
 
+				lsm9_driver_get_data(&data);
 				sd_driver_fill_buffer(&data,time);
 				time += 491;
 				sd_driver_bufferswitcher_emptying();

@@ -79,7 +79,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     PB3     ------> SPI1_SCK
     */
     __GPIOA_CLK_ENABLE();
-    GPIO_InitStruct.Pin = GPIO_PIN_SPI1_MOSI|GPIO_PIN_SPI1_CLK|GPIO_PIN_CS_LSM_M;
+    GPIO_InitStruct.Pin = GPIO_PIN_SPI1_MOSI|GPIO_PIN_SPI1_CLK|GPIO_PIN_CS_LSM_M|GPIO_PIN_CS_LSM_AG;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
@@ -93,6 +93,41 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* USER CODE BEGIN SPI1_MspInit 1 */
+
+  /* USER CODE END SPI1_MspInit 1 */
+  }
+  else  if(hspi->Instance==SPI3)
+  {
+  /* USER CODE BEGIN SPI1_MspInit 0 */
+
+  /* USER CODE END SPI1_MspInit 0 */
+    /* Peripheral clock enable */
+    __SPI3_CLK_ENABLE();
+
+
+
+    GPIO_InitStruct.Pin = GPIO_PIN_SPI3_MOSI|GPIO_PIN_SPI3_CLK;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+    HAL_GPIO_Init(GPIO_BLOCK_SPI3_CLK, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_CS_SDCARD;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+    HAL_GPIO_Init(GPIO_BLOCK_CS_SDCARD, &GPIO_InitStruct);
+
+    GPIO_InitStruct.Pin = GPIO_PIN_SPI3_MISO ;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+    HAL_GPIO_Init(GPIO_BLOCK_SPI3_CLK, &GPIO_InitStruct);
 
   /* USER CODE BEGIN SPI1_MspInit 1 */
 
@@ -121,6 +156,22 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_SPI1_MOSI|GPIO_PIN_SPI1_CLK|GPIO_PIN_CS_LSM_M);
 
     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_SPI1_MISO);
+
+  }
+  else if(hspi->Instance==SPI3)
+{
+	  /* USER CODE BEGIN SPI1_MspDeInit 0 */
+
+	  /* USER CODE END SPI1_MspDeInit 0 */
+	    /* Peripheral clock disable */
+	    __SPI3_CLK_DISABLE();
+
+	    HAL_GPIO_DeInit(GPIO_BLOCK_SPI3_MOSI, GPIO_PIN_SPI3_MOSI);
+	    HAL_GPIO_DeInit(GPIO_BLOCK_SPI3_MISO, GPIO_PIN_SPI3_MISO);
+	    HAL_GPIO_DeInit(GPIO_BLOCK_SPI3_CLK, GPIO_PIN_SPI3_CLK);
+	    HAL_GPIO_DeInit(GPIO_BLOCK_CS_SDCARD, GPIO_PIN_CS_SDCARD);
+
+
 
   }
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
