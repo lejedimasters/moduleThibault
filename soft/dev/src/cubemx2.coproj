@@ -83,11 +83,10 @@
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cm3.h" path="Drivers/CMSIS/Include/core_cm3.h" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f415xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f415xx.h" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h" type="1"/>
     <File name="PersonnalDriver/SDCard" path="" type="2"/>
     <File name="PersonnalDriver/Uart/uart.h" path="PersonnalDriver/Uart/uart.h" type="1"/>
@@ -122,8 +121,8 @@
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cm0plus.h" path="Drivers/CMSIS/Include/core_cm0plus.h" type="1"/>
     <File name="PersonnalDriver/Uart" path="" type="2"/>
-    <File name="stdio" path="" type="2"/>
     <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
+    <File name="stdio" path="" type="2"/>
     <File name="PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.c" path="PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.c" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f437xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f437xx.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h" type="1"/>
@@ -170,8 +169,8 @@
     <File name="Drivers/CMSIS/Include/core_cm7.h" path="Drivers/CMSIS/Include/core_cm7.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" path="" type="2"/>
@@ -185,7 +184,6 @@
     <File name="PersonnalDriver/lsm9/lsm9_driver.c" path="PersonnalDriver/lsm9/lsm9_driver.c" type="1"/>
     <File name="PersonnalDriver/lsm9/lsm9_register_XM_def.h" path="PersonnalDriver/lsm9/lsm9_register_XM_def.h" type="1"/>
     <File name="PersonnalDriver/SDCard/FatFs_light/diskio.c" path="PersonnalDriver/SDCard/FatFs_light/diskio.c" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f410cx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f410cx.h" type="1"/>
     <File name="PersonnalDriver/lsm9/spi/lsm9_spi.h" path="PersonnalDriver/lsm9/spi/lsm9_spi.h" type="1"/>
