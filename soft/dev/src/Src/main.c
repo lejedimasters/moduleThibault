@@ -277,12 +277,15 @@ void TIM4_IRQHandler(void)
 
 				data.gyroscope.Z = 6666;
 				data.accelerometry.Z = 3333;
-				data.magnotemeter.Z = 9999;*/
+				data.magnotemeter.Z = 9999;
 
 				lsm9_driver_get_data(&data);
 				sd_driver_fill_buffer(&data,time);
 				time += 491;
-				sd_driver_bufferswitcher_emptying();
+				sd_driver_bufferswitcher_emptying();*/
+
+
+				lsm9_driver_init();
 			#endif
 
         }
