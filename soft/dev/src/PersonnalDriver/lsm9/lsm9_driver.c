@@ -34,7 +34,7 @@ ERROR_status lsm9_driver_init( void ){
 	uint8_t val[5];
 	lsm9_spi_init();
 
-	DELAY_N_MS(100);
+	DELAY_N_MS(500);
 
 /*
 	      // Initialisation accéléromètre/magnétomètre
@@ -56,7 +56,7 @@ ERROR_status lsm9_driver_init( void ){
 
 
 			lsm9_driver_write_register(0x22, 0b10000000, lsm9_sensor_typedef_G); // Reset ACC/GYR
-			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
+/*			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
 
 		// Accéléro Gyroscope
 			lsm9_driver_write_register(0x10, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG1_G, ODR 119Hz, 2000dps, defaut bandwitch
@@ -67,7 +67,7 @@ ERROR_status lsm9_driver_init( void ){
 		// Magnétomètre
 			lsm9_driver_write_register(0x20, 0b00011100|0b00000010, lsm9_sensor_typedef_M); // CTRL_REG1_M, ODR 80Hz, FAST ODR
 
-
+*/
 
 
 
@@ -179,7 +179,6 @@ ERROR_status lsm9_driver_write_register(uint8_t reg, uint8_t value, lsm9_sensor_
 
 	if( sensor == lsm9_sensor_typedef_X ){
 		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
-
 	}
 	else if( sensor == lsm9_sensor_typedef_M ) {
 		lsm9_spi_transmit_receive_M( readTab, readTab, 2);

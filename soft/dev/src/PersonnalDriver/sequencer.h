@@ -9,12 +9,20 @@
 
 
 
-#define SCHEDULER_INT_MS	10
 #define SCHEDULER_ON	0
 #define SCHEDULER() 	seq()
 
 void seq( void );
-void seq_init( void );
+void seq_init( int32_t timebase );
+
+
+typedef enum
+{
+	seq_main_status_init_manip,
+	seq_main_status_periodic_manip,
+	seq_main_status_init_stop,
+	seq_main_status_periodic_stop
+}sequencer_main_status_typedef;
 
 
 #endif

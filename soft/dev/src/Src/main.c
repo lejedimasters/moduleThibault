@@ -55,7 +55,7 @@ void TIM4_init(void);
 
 TIM_HandleTypeDef TIM_Handle;
 
-
+#define 	TIME_BASE_MS	10
 #define 	IHM_MODE		0
 #define 	SENSOR_MODE		0
 #define		SD_MODE			1
