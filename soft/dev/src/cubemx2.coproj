@@ -77,9 +77,9 @@
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" type="1"/>
     <File name="PersonnalDriver/SDCard/sd_driver.c" path="PersonnalDriver/SDCard/sd_driver.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cm3.h" path="Drivers/CMSIS/Include/core_cm3.h" type="1"/>
