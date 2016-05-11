@@ -22,7 +22,8 @@ typedef enum
 	seq_main_status_periodic_manip,
 	seq_main_status_init_stop,
 	seq_main_status_periodic_stop,
-	seq_main_status_init_reset
+	seq_main_status_init_reset,
+	seq_main_status_periodic_reset
 }sequencer_main_status_typedef;
 
 

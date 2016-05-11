@@ -23,13 +23,13 @@ static uint32_t sequencer_led_get_blink_time( void );
 static void sequencer_led_blink_button_seq( void );
 static void sequencer_led_blink_mode_seq( void );
 
-void sequencer_led_init( uint32_t timeBase_ms ){
+void sequencer_led_init( uint32_t timeBase_ms, SEQ_LED_blink_action_typedef blink_action ){
 
 	driver_led_init();
 	G_timeBase_ms = timeBase_ms;
 	G_timeCounter_ms = 0;
 
-	G_current_blink_action = SEQ_LED_blink_action_idle;
+	G_current_blink_action = blink_action;
 	G_button_push_type = SEQ_BUTTON_push_type_typedef_no_push;
 }
 

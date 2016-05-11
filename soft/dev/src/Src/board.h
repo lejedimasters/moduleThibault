@@ -3,6 +3,12 @@
 #define BOARD_H
 
 
+
+#define		NUCLEO_BOARD	1
+#define		THsBOARD		0
+
+
+
 //GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7
 
 // Carte SD

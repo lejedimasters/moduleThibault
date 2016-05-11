@@ -52,16 +52,6 @@ int32_t driver_button_init(){
 
 	GPIO_InitTypeDef GPIO_InitStruct;
 
-//	/* GPIO Ports Clock Enable */
-//	__GPIOA_CLK_ENABLE();
-//
-//	/* Initialisation de la pin du bouton */
-//	GPIO_InitStruct.Pin = GPIO_PIN_5;
-//	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-//	GPIO_InitStruct.Pull = GPIO_NOPULL;
-//	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-//	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
 	/* GPIO Ports Clock Enable */
 	  __GPIOC_CLK_ENABLE();
 

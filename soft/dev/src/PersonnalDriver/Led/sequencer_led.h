@@ -28,7 +28,7 @@ typedef enum
 }SEQ_LED_blink_action_typedef;
 
 
-void sequencer_led_init( uint32_t timeBase_ms );
+void sequencer_led_init( uint32_t timeBase_ms, SEQ_LED_blink_action_typedef blink_action  );
 void sequencer_led_set_blink_action( SEQ_LED_blink_action_typedef blink_action, SEQ_BUTTON_push_type_typedef button_push_type  );
 void sequencer_led_execute( void );
 

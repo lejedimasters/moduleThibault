@@ -37,6 +37,7 @@
 #include "stdio.h"
 #include "lsm9_driver.h"
 #include "sd_driver.h"
+#include "board.h"
 /*
  *
  * */
@@ -56,34 +57,27 @@ void TIM4_init(void);
 TIM_HandleTypeDef TIM_Handle;
 
 #define 	TIME_BASE_MS	10
-#define 	IHM_MODE		0
-#define 	SENSOR_MODE		0
-#define		SD_MODE			1
 
-#if (IHM_MODE & SENSOR_MODE )
-	#error soit IHM_MODE soit SENSOR_MODE
+
+#if (NUCLEO_BOARD & THsBOARD )
+	#error soit NUCLEO_BOARD soit THsBOARD
 #endif
 
 
 
 
 
-#if SD_MODE
 
 FATFS fs;
 
-#endif
+
 
 
 int main(void)
 {
-	/*
-	   FRESULT res;
-	   uint32_t adress;
-	   */
-#if SD_MODE
+
 	FRESULT res;
-#endif
+
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	SystemClock_Config();
@@ -95,17 +89,7 @@ int main(void)
 	__GPIOD_CLK_ENABLE();
 
 
-
-	#if IHM_MODE
-
-		seq_init();
-		TIM4_init();
-	#elif SENSOR_MODE
-
-		lsm9_driver_init();
-		uart_init();
-		TIM4_init();
-	#elif SD_MODE
+	#if THsBOARD
 
 /*
 		sd_driver_init();
@@ -119,10 +103,14 @@ int main(void)
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
 		    }*/
-		   lsm9_driver_init();
+		lsm9_driver_init();
 		uart_init();
 
 		TIM4_init();
+	#elif	NUCLEO_BOARD
+		seq_init(10);
+		TIM4_init();
+
 
 	#endif
 
@@ -133,26 +121,6 @@ int main(void)
 
 	while (1){
 
-		#if SD_MODE
-
-/*
-		data.gyroscope.X = 4444;
-		data.accelerometry.X = 1111;
-		data.magnotemeter.X = 7777;
-
-		data.gyroscope.Y = 5555;
-		data.accelerometry.Y = 2222;
-		data.magnotemeter.Y = 8888;
-
-		data.gyroscope.Z = 6666;
-		data.accelerometry.Z = 3333;
-		data.magnotemeter.Z = 9999;
-
-		sd_driver_fill_buffer(&data,time);
-		time += 491;
-		sd_driver_bufferswitcher_emptying();
-*/
-		#endif
 	}
 }
 
@@ -213,7 +181,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 1000;
+	  TIM_Handle.Init.Prescaler = 5;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -227,12 +195,7 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
-	//uint8_t tab[3]={0};
-#if SENSOR_MODE
-	lsm9_data_typedef data;
-	static uint32_t time = 0x0;
-	ERROR_status error;
-#elif SD_MODE
+#if THsBOARD
 	lsm9_data_typedef data;
 	static uint32_t time = 0x0;
 #endif
@@ -247,25 +210,7 @@ void TIM4_IRQHandler(void)
             /*put your code here */
 
 
-			#if SENSOR_MODE
-
-            	error = lsm9_driver_get_data(&data);
-				data.time_ms = time;
-
-
-				if( error != ERROR_status_NOERROR){
-					while(1);
-				}
-				//lsm9_driver_read_register(0x0F,tab,lsm9_sensor_typedef_G);
-
-				uart_send_data_bytes(&data);
-				//uart_send_data_ASCII(&data);
-				time += 10;
-				//sd_driver_fill_buffer(&data,35000);
-			#elif IHM_MODE
-
-				seq();
-			#elif SD_MODE
+			#if THsBOARD
 				/*
 				data.gyroscope.X = 4444;
 				data.accelerometry.X = 1111;
@@ -286,6 +231,9 @@ void TIM4_IRQHandler(void)
 
 
 				lsm9_driver_init();
+			#elif	NUCLEO_BOARD
+				seq();
+
 			#endif
 
         }
