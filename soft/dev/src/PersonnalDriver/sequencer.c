@@ -38,12 +38,17 @@ void seq(){
 	// Incrementation du temps
 	G_time += G_timebase;
 
+	/*******************************************************************************/
+	/*******************************CHECK INPUT*************************************/
+	/*******************************************************************************/
 	// Verification des boutons
 	button = sequencer_button_get_push_type();
 
 
 
-
+	/*******************************************************************************/
+	/*******************************INPUT ACTION************************************/
+	/*******************************************************************************/
 
 	// Vérification du changement de mode courant
 	// Si une demande de changement de mode est effectue et que ce n'est pas le mode courant
@@ -63,6 +68,9 @@ void seq(){
 		G_seq_main_status = seq_main_status_init_reset;
 	}
 
+	/*******************************************************************************/
+	/*********************************ACTION MODE***********************************/
+	/*******************************************************************************/
 	// Action de gestion des modes
 	switch (G_seq_main_status){
 
@@ -72,7 +80,7 @@ void seq(){
 					lsm9_driver_init( );
 #elif NUCLEO_BOARD
 					sequencer_button_init(G_timebase);
-					sequencer_led_init(G_timebase, SEQ_LED_blink_action_manip);
+					//sequencer_led_init(G_timebase, SEQ_LED_blink_action_manip);
 #endif
 					G_timebase = 10;
 
@@ -136,6 +144,9 @@ void seq(){
 	}
 
 
+	/*******************************************************************************/
+	/***********************************LED ACTION**********************************/
+	/*******************************************************************************/
 	// Si un type d'appui bouton a ete effectue, on assigne l'action led periodique a effectuer
 	if( button != SEQ_BUTTON_push_type_typedef_no_push ){
 
@@ -184,13 +195,10 @@ void seq(){
 					break;
 		}
 	}
-
-	G_last_seq_main_status = G_seq_main_status;
-
-
-
-
 	// Actionnement des leds
 	sequencer_led_execute();
 
+
+
+	G_last_seq_main_status = G_seq_main_status;
 }

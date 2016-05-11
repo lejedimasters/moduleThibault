@@ -139,16 +139,65 @@ static uint32_t sequencer_led_get_blink_time( void ){
 }
 
 
+static uint32_t sequencer_led_get_blink_button_time( void ){
+	uint32_t blink_time;
+
+	switch (G_button_push_type) {
+		case SEQ_BUTTON_push_type_typedef_short_push:
+			blink_time = BLINK_ON_DEFAULT_VALUE_MS;
+			break;
+		case SEQ_BUTTON_push_type_typedef_two_short_push:
+			blink_time = BLINK_ON_DEFAULT_VALUE_MS;
+			break;
+		case SEQ_BUTTON_push_type_typedef_long_push:
+			blink_time = BLINK_ON_LONG_VALUE_MS;
+			break;
+		default:
+			blink_time = BLINK_ON_ERROR_VALUE_MS;
+			break;
+	}
+
+	return blink_time;
+}
+
 static void sequencer_led_blink_button_seq( void ){
+	uint32_t time_ms;
+
+
+	// clignotement bouton
+	time_ms = sequencer_led_get_blink_button_time();
+
 	/* Temporisation après le switch de type de clignotement*/
 	if( G_timeCounter_ms < TEMPO_SWITCH_ACTION_MS ){
 		driver_led_reset();
 	} /* Clignotement correspondant au type de bouton afin de savoir si notre appui correspond à ce qu'on voulait */
 	else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + BLINK_TIME_CYCLE_BUTTON_MS) ){
 
+		if( G_button_push_type == SEQ_BUTTON_push_type_typedef_two_short_push ){ // Sequencement particuliers pour le double appui bouton
+			if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + time_ms) ){ /* Mode on du mode de clignotement */
 
+				driver_led_set();
+			}else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + 2*time_ms) ){	/* Mode off du mode de clignotement */
 
-		// clignotement bouton
+				driver_led_reset();
+			}else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + 3*time_ms) ){	/* Mode off du mode de clignotement */
+
+				driver_led_set();
+			}else{	/* Mode off du mode de clignotement */
+
+				driver_led_reset();
+			}
+		}else{
+
+			if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + time_ms) ){ /* Mode on du mode de clignotement */
+
+				driver_led_set();
+			}
+			else{	/* Mode off du mode de clignotement */
+
+				driver_led_reset();
+			}
+		}
 
 
 

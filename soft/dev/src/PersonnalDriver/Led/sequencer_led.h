@@ -35,6 +35,7 @@ void sequencer_led_execute( void );
 
 
 #define BLINK_ON_DEFAULT_VALUE_MS	100
+#define BLINK_ON_LONG_VALUE_MS		900
 #define BLINK_ON_ERROR_VALUE_MS		500
 
 #define BLINK_TIME_CYCLE_MANIP_MS	1000
