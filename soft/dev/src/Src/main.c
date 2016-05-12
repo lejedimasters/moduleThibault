@@ -71,6 +71,50 @@ TIM_HandleTypeDef TIM_Handle;
 FATFS fs;
 
 
+/*
+* DRDY_M		cpt  --> µc
+* INT_M		cpt  --> µc
+* INT1_A/G		cpt  --> µc
+* INT2_A/G		cpt  --> µc
+* DEN_A/G		cpt  <-- µc
+* */
+void debug_carte(){
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	GPIO_InitStruct.Pin = GPIO_PIN_DRDY_M;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIO_BLOCK_DRDY_M, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_INT_M;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIO_BLOCK_INT_M, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_INT1_AG;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIO_BLOCK_INT1_AG, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_INT2_AG;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIO_BLOCK_INT2_AG, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_DEN_AG;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+	HAL_GPIO_Init(GPIO_BLOCK_DEN_AG, &GPIO_InitStruct);
+
+
+	HAL_GPIO_WritePin(GPIO_BLOCK_DEN_AG, GPIO_PIN_DEN_AG, GPIO_PIN_RESET );
+}
+
 
 
 int main(void)
@@ -105,8 +149,11 @@ int main(void)
 		    }*/
 		lsm9_driver_init();
 		uart_init();
-
+		debug_carte();
 		TIM4_init();
+
+
+
 	#elif	NUCLEO_BOARD
 		seq_init(10);
 		TIM4_init();
@@ -181,7 +228,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = 1000;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
