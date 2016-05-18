@@ -18,7 +18,7 @@
 
 
 
-void lsm9_spi_init();
+void lsm9_spi_init( int nb );
 ERROR_status lsm9_spi_transmit_receive_XG(uint8_t *pTxData, uint8_t *pRxData, uint16_t Size);
 ERROR_status lsm9_spi_transmit_receive_M(uint8_t *pTxData, uint8_t *pRxData, uint16_t Size);
 

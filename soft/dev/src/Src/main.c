@@ -106,13 +106,12 @@ void debug_carte(){
 	HAL_GPIO_Init(GPIO_BLOCK_INT2_AG, &GPIO_InitStruct);
 
 	GPIO_InitStruct.Pin = GPIO_PIN_DEN_AG;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
 	HAL_GPIO_Init(GPIO_BLOCK_DEN_AG, &GPIO_InitStruct);
 
 
-	HAL_GPIO_WritePin(GPIO_BLOCK_DEN_AG, GPIO_PIN_DEN_AG, GPIO_PIN_RESET );
 }
 
 
@@ -167,7 +166,7 @@ int main(void)
 
 
 	while (1){
-		__WFI();
+		//__WFI();
 	}
 }
 

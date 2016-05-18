@@ -12,10 +12,13 @@
 #include "lsm9_driver.h"
 
 
+
+/* MACRO ULTRA APPROXIMATIVE  !!!!*/
 #define DELAY_1MS() 	{uint32_t i;						\
 						for(i = 0 ; i < (500000/350) ; i++ ){};	\
 	}
 
+/* MACRO ULTRA APPROXIMATIVE  !!!!*/
 #define DELAY_N_MS(n)	{uint32_t i;						\
 						for(i = 0 ; i < n ; i++ ){DELAY_1MS()};	\
 	}
@@ -32,7 +35,15 @@
 ERROR_status lsm9_driver_init( void ){
 
 	uint8_t val[5];
-	lsm9_spi_init();
+	static cpt = 0;
+
+
+	lsm9_spi_init(cpt);
+	cpt++;
+	if( cpt > 8){
+		cpt = 0;
+	}
+
 
 	DELAY_N_MS(500);
 
@@ -52,11 +63,25 @@ ERROR_status lsm9_driver_init( void ){
 */
 	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_G);
 
+	if( (val[0] != 0xFF) && (val[0] != 0x00)){
+		DELAY_N_MS(1);
+	}
+
+	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_X);
+
+	if( (val[0] != 0xFF) && (val[0] != 0x00)){
+		DELAY_N_MS(1);
+	}
+
 	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_M);
 
+	if( (val[0] != 0xFF) && (val[0] != 0x00)){
+		DELAY_N_MS(1);
+	}
 
+/*
 			lsm9_driver_write_register(0x22, 0b10000000, lsm9_sensor_typedef_G); // Reset ACC/GYR
-/*			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
+			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
 
 		// Accéléro Gyroscope
 			lsm9_driver_write_register(0x10, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG1_G, ODR 119Hz, 2000dps, defaut bandwitch
