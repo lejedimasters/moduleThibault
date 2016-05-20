@@ -65,12 +65,13 @@ void sequencer_led_execute( void ){
 
 	G_timeCounter_ms += G_timeBase_ms;
 	time_ms = sequencer_led_get_time_cycle();
+	// Dectection de fin d'un cycle de clignotement, reinitialisation
 	if( G_timeCounter_ms > time_ms ){
 		G_timeCounter_ms = 0;
 	}
 
 
-	/* Clignotement de switch d'etat */
+	/* Clignotement suite a un appui bouton */
 	if( G_new_blink_action == 1 ){
 
 		sequencer_led_blink_button_seq();
@@ -83,6 +84,7 @@ void sequencer_led_execute( void ){
 
 }
 
+/* Recuperation du temps de cycle d'un fonctionnement led pour chaque mode */
 static uint32_t sequencer_led_get_time_cycle( void ){
 	uint32_t time_cyle;
 
@@ -113,7 +115,7 @@ static uint32_t sequencer_led_get_time_cycle( void ){
 	return time_cyle;
 }
 
-
+/* Recuperation du temps d'allumage de la led pour chaque mode durant le cycle de fonctionnement led*/
 static uint32_t sequencer_led_get_blink_time( void ){
 	uint32_t blink_time;
 
@@ -138,7 +140,7 @@ static uint32_t sequencer_led_get_blink_time( void ){
 	return blink_time;
 }
 
-
+/* Recuperation du temps d'allumage de la led pour chaque type d'appui bouton durant le cycle de fonctionnement dedie*/
 static uint32_t sequencer_led_get_blink_button_time( void ){
 	uint32_t blink_time;
 
@@ -172,22 +174,24 @@ static void sequencer_led_blink_button_seq( void ){
 		driver_led_reset();
 	} /* Clignotement correspondant au type de bouton afin de savoir si notre appui correspond à ce qu'on voulait */
 	else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + BLINK_TIME_CYCLE_BUTTON_MS) ){
-
-		if( G_button_push_type == SEQ_BUTTON_push_type_typedef_two_short_push ){ // Sequencement particuliers pour le double appui bouton
+	
+	
+		// Sequencement /!\ particuliers  /!\ pour le double appui bouton
+		if( G_button_push_type == SEQ_BUTTON_push_type_typedef_two_short_push ){ 
 			if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + time_ms) ){ /* Mode on du mode de clignotement */
 
 				driver_led_set();
 			}else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + 2*time_ms) ){	/* Mode off du mode de clignotement */
 
 				driver_led_reset();
-			}else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + 3*time_ms) ){	/* Mode off du mode de clignotement */
+			}else if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + 3*time_ms) ){	/* Mode on du mode de clignotement */
 
 				driver_led_set();
 			}else{	/* Mode off du mode de clignotement */
 
 				driver_led_reset();
 			}
-		}else{
+		}else{// Sequencement general pour les appui bouton
 
 			if( G_timeCounter_ms < (TEMPO_SWITCH_ACTION_MS + time_ms) ){ /* Mode on du mode de clignotement */
 
@@ -213,6 +217,8 @@ static void sequencer_led_blink_button_seq( void ){
 		G_button_push_type = SEQ_BUTTON_push_type_typedef_no_push;
 	}
 }
+
+/* sequencer de clignotement pour les modes de clignotement led periode   (clignotement correspondant au mode de fonctionnement)*/
 static void sequencer_led_blink_mode_seq( void ){
 	uint32_t time_ms;
 

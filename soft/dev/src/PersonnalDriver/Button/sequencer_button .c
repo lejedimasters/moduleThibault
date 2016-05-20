@@ -60,35 +60,41 @@ SEQ_BUTTON_push_type_typedef sequencer_button_get_push_type(){
 	currentPushType = SEQ_BUTTON_push_type_typedef_no_push;
 	currentButtonStatus = driver_button_get_status();
 
+	// Si un rising edge a provoquer l'incrementation du compteur d'acquisition
 	if( G_acquisition_time_counter > 0 ){
 
+		// J'incremente le compteur d'acquisition
 		G_acquisition_time_counter += G_timebase;
 
+		// Je verifie l'etat haut du bouton
 		if( currentButtonStatus.value == BUTTON_value_typedef_SET ){
+			// Incrementation du compteur de temps haut du bouton
 			G_push_time_counter += G_timebase;
 		}
 
 		/* Timeout sur un temps d'appui trop long */
 		if( G_acquisition_time_counter > MAX_ACQUISITION_TIME_MS ){
 
-
+			// Si le temps d'etat haut correspond au temps d'acquisition
 			if( G_push_time_counter == G_acquisition_time_counter ){
+				// l'appui est considere comme un long
 				sequencer_button_reinit(&currentButtonStatus);
 				currentPushType = SEQ_BUTTON_push_type_typedef_long_push;
 			}
 			else{
+				// sinon cas etrange ??!!
 				sequencer_button_reinit(&currentButtonStatus);
 				currentPushType = SEQ_BUTTON_push_type_typedef_no_push;
 			}
 		}
 		else{
-			/* Detection du type d'appui */
+			/* Detection du type d'appui si aucun timeout */
 			currentPushType = sequencer_button_detect_push_type(&currentButtonStatus);
 		}
 
 
 
-
+		/* cas particuliers */
 		/* detection du double appui */
 		if( currentPushType == SEQ_BUTTON_push_type_typedef_short_push ){
 			if( G_old_push_type == SEQ_BUTTON_push_type_typedef_short_push ){
