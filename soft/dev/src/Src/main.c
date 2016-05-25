@@ -152,9 +152,10 @@ int main(void)
 		TIM4_init();
 
 
+#elif	NUCLEO_BOARD
 
-	#elif	NUCLEO_BOARD
-		seq_init(10);
+		//seq_init(10);
+		lsm9_driver_init();
 		TIM4_init();
 
 
@@ -244,6 +245,8 @@ void TIM4_IRQHandler(void)
 #if THsBOARD
 	lsm9_data_typedef data;
 	static uint32_t time = 0x0;
+#elif NUCLEO_BOARD
+	lsm9_data_typedef data;
 #endif
 
 
@@ -277,10 +280,13 @@ void TIM4_IRQHandler(void)
 
 
 				lsm9_driver_init();
-			#elif	NUCLEO_BOARD
-				seq();
+#elif	NUCLEO_BOARD
 
-			#endif
+				//seq();
+				//lsm9_driver_init();
+				lsm9_driver_get_data(&data);
+				data.time_ms = 0;
+#endif
 
         }
     }

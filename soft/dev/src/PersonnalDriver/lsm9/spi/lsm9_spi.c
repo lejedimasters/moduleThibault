@@ -70,7 +70,7 @@ void lsm9_spi_init(int nb){
 	hspi1.Init.Direction = SPI_DIRECTION_2LINES;
 	hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
 	hspi1.Init.NSS = SPI_NSS_SOFT;
-	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;  // clock < 10MHz
+	hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;  // clock < 10MHz
 	hspi1.Init.TIMode = SPI_TIMODE_DISABLED;
 	hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
 	hspi1.Init.CRCPolynomial = 10;

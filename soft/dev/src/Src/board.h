@@ -4,8 +4,8 @@
 
 
 
-#define		NUCLEO_BOARD	0
-#define		THsBOARD		1
+#define		NUCLEO_BOARD	1
+#define		THsBOARD		0
 
 
 
@@ -19,14 +19,23 @@
 #define GPIO_PIN_SPI3_CLK			GPIO_PIN_10	// verifie
 #define GPIO_BLOCK_SPI3_CLK			GPIOC		// verifie
 
-// LSM9DS1 SPI
-#define GPIO_PIN_SPI1_MOSI			GPIO_PIN_7	// verifie
-#define GPIO_BLOCK_SPI1_MOSI		GPIOA		// verifie
-#define GPIO_PIN_SPI1_MISO			GPIO_PIN_6	// verifie
-#define GPIO_BLOCK_SPI1_MISO		GPIOA		// verifie
-#define GPIO_PIN_SPI1_CLK			GPIO_PIN_3	// verifie
-#define GPIO_BLOCK_SPI1_CLK			GPIOB		// verifie
-
+#if THsBOARD
+	// LSM9DS1 SPI
+	#define GPIO_PIN_SPI1_MOSI			GPIO_PIN_7	// verifie
+	#define GPIO_BLOCK_SPI1_MOSI		GPIOA		// verifie
+	#define GPIO_PIN_SPI1_MISO			GPIO_PIN_6	// verifie
+	#define GPIO_BLOCK_SPI1_MISO		GPIOA		// verifie
+	#define GPIO_PIN_SPI1_CLK			GPIO_PIN_3	// verifie
+	#define GPIO_BLOCK_SPI1_CLK			GPIOB		// verifie
+#elif NUCLEO_BOARD
+	// LSM9DS1 SPI
+	#define GPIO_PIN_SPI1_MOSI			GPIO_PIN_7	// verifie
+	#define GPIO_BLOCK_SPI1_MOSI		GPIOA		// verifie
+	#define GPIO_PIN_SPI1_MISO			GPIO_PIN_6	// verifie
+	#define GPIO_BLOCK_SPI1_MISO		GPIOA		// verifie
+	#define GPIO_PIN_SPI1_CLK			GPIO_PIN_5	// verifie
+	#define GPIO_BLOCK_SPI1_CLK			GPIOA		// verifie
+#endif
 // LSM9DS1 OTHER
 #define GPIO_PIN_DRDY_M		GPIO_PIN_8
 #define GPIO_BLOCK_DRDY_M	GPIOB
@@ -46,10 +55,19 @@
 // Chip Select
 #define GPIO_PIN_CS_SDCARD			GPIO_PIN_2	// verifie
 #define GPIO_BLOCK_CS_SDCARD		GPIOD		// verifie
-#define GPIO_PIN_CS_LSM_M			GPIO_PIN_9	// verifie
-#define GPIO_BLOCK_CS_LSM_M			GPIOB		// verifie
-#define GPIO_PIN_CS_LSM_AG			GPIO_PIN_0	// verifie
-#define GPIO_BLOCK_CS_LSM_AG		GPIOC		// verifie
+
+#if THsBOARD
+	#define GPIO_PIN_CS_LSM_M			GPIO_PIN_9	// verifie
+	#define GPIO_BLOCK_CS_LSM_M			GPIOB		// verifie
+	#define GPIO_PIN_CS_LSM_AG			GPIO_PIN_0	// verifie
+	#define GPIO_BLOCK_CS_LSM_AG		GPIOC		// verifie
+#elif NUCLEO_BOARD
+	#define GPIO_PIN_CS_LSM_M			GPIO_PIN_2	// verifie
+	#define GPIO_BLOCK_CS_LSM_M			GPIOB		// verifie
+	#define GPIO_PIN_CS_LSM_AG			GPIO_PIN_6	// verifie
+	#define GPIO_BLOCK_CS_LSM_AG		GPIOB		// verifie
+#endif
+
 /*
 #define GPIO_PIN_CS_LSM_M			GPIO_PIN
 #define GPIO_BLOCK_CS_LSM_M			GPIO
