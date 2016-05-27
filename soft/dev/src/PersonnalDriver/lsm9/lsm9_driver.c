@@ -34,44 +34,42 @@ ERROR_status lsm9_driver_init( void ){
 	uint8_t val[5];
 	lsm9_spi_init();
 
+
+
+
+while(1){
+		lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_M);
+
+	lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_G);
 	DELAY_N_MS(500);
+}
+
 
 /*
-	      // Initialisation accéléromètre/magnétomètre
-	      lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_XM); // Reset
-	      lsm9_driver_write_register(REG_CNTRL1_ADDR, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_XM);
-	      lsm9_driver_write_register(REG_CNTRL2_ADDR, 0b00100000 , lsm9_sensor_typedef_XM); // ±16 g
-	      lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b01100000|TEMP_ON|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_XM);//  high resoluation
-	      lsm9_driver_write_register(REG_CNTRL6_ADDR, 0b01100000, lsm9_sensor_typedef_XM); // ± 12 gauss
-	      lsm9_driver_write_register(REG_CNTRL7_ADDR, 0b00000000, lsm9_sensor_typedef_XM); //Continuous-conversion mode
+	// Initialisation accéléromètre/magnétomètre
+	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_M); // Reset
+	lsm9_driver_write_register(REG_CNTRL1_ADDR, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(REG_CNTRL2_ADDR, 0b00100000 , lsm9_sensor_typedef_M); // ±16 g
+	lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b01100000|TEMP_ON|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_M);//  high resoluation
+	lsm9_driver_write_register(REG_CNTRL6_ADDR, 0b01100000, lsm9_sensor_typedef_M); // ± 12 gauss
+	lsm9_driver_write_register(REG_CNTRL7_ADDR, 0b00000000, lsm9_sensor_typedef_M); //Continuous-conversion mode
 
-	      // Initialisation gyroscope
-	      lsm9_driver_write_register(CTRL_REG5, 0x80, lsm9_sensor_typedef_G);				 // Reset
-	      lsm9_driver_write_register(CTRL_REG1, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
-	      lsm9_driver_write_register(CTRL_REG4, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
-*/
-	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_G);
-
-	lsm9_driver_read_register(0x0F,val,lsm9_sensor_typedef_M);
-
-
-			lsm9_driver_write_register(0x22, 0b10000000, lsm9_sensor_typedef_G); // Reset ACC/GYR
-/*			lsm9_driver_write_register(0x21, 0b00001000, lsm9_sensor_typedef_M); // CTRL_REG2_M, reset MAG
-
-		// Accéléro Gyroscope
-			lsm9_driver_write_register(0x10, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG1_G, ODR 119Hz, 2000dps, defaut bandwitch
-			lsm9_driver_write_register(0x1E, 0b00111000, lsm9_sensor_typedef_G); // CTRL_REG4, x,y,z Gyr enable
-			lsm9_driver_write_register(0x1F, 0b00111000, lsm9_sensor_typedef_G); //CTRL_REG5_XL, x,y,z Acc enable
-			lsm9_driver_write_register(0x20, 0b01100000|0b00011000, lsm9_sensor_typedef_G); // CTRL_REG6_XL, ODR 119 Hz
-
-		// Magnétomètre
-			lsm9_driver_write_register(0x20, 0b00011100|0b00000010, lsm9_sensor_typedef_M); // CTRL_REG1_M, ODR 80Hz, FAST ODR
-
+	// Initialisation gyroscope
+	lsm9_driver_write_register(CTRL_REG5, 0x80, lsm9_sensor_typedef_G);				 // Reset
+	lsm9_driver_write_register(CTRL_REG1, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
+	lsm9_driver_write_register(CTRL_REG4, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
 */
 
+	// Initialisation accéléromètre
+	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_X);
+	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_X);
+	lsm9_driver_write_register(REG_CNTRL5_ADDR, 0b10011000, lsm9_sensor_typedef_X);
 
-
-
+	// Initialisation magnétomètre
+	lsm9_driver_write_register(REG_GEN_MAG_ADDR, 0b10000000, lsm9_sensor_typedef_X);
+	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_X);
+	lsm9_driver_write_register(REG_CNTRL5_ADDR, TEMP_ON|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_X);//   0b11110100, lsm9_sensor_typedef_XM);
+	lsm9_driver_write_register(REG_CNTRL7_ADDR, 0b00000000, lsm9_sensor_typedef_X);
 
 	      return ERROR_status_NOERROR;
 }
@@ -178,13 +176,13 @@ ERROR_status lsm9_driver_write_register(uint8_t reg, uint8_t value, lsm9_sensor_
 
 
 	if( sensor == lsm9_sensor_typedef_X ){
-		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
+		lsm9_spi_transmit_receive_X(readTab,readTab,2);
 	}
 	else if( sensor == lsm9_sensor_typedef_M ) {
 		lsm9_spi_transmit_receive_M( readTab, readTab, 2);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
+		lsm9_spi_transmit_receive_G(readTab,readTab,2);
 	}
 	else{
 
@@ -220,13 +218,13 @@ ERROR_status lsm9_driver_read_register(uint8_t reg, uint8_t *value, lsm9_sensor_
 
 
 	if( sensor == lsm9_sensor_typedef_X ){
-		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
+		lsm9_spi_transmit_receive_X(readTab,readTab,2);
 	}
 	else if( sensor == lsm9_sensor_typedef_M ) {
 		lsm9_spi_transmit_receive_M( readTab, readTab, 2);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_XG(readTab,readTab,2);
+		lsm9_spi_transmit_receive_G(readTab,readTab,2);
 	}
 	else{
 
@@ -269,13 +267,13 @@ ERROR_status lsm9_driver_write_registers(uint8_t reg, uint8_t *value, uint8_t si
 	}
 
 	if( sensor == lsm9_sensor_typedef_X ){
-		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+		lsm9_spi_transmit_receive_X( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_M ) {
 		lsm9_spi_transmit_receive_M( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+		lsm9_spi_transmit_receive_G( readTab, readTab, size);
 	}
 	else{
 
@@ -314,13 +312,13 @@ ERROR_status lsm9_driver_read_registers(uint8_t reg, uint8_t *value, uint8_t siz
 	//readTab[1] = value;
 
 	if( sensor == lsm9_sensor_typedef_X ){
-		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+		lsm9_spi_transmit_receive_X( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_M ) {
 		lsm9_spi_transmit_receive_M( readTab, readTab, size);
 	}
 	else if( sensor == lsm9_sensor_typedef_G ) {
-		lsm9_spi_transmit_receive_XG( readTab, readTab, size);
+		lsm9_spi_transmit_receive_G( readTab, readTab, size);
 	}
 	else{
 		return -1;

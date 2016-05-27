@@ -104,7 +104,7 @@ int main(void)
 		        res = pf_open("TEST.txt");
 		    }*/
 		lsm9_driver_init();
-		uart_init();
+		//uart_init();
 
 		TIM4_init();
 	#elif	NUCLEO_BOARD
@@ -224,13 +224,13 @@ void TIM4_IRQHandler(void)
 				data.accelerometry.Z = 3333;
 				data.magnotemeter.Z = 9999;
 
-				lsm9_driver_get_data(&data);
+
 				sd_driver_fill_buffer(&data,time);
 				time += 491;
 				sd_driver_bufferswitcher_emptying();*/
 
-
-				lsm9_driver_init();
+lsm9_driver_get_data(&data);
+				//lsm9_driver_init();
 			#elif	NUCLEO_BOARD
 				seq();
 

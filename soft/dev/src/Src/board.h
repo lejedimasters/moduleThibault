@@ -4,8 +4,8 @@
 
 
 
-#define		NUCLEO_BOARD	1
-#define		THsBOARD		0
+#define		NUCLEO_BOARD	0
+#define		THsBOARD		1
 
 
 
@@ -20,20 +20,37 @@
 #define GPIO_BLOCK_SPI3_CLK			GPIOC		// verifie
 
 // LSM9DS1
+/*
+ *
+ *  n'est plus utilisé !!!!!!!!!!!!!!
 #define GPIO_PIN_SPI1_MOSI			GPIO_PIN_7	// verifie
 #define GPIO_BLOCK_SPI1_MOSI		GPIOA		// verifie
 #define GPIO_PIN_SPI1_MISO			GPIO_PIN_6	// verifie
 #define GPIO_BLOCK_SPI1_MISO		GPIOA		// verifie
 #define GPIO_PIN_SPI1_CLK			GPIO_PIN_3	// verifie
 #define GPIO_BLOCK_SPI1_CLK			GPIOB		// verifie
+*/
+
+// LSM9DS0
+#define GPIO_PIN_SPI2_MOSI			GPIO_PIN_3	// verifie
+#define GPIO_BLOCK_SPI2_MOSI		GPIOC		// verifie
+#define GPIO_PIN_SPI2_MISO			GPIO_PIN_2	// verifie
+#define GPIO_BLOCK_SPI2_MISO		GPIOC		// verifie
+#define GPIO_PIN_SPI2_CLK			GPIO_PIN_10	// verifie
+#define GPIO_BLOCK_SPI2_CLK			GPIOB		// verifie
 
 // Chip Select
 #define GPIO_PIN_CS_SDCARD			GPIO_PIN_2	// verifie
 #define GPIO_BLOCK_CS_SDCARD		GPIOD		// verifie
-#define GPIO_PIN_CS_LSM_M			GPIO_PIN_9	// verifie
+
+
+#warning a reverifier
+#define GPIO_PIN_CS_LSM_M			GPIO_PIN_1	// verifie
 #define GPIO_BLOCK_CS_LSM_M			GPIOB		// verifie
-#define GPIO_PIN_CS_LSM_AG			GPIO_PIN_0	// verifie
-#define GPIO_BLOCK_CS_LSM_AG		GPIOC		// verifie
+#define GPIO_PIN_CS_LSM_G			GPIO_PIN_0	// verifie
+#define GPIO_BLOCK_CS_LSM_G			GPIOC		// verifie
+#define GPIO_PIN_CS_LSM_X			GPIO_PIN_1	// verifie
+#define GPIO_BLOCK_CS_LSM_X			GPIOB		// verifie
 /*
 #define GPIO_PIN_CS_LSM_M			GPIO_PIN
 #define GPIO_BLOCK_CS_LSM_M			GPIO
