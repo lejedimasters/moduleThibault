@@ -230,6 +230,7 @@ void TIM4_IRQHandler(void)
 				sd_driver_bufferswitcher_emptying();*/
 
 lsm9_driver_get_data(&data);
+data.time_ms = 10;
 				//lsm9_driver_init();
 			#elif	NUCLEO_BOARD
 				seq();

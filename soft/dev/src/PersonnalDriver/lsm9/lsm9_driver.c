@@ -36,7 +36,7 @@ ERROR_status lsm9_driver_init( void ){
 
 
 
-
+/*
 while(1){
 		lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_M);
 
@@ -44,7 +44,7 @@ while(1){
 	DELAY_N_MS(500);
 }
 
-
+*/
 /*
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_M); // Reset
@@ -122,7 +122,7 @@ ERROR_status lsm9_driver_get_accelerometry( acc_data_typedef *data ){
 ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
 	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-	lsm9_driver_read_registers(0x18,readTab,7,lsm9_sensor_typedef_G);
+	lsm9_driver_read_registers(0x28,readTab,7,lsm9_sensor_typedef_G);
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
@@ -141,7 +141,7 @@ ERROR_status lsm9_driver_get_gyroscope( gyr_data_typedef *data){
 ERROR_status lsm9_driver_get_magnotemeter( mag_data_typedef *data){
 	uint8_t readTab[8] ={0,0,0,0,0,0,0,0};
 
-	lsm9_driver_read_registers(0x28,readTab,7,lsm9_sensor_typedef_M);
+	lsm9_driver_read_registers(0x08,readTab,7,lsm9_sensor_typedef_M);
 	data->X = readTab[1]*256 + readTab[0];
 	data->Y = readTab[3]*256 + readTab[2];
 	data->Z = readTab[5]*256 + readTab[4];
