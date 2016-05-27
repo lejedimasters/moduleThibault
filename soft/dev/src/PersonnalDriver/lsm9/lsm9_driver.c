@@ -45,7 +45,7 @@ while(1){
 }
 
 */
-/*
+
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_M); // Reset
 	lsm9_driver_write_register(REG_CNTRL1_ADDR, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M);
@@ -58,8 +58,8 @@ while(1){
 	lsm9_driver_write_register(CTRL_REG5, 0x80, lsm9_sensor_typedef_G);				 // Reset
 	lsm9_driver_write_register(CTRL_REG1, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
 	lsm9_driver_write_register(CTRL_REG4, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
-*/
 
+/*
 	// Initialisation accéléromètre
 	lsm9_driver_write_register(REG_CNTRL0_ADDR, 0b10000000, lsm9_sensor_typedef_X);
 	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_X);
@@ -70,7 +70,7 @@ while(1){
 	lsm9_driver_write_register(REG_CNTRL1_ADDR, 0b00011111, lsm9_sensor_typedef_X);
 	lsm9_driver_write_register(REG_CNTRL5_ADDR, TEMP_ON|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_X);//   0b11110100, lsm9_sensor_typedef_XM);
 	lsm9_driver_write_register(REG_CNTRL7_ADDR, 0b00000000, lsm9_sensor_typedef_X);
-
+*/
 	      return ERROR_status_NOERROR;
 }
 /** \fn ERROR_status lsm9_driver_get_data( lsm9_data_typedef *data)

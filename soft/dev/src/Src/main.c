@@ -91,7 +91,7 @@ int main(void)
 
 	#if THsBOARD
 
-/*
+
 		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
@@ -102,7 +102,7 @@ int main(void)
 		   res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
-		    }*/
+		    }
 		lsm9_driver_init();
 		//uart_init();
 
@@ -211,25 +211,15 @@ void TIM4_IRQHandler(void)
 
 
 			#if THsBOARD
-				/*
-				data.gyroscope.X = 4444;
-				data.accelerometry.X = 1111;
-				data.magnotemeter.X = 7777;
-
-				data.gyroscope.Y = 5555;
-				data.accelerometry.Y = 2222;
-				data.magnotemeter.Y = 8888;
-
-				data.gyroscope.Z = 6666;
-				data.accelerometry.Z = 3333;
-				data.magnotemeter.Z = 9999;
 
 
+
+				lsm9_driver_get_data(&data);
 				sd_driver_fill_buffer(&data,time);
 				time += 491;
-				sd_driver_bufferswitcher_emptying();*/
+				sd_driver_bufferswitcher_emptying();
 
-lsm9_driver_get_data(&data);
+
 data.time_ms = 10;
 				//lsm9_driver_init();
 			#elif	NUCLEO_BOARD
