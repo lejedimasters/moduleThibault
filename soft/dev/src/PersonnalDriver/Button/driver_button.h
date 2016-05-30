@@ -14,7 +14,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "error.h"
-
+#include "board.h"
 
 
 typedef enum

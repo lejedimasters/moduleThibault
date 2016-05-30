@@ -15,6 +15,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "error.h"
+#include "board.h"
 
 void driver_led_init( void );
 void driver_led_set( void );

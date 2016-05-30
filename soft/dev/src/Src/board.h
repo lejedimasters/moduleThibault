@@ -64,10 +64,17 @@
 #define GPIO_BLOCK_UART2_RX			GPIOA		// verifie
 
 // I/O
-#define GPIO_PIN_LED				GPIO_PIN_13	// verifie
-#define GPIO_BLOCK_LED				GPIOC		// verifie
-#define GPIO_PIN_BUTTON				GPIO_PIN_15	// verifie
-#define GPIO_BLOCK_BUTTON			GPIOA		// verifie
+#if	NUCLEO_BOARD
 
+	#define GPIO_PIN_BUTTON 				GPIO_PIN_13	// verifie
+	#define GPIO_BLOCK_BUTTON 				GPIOC		// verifie
+	#define GPIO_PIN_LED					GPIO_PIN_15	// verifie
+	#define GPIO_BLOCK_LED					GPIOA		// verifie
+#elif	THsBOARD
+	#define GPIO_PIN_LED				GPIO_PIN_13	// verifie
+	#define GPIO_BLOCK_LED				GPIOC		// verifie
+	#define GPIO_PIN_BUTTON				GPIO_PIN_15	// verifie
+	#define GPIO_BLOCK_BUTTON			GPIOA		// verifie
+#define
 
 #endif

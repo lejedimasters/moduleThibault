@@ -57,10 +57,10 @@ int32_t driver_button_init(){
 
 	/* Initialisation de la pin du bouton */
 	  /*Configure GPIO pin : PC13 */
-	  GPIO_InitStruct.Pin = GPIO_PIN_13;
+	  GPIO_InitStruct.Pin = GPIO_PIN_BUTTON;
 	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
 	  GPIO_InitStruct.Pull = GPIO_NOPULL;
-	  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+	  HAL_GPIO_Init(GPIO_BLOCK_BUTTON, &GPIO_InitStruct);
 	/* Initialisation du bouton status */
 	G_last_button_status = driver_button_get_pin_state();
 
@@ -71,7 +71,7 @@ int32_t driver_button_init(){
 BUTTON_status_typedef	driver_button_get_pin_state(){
 	BUTTON_status_typedef button_value;
 
-	button_value.value = HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+	button_value.value = HAL_GPIO_ReadPin(GPIO_BLOCK_BUTTON,GPIO_PIN_BUTTON);
 	button_value.edge = BUTTON_edge_typedef_no_edge;
 	return button_value;
 }
