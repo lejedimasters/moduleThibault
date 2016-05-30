@@ -45,12 +45,12 @@
 
 
 #warning a reverifier
-#define GPIO_PIN_CS_LSM_M			GPIO_PIN_1	// verifie
-#define GPIO_BLOCK_CS_LSM_M			GPIOB		// verifie
-#define GPIO_PIN_CS_LSM_G			GPIO_PIN_0	// verifie
-#define GPIO_BLOCK_CS_LSM_G			GPIOC		// verifie
-#define GPIO_PIN_CS_LSM_X			GPIO_PIN_1	// verifie
-#define GPIO_BLOCK_CS_LSM_X			GPIOB		// verifie
+#define GPIO_PIN_CS_LSM_M			GPIO_PIN_1	//
+#define GPIO_BLOCK_CS_LSM_M			GPIOB		//
+#define GPIO_PIN_CS_LSM_G			GPIO_PIN_0	//
+#define GPIO_BLOCK_CS_LSM_G			GPIOC		//
+#define GPIO_PIN_CS_LSM_X			GPIO_PIN_1	//
+#define GPIO_BLOCK_CS_LSM_X			GPIOB		//
 /*
 #define GPIO_PIN_CS_LSM_M			GPIO_PIN
 #define GPIO_BLOCK_CS_LSM_M			GPIO
@@ -65,11 +65,10 @@
 
 // I/O
 #if	NUCLEO_BOARD
-
-	#define GPIO_PIN_BUTTON 				GPIO_PIN_13	// verifie
-	#define GPIO_BLOCK_BUTTON 				GPIOC		// verifie
-	#define GPIO_PIN_LED					GPIO_PIN_15	// verifie
-	#define GPIO_BLOCK_LED					GPIOA		// verifie
+	#define GPIO_PIN_LED				GPIO_PIN_15	// verifie
+	#define GPIO_BLOCK_LED				GPIOA		// verifie
+	#define GPIO_PIN_BUTTON 			GPIO_PIN_13	// verifie
+	#define GPIO_BLOCK_BUTTON 			GPIOC		// verifie
 #elif	THsBOARD
 	#define GPIO_PIN_LED				GPIO_PIN_13	// verifie
 	#define GPIO_BLOCK_LED				GPIOC		// verifie
