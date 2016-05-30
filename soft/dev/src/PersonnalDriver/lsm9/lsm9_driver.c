@@ -52,9 +52,9 @@ while(1){
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_XM, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M); // ODR 100HZ, enable all axis, continuous update
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG2_XM, 0b00100000 , lsm9_sensor_typedef_M); // ±16 g
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0b01100000|LSM9DS0_MAG_ODR50/*LSM9DS0_MAG_ODR100*/, lsm9_sensor_typedef_M);//  high resoluation
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0b01100000|LSM9DS0_MAG_ODR100, lsm9_sensor_typedef_M);//  high resoluation
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG6_XM, 0b01100000, lsm9_sensor_typedef_M); // ± 12 gauss
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, 0b00000000, lsm9_sensor_typedef_M); // Normal mode
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, 0b00000000, lsm9_sensor_typedef_M); // Continuous conversion mode, normal mode resets
 
 
 	// Initialisation gyroscope
