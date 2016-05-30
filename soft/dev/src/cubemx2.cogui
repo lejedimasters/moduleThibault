@@ -8,8 +8,8 @@
 <perspectiveBar/>
 <page focus="true" label="Workspace - CooCox CoBuilder">
 <editors>
-<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@106404a">
-<info part="org.eclipse.ui.internal.EditorStack@106404a">
+<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<info part="org.eclipse.ui.internal.EditorStack@ddb166">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
@@ -18,79 +18,84 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
-<part id="6"/>
 <part id="7"/>
+<part id="6"/>
 <part id="8"/>
+<part id="9"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.internal.EditorStack@ddb166" ratio="0.6270136" ratioLeft="1012" ratioRight="602" relationship="2" relative="org.eclipse.ui.internal.EditorStack@106404a">
+<info part="org.eclipse.ui.internal.EditorStack@f980b" ratio="0.5611111" ratioLeft="909" ratioRight="711" relationship="2" relative="org.eclipse.ui.internal.EditorStack@ddb166">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="2"/>
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver.h" partName="sd_driver.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.h" title="sd_driver.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.h" partName="lsm9_spi.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" title="lsm9_spi.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="261" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver.h" partName="sd_driver.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.h" title="sd_driver.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="261" selectionTopPixel="84"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer_button .c" partName="sequencer_button .c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/Button/sequencer_button .c" title="sequencer_button .c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/Button/sequencer_button .c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/Button/sequencer_button .c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="87" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/PROJET/Module_Thibault/soft/dev/src/Src/main.c" title="main.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Src/main.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/PROJET/Module_Thibault/soft/dev/src/Src/main.c" title="main.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Src/main.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Src/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5950" selectionTopPixel="3405"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2731" selectionTopPixel="1002"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.c" partName="lsm9_driver.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" title="lsm9_driver.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.c" partName="lsm9_driver.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" title="lsm9_driver.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2315" selectionTopPixel="917"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="781" selectionTopPixel="392"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.c" partName="sequencer.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.c" title="sequencer.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/sequencer.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="26" selectionOffset="2038" selectionTopPixel="990"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" partName="startup_stm32f4xx.c" path="C:/PROJET/Module_Thibault/soft/dev/src/cmsis_boot/startup/startup_stm32f4xx.c" title="startup_stm32f4xx.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/cmsis_boot/startup/startup_stm32f4xx.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14448" selectionTopPixel="3825"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver.c" partName="sd_driver.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.c" title="sd_driver.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.c" workbook="org.eclipse.ui.internal.EditorStack@106404a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="16" selectionOffset="195" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.h" partName="sequencer.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.h" title="sequencer.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/sequencer.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="340" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.h" partName="lsm9_driver.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.h" title="lsm9_driver.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.h" workbook="org.eclipse.ui.internal.EditorStack@106404a">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.h" partName="lsm9_driver.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.h" title="lsm9_driver.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/lsm9_driver.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="971" selectionTopPixel="735"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.h" partName="lsm9_spi.h" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" title="lsm9_spi.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="195" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.h" partName="stm32f4xx_hal.h" path="C:/PROJET/Module_Thibault/soft/dev/src/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" title="stm32f4xx_hal.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11326" selectionTopPixel="2760"/>
 </editor>
-<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="sd_spi.c" partName="sd_spi.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/spi/sd_spi.c" title="sd_spi.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/spi/sd_spi.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3251" selectionTopPixel="509"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.c" partName="stm32f4xx_hal.c" path="C:/PROJET/Module_Thibault/soft/dev/src/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" title="stm32f4xx_hal.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="8333" selectionTopPixel="2511"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="board.h" partName="board.h" path="C:/PROJET/Module_Thibault/soft/dev/src/Src/board.h" title="board.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Src/board.h" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_msp.c" partName="stm32f4xx_hal_msp.c" path="C:/PROJET/Module_Thibault/soft/dev/src/Src/stm32f4xx_hal_msp.c" title="stm32f4xx_hal_msp.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Src/stm32f4xx_hal_msp.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Src/stm32f4xx_hal_msp.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4895" selectionTopPixel="1713"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" partName="startup_stm32f4xx.c" path="C:/PROJET/Module_Thibault/soft/dev/src/cmsis_boot/startup/startup_stm32f4xx.c" title="startup_stm32f4xx.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/cmsis_boot/startup/startup_stm32f4xx.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14795" selectionTopPixel="3855"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver.c" partName="sd_driver.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.c" title="sd_driver.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/SDCard/sd_driver.c" workbook="org.eclipse.ui.internal.EditorStack@ddb166">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4137" selectionTopPixel="2471"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.c" partName="lsm9_spi.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.c" title="lsm9_spi.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/lsm9/spi/lsm9_spi.c" workbook="org.eclipse.ui.internal.EditorStack@f980b">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="828" selectionTopPixel="393"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.c" partName="sequencer.c" path="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.c" title="sequencer.c" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/PersonnalDriver/sequencer.c" workbook="org.eclipse.ui.internal.EditorStack@f980b">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/PersonnalDriver/sequencer.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="43" selectionOffset="2739" selectionTopPixel="1191"/>
+</editor>
+<editor focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="board.h" partName="board.h" path="C:/PROJET/Module_Thibault/soft/dev/src/Src/board.h" title="board.h" tooltip="C:/PROJET/Module_Thibault/soft/dev/src/Src/board.h" workbook="org.eclipse.ui.internal.EditorStack@f980b">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cubemx2/Src/board.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="449" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="910" selectionTopPixel="91"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.debug.ui.ExpressionView" partName="Expressions">
 <viewState>
-<ExpressionKeySet ExpKeys="buffer,val,readTab,"/>
+<ExpressionKeySet ExpKeys="readTab,(data)-&gt;magnotemeter,(data)-&gt;gyroscope,(data)-&gt;accelerometry,val,pRxData,"/>
 </viewState>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="1">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="9">
 <expanded>
 <element path="/cubemx2"/>
 <element path="/cubemx2/cmsis_boot"/>
@@ -109,7 +114,7 @@
 <element path="/cubemx2/Src"/>
 </expanded>
 <selection>
-<element path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
+<element path="/cubemx2/Src/stm32f4xx_hal_msp.c"/>
 </selection>
 </viewState>
 </view>
@@ -191,7 +196,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44925374" ratioLeft="301" ratioRight="369" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d6ba8d" ratio="0.58146966" ratioLeft="546" ratioRight="393" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d6ba8d" ratio="0.7241747" ratioLeft="680" ratioRight="259" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -252,8 +257,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
@@ -279,7 +284,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@dc11d8" ratio="0.91267306" ratioLeft="857" ratioRight="82" relationship="4" relative="org.eclipse.ui.internal.ViewStack@d738a4">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -307,7 +312,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.15295966" ratioLeft="292" ratioRight="1617" relationship="2" relative="org.eclipse.ui.internal.ViewStack@d738a4"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@ecd6bc" ratio="0.93325526" ratioLeft="797" ratioRight="57" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@ecd6bc" ratio="0.5702576" ratioLeft="487" ratioRight="367" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.debug.ui.ExpressionView" appearance="2" expanded="2">
 <page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
 <page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
@@ -326,170 +331,165 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/sequencer.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/sequencer.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/Button/sequencer_button .c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.h"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="C:\PROJET\Module_Thibault\soft\dev\src\PersonnalDriver\SDCard\FatFs_light\pff.h" project="cubemx2"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/board.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/stm32f4xx_hal_msp.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Src/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c"/>
 </editors>
-<item historyLabel="sd_driver.h" index="7">
-<position info="not_deleted" x="261" y="0"/>
+<item historyLabel="stm32f4xx_hal.c" index="6">
+<position info="not_deleted" x="8333" y="8"/>
 </item>
-<item historyLabel="sd_driver_cc2541.h" index="8">
-<position info="not_deleted" x="438" y="19"/>
+<item historyLabel="stm32f4xx_hal_msp.c" index="2">
+<position info="not_deleted" x="4375" y="0"/>
 </item>
-<item historyLabel="sd_driver.h" index="7">
-<position info="not_deleted" x="261" y="0"/>
+<item historyLabel="lsm9_spi.c" index="5">
+<position info="not_deleted" x="341" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position/>
+<item historyLabel="stm32f4xx_hal_msp.c" index="2">
+<position info="not_deleted" x="4375" y="0"/>
 </item>
-<item historyLabel="sd_driver.c" index="3">
-<position info="not_deleted" x="195" y="16"/>
+<item historyLabel="lsm9_spi.c" index="5">
+<position info="not_deleted" x="341" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2180" y="0"/>
-</item>
-<item historyLabel="pff.h" index="9">
-<position info="not_deleted" x="2568" y="5"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="sequencer.h" index="4">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3397" y="2"/>
-</item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2546" y="43"/>
-</item>
-<item historyLabel="sequencer.h" index="4">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5950" y="0"/>
-</item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2190" y="0"/>
-</item>
-<item historyLabel="lsm9_driver.c" index="1">
-<position info="not_deleted" x="18" y="0"/>
-</item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2771" y="0"/>
-</item>
-<item historyLabel="lsm9_driver.c" index="1">
-<position info="not_deleted" x="18" y="0"/>
-</item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2289" y="0"/>
-</item>
-<item historyLabel="lsm9_driver.c" index="1">
-<position info="not_deleted" x="18" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5950" y="0"/>
-</item>
-<item historyLabel="sequencer_button .c" index="5">
-<position info="not_deleted" x="477" y="0"/>
-</item>
-<item historyLabel="sd_driver.h" index="7">
-<position info="not_deleted" x="261" y="0"/>
-</item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2289" y="0"/>
-</item>
-<item historyLabel="sd_driver.c" index="3">
-<position info="not_deleted" x="195" y="16"/>
-</item>
-<item historyLabel="sequencer.h" index="4">
-<position/>
-</item>
-<item historyLabel="lsm9_driver.h" index="6">
-<position info="not_deleted" x="971" y="0"/>
-</item>
-<item historyLabel="startup_stm32f4xx.c" index="10">
+<item historyLabel="startup_stm32f4xx.c" index="4">
 <position info="not_deleted" x="14795" y="0"/>
 </item>
-<item historyLabel="lsm9_spi.h" index="11">
-<position info="not_deleted" x="195" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2761" y="0"/>
 </item>
-<item historyLabel="sd_spi.c" index="12">
-<position info="not_deleted" x="3251" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
-<item historyLabel="board.h" index="13">
-<position info="not_deleted" x="449" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2884" y="0"/>
 </item>
-<item historyLabel="startup_stm32f4xx.c" index="10">
-<position info="not_deleted" x="14448" y="0"/>
+<item historyLabel="lsm9_spi.c" index="5">
+<position info="not_deleted" x="157" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="179" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2867" y="0"/>
 </item>
-<item historyLabel="lsm9_driver.h" index="6">
-<position info="not_deleted" x="971" y="0"/>
+<item historyLabel="lsm9_spi.c" index="5">
+<position info="not_deleted" x="828" y="0"/>
 </item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="3190" y="28"/>
+<item historyLabel="board.h" index="1">
+<position info="not_deleted" x="910" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="124" y="0"/>
+<item historyLabel="stm32f4xx_hal_msp.c" index="2">
+<position info="not_deleted" x="4375" y="0"/>
 </item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="3190" y="28"/>
+<item historyLabel="stm32f4xx_hal_msp.c" index="2">
+<position info="not_deleted" x="5170" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="139" y="0"/>
+<item historyLabel="stm32f4xx_hal_msp.c" index="2">
+<position info="not_deleted" x="4895" y="0"/>
 </item>
-<item historyLabel="sd_spi.c" index="12">
-<position info="not_deleted" x="3251" y="0"/>
+<item historyLabel="startup_stm32f4xx.c" index="4">
+<position info="not_deleted" x="14795" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="139" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
-<item historyLabel="sd_driver.c" index="3">
-<position info="not_deleted" x="195" y="16"/>
+<item historyLabel="lsm9_driver.c" index="0">
+<position info="not_deleted" x="690" y="0"/>
 </item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="3190" y="28"/>
+<item historyLabel="lsm9_driver.c" index="0">
+<position info="not_deleted" x="753" y="0"/>
 </item>
-<item historyLabel="startup_stm32f4xx.c" index="10">
-<position info="not_deleted" x="14448" y="0"/>
+<item historyLabel="lsm9_driver.c" index="0">
+<position info="not_deleted" x="779" y="0"/>
 </item>
-<item historyLabel="sequencer_button .c" index="5">
-<position info="not_deleted" x="87" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="3190" y="28"/>
+<item historyLabel="startup_stm32f4xx.c" index="4">
+<position info="not_deleted" x="14795" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="139" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
-<item historyLabel="sd_driver.h" index="7">
-<position info="not_deleted" x="261" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5835" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="139" y="0"/>
+<item historyLabel="lsm9_driver.c" index="0">
+<position info="not_deleted" x="4223" y="0"/>
 </item>
-<item historyLabel="sequencer.c" index="2">
-<position info="not_deleted" x="2038" y="26"/>
+<item historyLabel="startup_stm32f4xx.c" index="4">
+<position info="not_deleted" x="14795" y="0"/>
 </item>
-<item historyLabel="sequencer.h" index="4">
-<position info="not_deleted" x="340" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
-<item active="true" historyLabel="lsm9_driver.c" index="1">
-<position info="not_deleted" x="18" y="0"/>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2886" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5835" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5718" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5835" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5718" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5732" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2888" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="7">
+<position info="not_deleted" x="14795" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5578" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="7">
+<position info="not_deleted" x="14795" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5697" y="0"/>
+</item>
+<item historyLabel="sd_driver.c" index="8">
+<position info="not_deleted" x="3514" y="33"/>
+</item>
+<item historyLabel="sd_driver.c" index="8">
+<position info="not_deleted" x="4137" y="0"/>
+</item>
+<item historyLabel="lsm9_driver.c" index="0">
+<position info="not_deleted" x="781" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="5697" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="7">
+<position info="not_deleted" x="14795" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="3">
+<position info="not_deleted" x="2731" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -498,47 +498,47 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pff.h" tooltip="C:\PROJET\Module_Thibault\soft\dev\src\PersonnalDriver\SDCard\FatFs_light\pff.h">
-<persistable path="C:\PROJET\Module_Thibault\soft\dev\src\PersonnalDriver\SDCard\FatFs_light\pff.h" project="cubemx2"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver_cc2541.h" tooltip="cubemx2/PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.h">
-<persistable path="/cubemx2/PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.h" tooltip="cubemx2/PersonnalDriver/lsm9/lsm9_driver.h">
-<persistable path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer_button.h" tooltip="cubemx2/PersonnalDriver/Button/sequencer_button.h">
-<persistable path="/cubemx2/PersonnalDriver/Button/sequencer_button.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.h" tooltip="cubemx2/PersonnalDriver/sequencer.h">
-<persistable path="/cubemx2/PersonnalDriver/sequencer.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver.c" tooltip="cubemx2/PersonnalDriver/SDCard/sd_driver.c">
 <persistable path="/cubemx2/PersonnalDriver/SDCard/sd_driver.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="cubemx2/cmsis_boot/startup/startup_stm32f4xx.c">
 <persistable path="/cubemx2/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.h" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.c" tooltip="cubemx2/PersonnalDriver/sequencer.c">
 <persistable path="/cubemx2/PersonnalDriver/sequencer.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_driver.c" tooltip="cubemx2/PersonnalDriver/lsm9/lsm9_driver.c">
-<persistable path="/cubemx2/PersonnalDriver/lsm9/lsm9_driver.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="pff.c" tooltip="cubemx2/PersonnalDriver/SDCard/FatFs_light/pff.c">
-<persistable path="/cubemx2/PersonnalDriver/SDCard/FatFs_light/pff.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_msp.c" tooltip="cubemx2/Src/stm32f4xx_hal_msp.c">
 <persistable path="/cubemx2/Src/stm32f4xx_hal_msp.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="cubemx2/PersonnalDriver/Uart/uart.c">
-<persistable path="/cubemx2/PersonnalDriver/Uart/uart.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lsm9_spi.c" tooltip="cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c">
+<persistable path="/cubemx2/PersonnalDriver/lsm9/spi/lsm9_spi.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_conf.h" tooltip="cubemx2/Inc/stm32f4xx_hal_conf.h">
-<persistable path="/cubemx2/Inc/stm32f4xx_hal_conf.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sequencer.h" tooltip="cubemx2/PersonnalDriver/sequencer.h">
+<persistable path="/cubemx2/PersonnalDriver/sequencer.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_tim.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c">
-<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="cubemx2/stdio/printf.c">
+<persistable path="/cubemx2/stdio/printf.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.c" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sd_spi.c" tooltip="cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c">
+<persistable path="/cubemx2/PersonnalDriver/SDCard/spi/sd_spi.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="board.h" tooltip="cubemx2/Src/board.h">
+<persistable path="/cubemx2/Src/board.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sd_driver_cc2541.c" tooltip="cubemx2/PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.c">
+<persistable path="/cubemx2/PersonnalDriver/SDCard/FatFs_light/sd_driver_cc2541.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.h" tooltip="cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h">
+<persistable path="/cubemx2/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"/>
 </file>
 </mruList>
 </workbench>

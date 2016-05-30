@@ -91,7 +91,7 @@ int main(void)
 
 	#if THsBOARD
 
-
+/*
 		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
@@ -102,9 +102,9 @@ int main(void)
 		   res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
-		    }
+		    }*/
 		lsm9_driver_init();
-		//uart_init();
+		uart_init();
 
 		TIM4_init();
 	#elif	NUCLEO_BOARD
@@ -216,7 +216,7 @@ void TIM4_IRQHandler(void)
 
 				lsm9_driver_get_data(&data);
 				sd_driver_fill_buffer(&data,time);
-				time += 491;
+				time += 10;
 				sd_driver_bufferswitcher_emptying();
 
 

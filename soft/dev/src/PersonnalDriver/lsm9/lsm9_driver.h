@@ -15,6 +15,7 @@
 #include "lsm9_spi.h"
 #include "lsm9_register_XM_def.h"
 #include "lsm9_register_G_def.h"
+#include "lsm9ds0_register_def.h"
 #include "error.h"
 
 

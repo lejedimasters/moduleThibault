@@ -56,7 +56,7 @@ ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 
 
 
-	sprintf((char*)temp_buff, "%d;%d;%d;%d;%d;%d;%d;%d;%d;%d\r\n",
+	sprintf((char*)temp_buff, "%7d;%7d;%7d;%7d;%2d;%2d;%2d;%7d;%7d;%7d\r\n",
 			(int)time_ms,
 			(int)data->accelerometry.X, 	(int)data->accelerometry.Y, 	(int)data->accelerometry.Z,
 			(int)data->gyroscope.X, 		(int)data->gyroscope.Y, 		(int)data->gyroscope.Z,
@@ -172,7 +172,7 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 
 	//buffer_switcher.buffer_switch[currentBufferFilled].buffer
 
-#if 0
+#if 1
 	uart_send((int8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer,DATA_CMD_SIZE);
 #else
 
