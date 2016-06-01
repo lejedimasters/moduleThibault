@@ -27,12 +27,12 @@ void driver_led_init( void ){
 
 void driver_led_set( void ){
 	/*GPIOA.BSRR = GPIO_PIN_5;*/
-	HAL_GPIO_WritePin(GPIO_BLOCK_LED, GPIO_PIN_LED,  GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIO_BLOCK_LED, GPIO_PIN_LED,  GPIO_PIN_RESET );
 }
 
 void driver_led_reset( void ){
 	/*GPIOA.BSRR = (uint32_t)GPIO_PIN_5 << 16;*/
-	HAL_GPIO_WritePin(GPIO_BLOCK_LED, GPIO_PIN_LED,  GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIO_BLOCK_LED, GPIO_PIN_LED,  GPIO_PIN_SET);
 }
 
 void driver_led_toggle( void ){

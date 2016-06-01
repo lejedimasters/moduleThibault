@@ -105,7 +105,7 @@ int main(void)
 		    }*/
 		lsm9_driver_init();
 		uart_init();
-
+		seq_init(10);
 		TIM4_init();
 	#elif	NUCLEO_BOARD
 		seq_init(10);
@@ -212,8 +212,8 @@ void TIM4_IRQHandler(void)
 
 			#if THsBOARD
 
-
-
+            seq();
+/*
 				lsm9_driver_get_data(&data);
 				sd_driver_fill_buffer(&data,time);
 				time += 10;
@@ -221,6 +221,7 @@ void TIM4_IRQHandler(void)
 
 
 data.time_ms = 10;
+*/
 				//lsm9_driver_init();
 			#elif	NUCLEO_BOARD
 				seq();

@@ -74,6 +74,6 @@
 	#define GPIO_BLOCK_LED				GPIOC		// verifie
 	#define GPIO_PIN_BUTTON				GPIO_PIN_15	// verifie
 	#define GPIO_BLOCK_BUTTON			GPIOA		// verifie
-#define
+#endif
 
 #endif
