@@ -154,7 +154,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 500; //5sec
+	  TIM_Handle.Init.Prescaler = 6;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -170,9 +170,10 @@ void TIM4_IRQHandler(void)
 {
 
 	lsm9_data_typedef data;
-	static uint32_t time = 500;
+	static uint32_t time = 65555;
+	static uint8_t mode = 0;
 	GPIO_InitTypeDef GPIO_InitStruct;
-
+	SEQ_BUTTON_push_type_typedef button;
 
 	//HAL_StatusTypeDef status;
     if (__HAL_TIM_GET_FLAG(&TIM_Handle, TIM_FLAG_UPDATE) != RESET)      //In case other interrupts are also running
@@ -182,7 +183,8 @@ void TIM4_IRQHandler(void)
             __HAL_TIM_CLEAR_FLAG(&TIM_Handle, TIM_FLAG_UPDATE);
             /*put your code here */
 
-            if( time == 500 ){
+            if( time == 65555 ){
+            sequencer_button_init(10);
           	  GPIO_InitStruct.Pin = GPIO_PIN_TEST;
           	  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
           	  GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -192,17 +194,42 @@ void TIM4_IRQHandler(void)
             }
 
 
+            button = sequencer_button_get_push_type();
 
-            if( time < 5 ){
+            if( button == SEQ_BUTTON_push_type_typedef_short_push ){
+            	if( mode ){
+            		mode = 0;
+            	}
+            	else{
+            		mode = 1;
+            	}
+            }
+
+            if( button != SEQ_BUTTON_push_type_typedef_no_push ){
+            	if(mode == 1){
+            		time++;
+            		time--;
+            	}
+
+
+            }
+
+            if( mode ){
+            	if( time < 5000 ){
+					HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_SET);
+				}else if( time < 25000){
+					HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_RESET);
+				}
+
+				time += 10;
+				if(time > 25000){
+					time = 0;
+				}
+            }else{
+
             	HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_SET);
             }
-            else{
-            	HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_RESET);
-            }
-            time += 1;
-             if(time > 25){
-             	time = 1;
-             }
+
 
         }
     }

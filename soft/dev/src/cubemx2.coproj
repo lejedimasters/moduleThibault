@@ -75,27 +75,27 @@
   </Components>
   <Files>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" type="1"/>
     <File name="PersonnalDriver/SDCard/sd_driver.c" path="PersonnalDriver/SDCard/sd_driver.c" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cm3.h" path="Drivers/CMSIS/Include/core_cm3.h" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f415xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f415xx.h" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h" type="1"/>
     <File name="PersonnalDriver/SDCard" path="" type="2"/>
     <File name="PersonnalDriver/Uart/uart.h" path="PersonnalDriver/Uart/uart.h" type="1"/>
     <File name="PersonnalDriver/sequencer.c" path="PersonnalDriver/sequencer.c" type="1"/>
     <File name="PersonnalDriver/Led" path="" type="2"/>
+    <File name="PersonnalDriver/Led/driver_led.c" path="PersonnalDriver/Led/driver_led.c" type="1"/>
     <File name="Src/stm32f4xx_hal_msp.c" path="Src/stm32f4xx_hal_msp.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" type="1"/>
     <File name="PersonnalDriver/SDCard/FatFs_light/integer.h" path="PersonnalDriver/SDCard/FatFs_light/integer.h" type="1"/>
-    <File name="PersonnalDriver/Led/driver_led.c" path="PersonnalDriver/Led/driver_led.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cmSimd.h" path="Drivers/CMSIS/Include/core_cmSimd.h" type="1"/>
@@ -107,8 +107,8 @@
     <File name="PersonnalDriver/SDCard/spi/sd_spi.c" path="PersonnalDriver/SDCard/spi/sd_spi.c" type="1"/>
     <File name="PersonnalDriver/Led/driver_led.h" path="PersonnalDriver/Led/driver_led.h" type="1"/>
     <File name="PersonnalDriver/lsm9" path="" type="2"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c" path="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c" type="1"/>
     <File name="PersonnalDriver/Error" path="" type="2"/>
     <File name="PersonnalDriver/SDCard/spi" path="" type="2"/>
@@ -134,24 +134,24 @@
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc" path="" type="2"/>
     <File name="Src/main.c" path="Src/main.c" type="1"/>
-    <File name="Drivers/CMSIS/Include/core_cmInstr.h" path="Drivers/CMSIS/Include/core_cmInstr.h" type="1"/>
     <File name="PersonnalDriver/lsm9/lsm9_register_G_def.h" path="PersonnalDriver/lsm9/lsm9_register_G_def.h" type="1"/>
+    <File name="Drivers/CMSIS/Include/core_cmInstr.h" path="Drivers/CMSIS/Include/core_cmInstr.h" type="1"/>
     <File name="Drivers/CMSIS/Include/core_sc300.h" path="Drivers/CMSIS/Include/core_sc300.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f410tx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f410tx.h" type="1"/>
     <File name="PersonnalDriver/Button/sequencer_button.h" path="PersonnalDriver/Button/sequencer_button.h" type="1"/>
     <File name="PersonnalDriver/Error/error.c" path="PersonnalDriver/Error/error.c" type="1"/>
     <File name="PersonnalDriver/Led/sequencer_led .c" path="PersonnalDriver/Led/sequencer_led .c" type="1"/>
-    <File name="Drivers/CMSIS/Include/cmsis_armcc.h" path="Drivers/CMSIS/Include/cmsis_armcc.h" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source" path="" type="2"/>
+    <File name="Drivers/CMSIS/Include/cmsis_armcc.h" path="Drivers/CMSIS/Include/cmsis_armcc.h" type="1"/>
     <File name="Src/board.h" path="Src/board.h" type="1"/>
     <File name="Inc/stm32f4xx_it.h" path="Inc/stm32f4xx_it.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="PersonnalDriver/Error/error.h" path="PersonnalDriver/Error/error.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h" type="1"/>
     <File name="Drivers/CMSIS/Include/arm_common_tables.h" path="Drivers/CMSIS/Include/arm_common_tables.h" type="1"/>
-    <File name="Drivers" path="" type="2"/>
     <File name="PersonnalDriver/SDCard/FatFs_light" path="" type="2"/>
+    <File name="Drivers" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f479xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f479xx.h" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST" path="" type="2"/>
@@ -169,16 +169,16 @@
     <File name="Drivers/CMSIS/Include/core_cm7.h" path="Drivers/CMSIS/Include/core_cm7.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f439xx.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates" path="" type="2"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h" type="1"/>
     <File name="Inc/stm32f4xx_hal_conf.h" path="Inc/stm32f4xx_hal_conf.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" path="" type="2"/>
     <File name="Drivers/CMSIS/Device" path="" type="2"/>
-    <File name="PersonnalDriver/sequencer.h" path="PersonnalDriver/sequencer.h" type="1"/>
-    <File name="Drivers/CMSIS/Device/ST/STM32F4xx" path="" type="2"/>
     <File name="Drivers/CMSIS/Include/arm_math.h" path="Drivers/CMSIS/Include/arm_math.h" type="1"/>
+    <File name="Drivers/CMSIS/Device/ST/STM32F4xx" path="" type="2"/>
+    <File name="PersonnalDriver/sequencer.h" path="PersonnalDriver/sequencer.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h" type="1"/>
     <File name="Src/stm32f4xx_it.c" path="Src/stm32f4xx_it.c" type="1"/>
     <File name="PersonnalDriver/lsm9/lsm9_driver.c" path="PersonnalDriver/lsm9/lsm9_driver.c" type="1"/>
@@ -192,8 +192,8 @@
     <File name="PersonnalDriver" path="" type="2"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h" type="1"/>
-    <File name="PersonnalDriver/Button/driver_button.c" path="PersonnalDriver/Button/driver_button.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h" type="1"/>
+    <File name="PersonnalDriver/Button/driver_button.c" path="PersonnalDriver/Button/driver_button.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src" path="" type="2"/>
     <File name="PersonnalDriver/lsm9/lsm9ds0_register_def.h" path="PersonnalDriver/lsm9/lsm9ds0_register_def.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" type="1"/>

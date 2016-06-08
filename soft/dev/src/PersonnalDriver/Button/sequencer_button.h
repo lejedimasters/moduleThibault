@@ -30,8 +30,8 @@ SEQ_BUTTON_push_type_typedef	sequencer_button_get_push_type();
 
 
 #define MAX_ACQUISITION_TIME_MS		6000	// Temps d'acquisition maximal d'une série d'appui bouton. Au dela, timeout sur l'appui bouton
-#define MIN_UPTIME_SHORT_PUSH		50		// Temps minimal de l'état haut pour que l'appui soit considéré comme un appui court
-#define MAX_UPTIME_SHORT_PUSH		700		// Temps maximal de l'état haut pour que l'appui soit considéré comme un appui court
+#define MIN_UPTIME_SHORT_PUSH		30		// Temps minimal de l'état haut pour que l'appui soit considéré comme un appui court
+#define MAX_UPTIME_SHORT_PUSH		2000		// Temps maximal de l'état haut pour que l'appui soit considéré comme un appui court
 #define MIN_UPTIME_LONG_PUSH		5000	// Temps minimal de l'état haut pour que l'appui soit considéré comme un appui long
 #define MAX_UPTIME_LONG_PUSH		6000	// Temps maximal de l'état haut pour que l'appui soit considéré comme un appui long
 
