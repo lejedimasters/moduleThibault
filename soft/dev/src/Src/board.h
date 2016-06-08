@@ -76,4 +76,8 @@
 	#define GPIO_BLOCK_BUTTON			GPIOA		// verifie
 #endif
 
+
+
+	#define GPIO_PIN_TEST				GPIO_PIN_UART2_TX	// verifie
+	#define GPIO_BLOCK_TEST				GPIO_BLOCK_UART2_TX		// verifie
 #endif

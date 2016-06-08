@@ -88,34 +88,7 @@ int main(void)
 	__GPIOC_CLK_ENABLE();
 	__GPIOD_CLK_ENABLE();
 
-
-	#if THsBOARD
-
-/*
-		sd_driver_init();
-		res = FR_DISK_ERR;
-		   while( res != FR_OK){
-		        res = pf_mount(&fs);
-		   }
-
-		   // find the file TEST.txt
-		   res = FR_DISK_ERR;
-		   while( res != FR_OK){
-		        res = pf_open("TEST.txt");
-		    }*/
-		lsm9_driver_init();
-		uart_init();
-		seq_init(10);
 		TIM4_init();
-	#elif	NUCLEO_BOARD
-		seq_init(10);
-		TIM4_init();
-
-
-	#endif
-
-
-
 
 
 
@@ -181,7 +154,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = 500; //5sec
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -195,10 +168,10 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
-#if THsBOARD
+
 	lsm9_data_typedef data;
-	static uint32_t time = 0x0;
-#endif
+	static uint32_t time = 500;
+	GPIO_InitTypeDef GPIO_InitStruct;
 
 
 	//HAL_StatusTypeDef status;
@@ -209,24 +182,27 @@ void TIM4_IRQHandler(void)
             __HAL_TIM_CLEAR_FLAG(&TIM_Handle, TIM_FLAG_UPDATE);
             /*put your code here */
 
+            if( time == 500 ){
+          	  GPIO_InitStruct.Pin = GPIO_PIN_TEST;
+          	  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+          	  GPIO_InitStruct.Pull = GPIO_NOPULL;
+          	  GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+          	  HAL_GPIO_Init(GPIO_BLOCK_TEST, &GPIO_InitStruct);
+          	  time = 0;
+            }
 
-			#if THsBOARD
-
-            seq();
-/*
-				lsm9_driver_get_data(&data);
-				sd_driver_fill_buffer(&data,time);
-				time += 10;
-				sd_driver_bufferswitcher_emptying();
 
 
-data.time_ms = 10;
-*/
-				//lsm9_driver_init();
-			#elif	NUCLEO_BOARD
-				seq();
-
-			#endif
+            if( time < 5 ){
+            	HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_SET);
+            }
+            else{
+            	HAL_GPIO_WritePin(GPIO_BLOCK_TEST, GPIO_PIN_TEST,  GPIO_PIN_RESET);
+            }
+            time += 1;
+             if(time > 25){
+             	time = 1;
+             }
 
         }
     }

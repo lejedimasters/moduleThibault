@@ -77,9 +77,7 @@ void seq(){
 				case seq_main_status_init_manip:
 					// Configuration du capteur
 #if THsBOARD
-					lsm9_driver_init( );
-					sequencer_button_init(timebase);
-					sequencer_led_init(timebase, SEQ_LED_blink_action_manip);
+
 #elif NUCLEO_BOARD
 					sequencer_button_init(G_timebase);
 					//sequencer_led_init(G_timebase, SEQ_LED_blink_action_manip);
