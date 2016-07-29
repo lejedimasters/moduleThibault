@@ -31,22 +31,29 @@
  */
 ERROR_status lsm9_driver_init( void ){
 
+	uint8_t val[3],val0[3],str[50];
 	lsm9_spi_init();
 
 
 
-/*
-while(1){
-		lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_M);
 
-	lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_G);
-	DELAY_N_MS(500);
-}
+//while(1){
 
-*/
+	lsm9_driver_read_register(0x0F, val, lsm9_sensor_typedef_M);
+
+	lsm9_driver_read_register(0x0F, val0, lsm9_sensor_typedef_G);
+
+	sprintf((char*)str, "%2x;%2x\r\n",				(int)val[0],				(int)val0[0]);
+	uart_send((int8_t*)str,7);
+	//DELAY_N_MS(500);
+//}
+
+
 
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_G, 0x80, lsm9_sensor_typedef_G);				 // Reset
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG0_XM, 0b10000000, lsm9_sensor_typedef_M); // Reboot memory content
+
+	DELAY_N_MS(500);
 
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_XM, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M); // ODR 100HZ, enable all axis, continuous update

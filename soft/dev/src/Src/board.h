@@ -45,11 +45,11 @@
 
 
 
-#define GPIO_PIN_CS_LSM_M			GPIO_PIN_1	//
+#define GPIO_PIN_CS_LSM_M			GPIO_PIN_9	//
 #define GPIO_BLOCK_CS_LSM_M			GPIOB		//
 #define GPIO_PIN_CS_LSM_G			GPIO_PIN_0	//
 #define GPIO_BLOCK_CS_LSM_G			GPIOC		//
-#define GPIO_PIN_CS_LSM_X			GPIO_PIN_1	//
+#define GPIO_PIN_CS_LSM_X			GPIO_PIN_9	//
 #define GPIO_BLOCK_CS_LSM_X			GPIOB		//
 /*
 #define GPIO_PIN_CS_LSM_M			GPIO_PIN

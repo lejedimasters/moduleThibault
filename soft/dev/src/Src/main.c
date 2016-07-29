@@ -103,8 +103,9 @@ int main(void)
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
 		    }*/
+	uart_init();
 		lsm9_driver_init();
-		uart_init();
+
 		seq_init(10);
 		TIM4_init();
 	#elif	NUCLEO_BOARD
