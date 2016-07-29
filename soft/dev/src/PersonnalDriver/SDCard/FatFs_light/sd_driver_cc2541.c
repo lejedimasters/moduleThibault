@@ -33,7 +33,6 @@ unsigned char sd_driver_cc2541_init( void )
     uint8_t i;
     uint8_t responseR1 = 0;
     uint8_t responseR7_or_R3[4];
-    uint8_t test[100]={0};
     
     CardType = 0;
     //initialization of spi

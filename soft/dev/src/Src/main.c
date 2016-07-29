@@ -196,8 +196,8 @@ void TIM4_init(void){
 void TIM4_IRQHandler(void)
 {
 #if THsBOARD
-	lsm9_data_typedef data;
-	static uint32_t time = 0x0;
+	/*lsm9_data_typedef data;
+	static uint32_t time = 0x0;*/
 #endif
 
 

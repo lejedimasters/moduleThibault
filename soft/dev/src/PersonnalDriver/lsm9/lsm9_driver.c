@@ -31,7 +31,6 @@
  */
 ERROR_status lsm9_driver_init( void ){
 
-	uint8_t val[5];
 	lsm9_spi_init();
 
 

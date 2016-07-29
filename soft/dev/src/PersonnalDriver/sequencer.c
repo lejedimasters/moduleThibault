@@ -78,8 +78,8 @@ void seq(){
 					// Configuration du capteur
 #if THsBOARD
 					lsm9_driver_init( );
-					sequencer_button_init(timebase);
-					sequencer_led_init(timebase, SEQ_LED_blink_action_manip);
+					sequencer_button_init(G_timebase);
+					sequencer_led_init(G_timebase, SEQ_LED_blink_action_manip);
 #elif NUCLEO_BOARD
 					sequencer_button_init(G_timebase);
 					//sequencer_led_init(G_timebase, SEQ_LED_blink_action_manip);

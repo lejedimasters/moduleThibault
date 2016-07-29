@@ -189,18 +189,3 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 
 	return ERROR_status_NOERROR;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

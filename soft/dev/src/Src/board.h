@@ -44,7 +44,7 @@
 #define GPIO_BLOCK_CS_SDCARD		GPIOD		// verifie
 
 
-#warning a reverifier
+
 #define GPIO_PIN_CS_LSM_M			GPIO_PIN_1	//
 #define GPIO_BLOCK_CS_LSM_M			GPIOB		//
 #define GPIO_PIN_CS_LSM_G			GPIO_PIN_0	//

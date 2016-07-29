@@ -5,6 +5,8 @@
 
 #include "sequencer_button.h"
 #include "sequencer_led.h"
+#include "sd_driver.h"
+#include "board.h"
 #include "uart.h"
 #include "pff.h"
 
