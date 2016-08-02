@@ -56,7 +56,7 @@ void TIM4_init(void);
 
 TIM_HandleTypeDef TIM_Handle;
 
-#define 	TIME_BASE_MS	10
+#define 	TIME_BASE_MS	100
 
 
 #if (NUCLEO_BOARD & THsBOARD )
@@ -78,6 +78,7 @@ int main(void)
 
 	FRESULT res;
 
+
 	/* MCU Configuration----------------------------------------------------------*/
 	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
 	SystemClock_Config();
@@ -91,7 +92,7 @@ int main(void)
 
 	#if THsBOARD
 
-/*
+
 		sd_driver_init();
 		res = FR_DISK_ERR;
 		   while( res != FR_OK){
@@ -102,11 +103,11 @@ int main(void)
 		   res = FR_DISK_ERR;
 		   while( res != FR_OK){
 		        res = pf_open("TEST.txt");
-		    }*/
+		    }
 	uart_init();
 		lsm9_driver_init();
-
-		seq_init(10);
+		sequencer_led_init(TIME_BASE_MS, SEQ_LED_blink_action_manip);
+		seq_init(TIME_BASE_MS);
 		TIM4_init();
 	#elif	NUCLEO_BOARD
 		seq_init(10);
@@ -181,8 +182,9 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 void TIM4_init(void){
 	  __TIM4_CLK_ENABLE();
+
 	  /* prescaler 5  Period = 26785; -> 10ms*/
-	  TIM_Handle.Init.Prescaler = 5;
+	  TIM_Handle.Init.Prescaler = (5*TIME_BASE_MS)/10;
 	  TIM_Handle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	  TIM_Handle.Init.Period = 26785;
 	  TIM_Handle.Instance = TIM4;   //Same timer whose clocks we enabled
@@ -196,6 +198,7 @@ void TIM4_init(void){
 
 void TIM4_IRQHandler(void)
 {
+	static uint8_t	var;
 #if THsBOARD
 	/*lsm9_data_typedef data;
 	static uint32_t time = 0x0;*/
@@ -211,8 +214,16 @@ void TIM4_IRQHandler(void)
             /*put your code here */
 
 
-			#if THsBOARD
-
+		#if THsBOARD
+/*
+           if( var ){
+            	var = 0;
+            	driver_led_set();
+            }
+            else{
+            	driver_led_reset();
+            	var = 1;
+            }*/
             seq();
 /*
 				lsm9_driver_get_data(&data);

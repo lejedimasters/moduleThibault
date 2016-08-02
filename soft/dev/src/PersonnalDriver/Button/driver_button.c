@@ -22,7 +22,7 @@ BUTTON_status_typedef driver_button_get_status(){
 	if( current_button_status.value != G_last_button_status.value){
 
 		/* Detection front montant */
-		if( G_last_button_status.value == BUTTON_value_typedef_RESET ){
+		if( G_last_button_status.value == BUTTON_value_typedef_SET ){
 
 			current_button_status.edge = BUTTON_edge_typedef_rising_edge;
 
@@ -60,6 +60,7 @@ int32_t driver_button_init(){
 	  GPIO_InitStruct.Pin = GPIO_PIN_BUTTON;
 	  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
 	  GPIO_InitStruct.Pull = GPIO_NOPULL;
+//	  GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
 	  HAL_GPIO_Init(GPIO_BLOCK_BUTTON, &GPIO_InitStruct);
 	/* Initialisation du bouton status */
 	G_last_button_status = driver_button_get_pin_state();

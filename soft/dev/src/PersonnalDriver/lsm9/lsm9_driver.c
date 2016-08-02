@@ -49,18 +49,18 @@ ERROR_status lsm9_driver_init( void ){
 //}
 
 
-
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_G, 0x80, lsm9_sensor_typedef_G);				 // Reset
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG0_XM, 0b10000000, lsm9_sensor_typedef_M); // Reboot memory content
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_G, 0x80, lsm9_sensor_typedef_G);				 // Reset
 
-	DELAY_N_MS(500);
+
+	DELAY_N_MS(10);
 
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_XM, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M); // ODR 100HZ, enable all axis, continuous update
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG2_XM, 0b00100000 , lsm9_sensor_typedef_M); // ±16 g
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0b01100000|LSM9DS0_MAG_ODR100 , lsm9_sensor_typedef_M);//  high resoluation
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG6_XM, 0b01100000, lsm9_sensor_typedef_M); // ± 12 gauss
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, 0b00000000, lsm9_sensor_typedef_M); // Continuous conversion mode, normal mode resets
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0b01100000|LSM9DS0_MAG_ODR12_5 , lsm9_sensor_typedef_M);//  high resoluation
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG6_XM, 0b00000000, lsm9_sensor_typedef_M); // ± 12 gauss
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, CONTINUOS_CONVERSION, lsm9_sensor_typedef_M); // data from internal filter sent to output register and FIFO), Continuous conversion mode, normal mode resets
 
 
 	// Initialisation gyroscope

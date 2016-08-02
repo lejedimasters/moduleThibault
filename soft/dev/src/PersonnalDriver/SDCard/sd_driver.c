@@ -56,13 +56,18 @@ ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 
 
 
-	sprintf((char*)temp_buff, "%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d\r\n",
+	sprintf((char*)temp_buff, "%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d;%7d\r\n\0",
 			(int)time_ms,
 			(int)data->accelerometry.X, 	(int)data->accelerometry.Y, 	(int)data->accelerometry.Z,
 			(int)data->gyroscope.X, 		(int)data->gyroscope.Y, 		(int)data->gyroscope.Z,
 			(int)data->magnotemeter.X, 	(int)data->magnotemeter.Y, 	(int)data->magnotemeter.Z
 			);
 
+#if 1
+	//driver_led_set();
+	uart_send((int8_t*)temp_buff,strlen(temp_buff));
+	//driver_led_reset();
+#else
 
 	sd_driver_write_to_bufferswitcher(temp_buff, &remainingData);
 	currentBuffer = buffer_switcher.currentBuffer;
@@ -90,7 +95,7 @@ ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 		}
 
 	}
-
+#endif
 
 	return ERROR_status_NOERROR;
 }
@@ -152,7 +157,6 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 	uint32_t adress;
 
 
-
 	for( i = 0 ; i < NB_SD_BUFFER ; i++ ){
 
 		if( buffer_switcher.buffer_switch[i].status == buffer_status_typedef_filled ){
@@ -172,17 +176,13 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 
 	//buffer_switcher.buffer_switch[currentBufferFilled].buffer
 
-#if 1
-	uart_send((int8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer,DATA_CMD_SIZE);
-#else
+
 
 
     adress = fs.database++;
     adress *=512;
     sd_driver_cc2541_write(adress , 512 , (uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer);
 
-
-#endif
 
 	buffer_switcher.buffer_switch[currentBufferFilled].status = buffer_status_typedef_empty;
 	buffer_switcher.buffer_switch[currentBufferFilled].index = 0;

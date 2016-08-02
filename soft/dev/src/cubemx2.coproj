@@ -92,10 +92,10 @@
     <File name="PersonnalDriver/Uart/uart.h" path="PersonnalDriver/Uart/uart.h" type="1"/>
     <File name="PersonnalDriver/sequencer.c" path="PersonnalDriver/sequencer.c" type="1"/>
     <File name="PersonnalDriver/Led" path="" type="2"/>
-    <File name="PersonnalDriver/Led/driver_led.c" path="PersonnalDriver/Led/driver_led.c" type="1"/>
-    <File name="Src/stm32f4xx_hal_msp.c" path="Src/stm32f4xx_hal_msp.c" type="1"/>
-    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" type="1"/>
     <File name="PersonnalDriver/SDCard/FatFs_light/integer.h" path="PersonnalDriver/SDCard/FatFs_light/integer.h" type="1"/>
+    <File name="PersonnalDriver/Led/driver_led.c" path="PersonnalDriver/Led/driver_led.c" type="1"/>
+    <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h" type="1"/>
+    <File name="Src/stm32f4xx_hal_msp.c" path="Src/stm32f4xx_hal_msp.c" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h" path="Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h" type="1"/>
     <File name="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" path="Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" type="1"/>
     <File name="Drivers/CMSIS/Include/core_cmSimd.h" path="Drivers/CMSIS/Include/core_cmSimd.h" type="1"/>
@@ -150,8 +150,8 @@
     <File name="PersonnalDriver/Error/error.h" path="PersonnalDriver/Error/error.h" type="1"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h" type="1"/>
     <File name="Drivers/CMSIS/Include/arm_common_tables.h" path="Drivers/CMSIS/Include/arm_common_tables.h" type="1"/>
-    <File name="PersonnalDriver/SDCard/FatFs_light" path="" type="2"/>
     <File name="Drivers" path="" type="2"/>
+    <File name="PersonnalDriver/SDCard/FatFs_light" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f479xx.h" path="Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f479xx.h" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="Drivers/CMSIS/Device/ST" path="" type="2"/>

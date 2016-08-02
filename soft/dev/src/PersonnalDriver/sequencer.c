@@ -3,6 +3,7 @@
 
 
 #include "sequencer.h"
+#include "uart.h"
 
 
 sequencer_main_status_typedef G_seq_main_status;
@@ -34,16 +35,29 @@ void seq(){
 	SEQ_LED_blink_action_typedef led_action;
 	lsm9_data_typedef	data;
 	FRESULT res;
+	BUTTON_status_typedef test;
+	int8_t tab[3];
 
 	// Incrementation du temps
 	G_time += G_timebase;
+
+
+
+	lsm9_driver_get_data(&data);
+
+	sd_driver_fill_buffer(&data,G_time);
+	sd_driver_bufferswitcher_emptying();
+	//sequencer_led_set_blink_action(SEQ_LED_blink_action_manip, SEQ_BUTTON_push_type_typedef_no_push);
+	sequencer_led_execute();
+
+
+
 
 	/*******************************************************************************/
 	/*******************************CHECK INPUT*************************************/
 	/*******************************************************************************/
 	// Verification des boutons
-	button = sequencer_button_get_push_type();
-
+	//button = sequencer_button_get_push_type();
 
 
 	/*******************************************************************************/
@@ -52,6 +66,7 @@ void seq(){
 
 	// Vérification du changement de mode courant
 	// Si une demande de changement de mode est effectue et que ce n'est pas le mode courant
+/*
 	if( (button == SEQ_BUTTON_push_type_typedef_short_push)
 			&& (G_seq_main_status != seq_main_status_periodic_manip) ){
 
@@ -68,10 +83,12 @@ void seq(){
 		G_seq_main_status = seq_main_status_init_reset;
 	}
 
+*/
 	/*******************************************************************************/
 	/*********************************ACTION MODE***********************************/
 	/*******************************************************************************/
 	// Action de gestion des modes
+/*
 	switch (G_seq_main_status){
 
 				case seq_main_status_init_manip:
@@ -94,7 +111,8 @@ void seq(){
 #if THsBOARD
 					lsm9_driver_get_data(&data);
 					sd_driver_fill_buffer(&data,G_time);
-					sd_driver_bufferswitcher_emptying();
+#warning  commentaire soft important
+					//sd_driver_bufferswitcher_emptying();
 #endif
 					G_seq_main_status = seq_main_status_periodic_manip;
 					// action periodique mode start/run
@@ -103,12 +121,12 @@ void seq(){
 
 				case seq_main_status_init_stop:
 					// Extinction capteur and co
-/*
+
 					lsm9_driver_deinit();
 					G_timebase = 40;
 					sequencer_button_init(G_timebase);
 					sequencer_led_init(G_timebase, seq_main_status_periodic_stop);
-*/
+
 					G_seq_main_status = seq_main_status_periodic_stop;
 				break;
 
@@ -144,12 +162,14 @@ void seq(){
 					G_seq_main_status = seq_main_status_periodic_manip;
 				break;
 	}
+	*/
 
 
 	/*******************************************************************************/
 	/***********************************LED ACTION**********************************/
 	/*******************************************************************************/
 	// Si un type d'appui bouton a ete effectue, on assigne l'action led periodique a effectuer
+	/*
 	if( button != SEQ_BUTTON_push_type_typedef_no_push ){
 
 		switch (button) {
@@ -197,10 +217,11 @@ void seq(){
 					break;
 		}
 	}
+	*/
 	// Actionnement des leds
-	sequencer_led_execute();
+	//sequencer_led_execute();
 
 
 
-	G_last_seq_main_status = G_seq_main_status;
+//	G_last_seq_main_status = G_seq_main_status;
 }
