@@ -31,11 +31,11 @@
  */
 ERROR_status lsm9_driver_init( void ){
 
-	uint8_t val[3],val0[3],str[50];
+	uint8_t val[3],val0[3],str[50],value;
 	lsm9_spi_init();
 
 
-
+	DELAY_N_MS(550);
 
 //while(1){
 
@@ -53,19 +53,64 @@ ERROR_status lsm9_driver_init( void ){
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_G, 0x80, lsm9_sensor_typedef_G);				 // Reset
 
 
-	DELAY_N_MS(10);
+	DELAY_N_MS(500);
 
 	// Initialisation accéléromètre/magnétomètre
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_XM, LSM9DS0_ACC_ODR100|ENABLE_ALL_AXES, lsm9_sensor_typedef_M); // ODR 100HZ, enable all axis, continuous update
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG2_XM, 0b00100000 , lsm9_sensor_typedef_M); // ±16 g
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0b01100000|LSM9DS0_MAG_ODR12_5 , lsm9_sensor_typedef_M);//  high resoluation
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG6_XM, 0b00000000, lsm9_sensor_typedef_M); // ± 12 gauss
-	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, CONTINUOS_CONVERSION, lsm9_sensor_typedef_M); // data from internal filter sent to output register and FIFO), Continuous conversion mode, normal mode resets
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG5_XM, 0x80|LSM9DS0_MAG_ODR100 , lsm9_sensor_typedef_M);//  low resoluation
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG6_XM, 0b00000000, lsm9_sensor_typedef_M); // ±  gauss
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG7_XM, 0b10000000, lsm9_sensor_typedef_M);
 
+	lsm9_driver_write_register(LSM9DS0_OFFSET_X_L_M, 0x00, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(LSM9DS0_OFFSET_X_H_M, 0x00, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(LSM9DS0_OFFSET_Y_L_M, 0x00, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(LSM9DS0_OFFSET_Y_H_M, 0x00, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(LSM9DS0_OFFSET_Z_L_M, 0x00, lsm9_sensor_typedef_M);
+	lsm9_driver_write_register(LSM9DS0_OFFSET_Z_H_M, 0x00, lsm9_sensor_typedef_M);
 
 	// Initialisation gyroscope
+	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_G, 0x00, lsm9_sensor_typedef_G); // GYR OFF
+
+	/*
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG1_G, ODR190|BW11|PM_NORMAL|ENABLE_ALL_AXES, lsm9_sensor_typedef_G);
 	lsm9_driver_write_register(LSM9DS0_CTRL_REG4_G, 0b00000000,lsm9_sensor_typedef_G); // 250 dps
+*/
+
+
+
+
+	lsm9_driver_read_register(LSM9DS0_CTRL_REG1_XM,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "\n\n\n\n\n\n\rLSM9DS0_CTRL_REG1_XM : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_CTRL_REG2_XM,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_CTRL_REG2_XM : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_CTRL_REG5_XM,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_CTRL_REG5_XM : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_CTRL_REG6_XM,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_CTRL_REG6_XM : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_CTRL_REG7_XM,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_CTRL_REG7_XM : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+
+	lsm9_driver_read_register(LSM9DS0_OFFSET_X_L_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_X_L_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_OFFSET_X_H_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_X_H_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_OFFSET_Y_L_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_Y_L_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_OFFSET_Y_H_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_Y_H_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_OFFSET_Z_L_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_Z_L_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_OFFSET_Z_H_M,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_OFFSET_Z_H_M : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+
+	lsm9_driver_read_register(LSM9DS0_REFERENCE_X,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_REFERENCE_X : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_REFERENCE_Y,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_REFERENCE_Y : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+	lsm9_driver_read_register(LSM9DS0_REFERENCE_Z,&value,lsm9_sensor_typedef_M);
+	sprintf((char*)str, "LSM9DS0_REFERENCE_Z : %2x\r\n\0",(int)value);uart_send((int8_t*)str,strlen(str));
+
 
 /*
 	// Initialisation accéléromètre

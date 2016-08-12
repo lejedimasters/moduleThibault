@@ -63,7 +63,7 @@ ErrorStatus sd_driver_fill_buffer(lsm9_data_typedef *data, uint32_t time_ms){
 			(int)data->magnotemeter.X, 	(int)data->magnotemeter.Y, 	(int)data->magnotemeter.Z
 			);
 
-#if 1
+#if UART_ACTIVE
 	//driver_led_set();
 	uart_send((int8_t*)temp_buff,strlen(temp_buff));
 	//driver_led_reset();
@@ -178,14 +178,33 @@ ErrorStatus sd_driver_bufferswitcher_emptying(){
 
 
 
-
-    adress = fs.database++;
-    adress *=512;
-    sd_driver_cc2541_write(adress , 512 , (uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer);
+	if( fs.database*512 > ((512*512+fs.fsize)*90/100)){
 
 
-	buffer_switcher.buffer_switch[currentBufferFilled].status = buffer_status_typedef_empty;
-	buffer_switcher.buffer_switch[currentBufferFilled].index = 0;
+
+		adress = fs.dsect++;
+		adress *=512;
+
+
+		if( adress > fs.fsize ){
+
+
+			return ERROR_status_file_full;
+		}else{
+
+
+		adress += (fs.database*512);
+		//adress = fs.database++;
+		adress *=512;
+		sd_driver_cc2541_write(adress , 512 , (uint8_t*)buffer_switcher.buffer_switch[currentBufferFilled].buffer);
+
+
+		buffer_switcher.buffer_switch[currentBufferFilled].status = buffer_status_typedef_empty;
+		buffer_switcher.buffer_switch[currentBufferFilled].index = 0;
+		}
+
+	}
+
 
 	return ERROR_status_NOERROR;
 }

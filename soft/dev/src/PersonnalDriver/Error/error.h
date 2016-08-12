@@ -16,7 +16,8 @@
 
 typedef enum
 {
-	ERROR_status_NOERROR = 0
+	ERROR_status_NOERROR = 0,
+	ERROR_status_file_full
 }ERROR_status;
 
 

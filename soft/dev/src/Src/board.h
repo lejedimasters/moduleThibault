@@ -7,7 +7,7 @@
 #define		NUCLEO_BOARD	0
 #define		THsBOARD		1
 
-
+#define 	UART_ACTIVE		1
 
 //GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7
 

@@ -56,7 +56,7 @@ void TIM4_init(void);
 
 TIM_HandleTypeDef TIM_Handle;
 
-#define 	TIME_BASE_MS	100
+#define 	TIME_BASE_MS	10
 
 
 #if (NUCLEO_BOARD & THsBOARD )
@@ -92,19 +92,22 @@ int main(void)
 
 	#if THsBOARD
 
-
+#if UART_ACTIVE
+		uart_init();
+#else
 		sd_driver_init();
 		res = FR_DISK_ERR;
-		   while( res != FR_OK){
-		        res = pf_mount(&fs);
-		   }
+		while( res != FR_OK){
+			res = pf_mount(&fs);
+		}
 
-		   // find the file TEST.txt
-		   res = FR_DISK_ERR;
-		   while( res != FR_OK){
-		        res = pf_open("TEST.txt");
-		    }
-	uart_init();
+		// find the file TEST.txt
+		res = FR_DISK_ERR;
+		while( res != FR_OK){
+			res = pf_open("TEST.txt");
+		}
+#endif
+
 		lsm9_driver_init();
 		sequencer_led_init(TIME_BASE_MS, SEQ_LED_blink_action_manip);
 		seq_init(TIME_BASE_MS);
